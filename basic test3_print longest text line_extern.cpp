@@ -4,8 +4,8 @@
 #include "stdafx.h"
 #include<stdio.h>
 #define MAXLINE 1000
-int max;
-char line[MAXLINE], longest[MAXLINE];
+ int max;//在同一文件中放在函数前的外部变量extern可以省略，但是源程序下几个cpp文件的变量调用需要声明extern
+ char line[MAXLINE], longest[MAXLINE];
 int getline(void);//将一行读入，并返回长度；[]表示动态分配字符串长度
 void copy(void);//用于复制最大输入行
 
