@@ -1,19 +1,19 @@
-// basic test_print longest text line.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌĞòµÄÈë¿Úµã¡£
+// basic test_print longest text line.cpp : å®šä¹‰æ§åˆ¶å°åº”ç”¨ç¨‹åºçš„å…¥å£ç‚¹ã€‚
 //
 
 #include "stdafx.h"
 #include<stdio.h>
-#define MAXLINE 1000
- int max;//ÔÚÍ¬Ò»ÎÄ¼şÖĞ·ÅÔÚº¯ÊıÇ°µÄÍâ²¿±äÁ¿extern¿ÉÒÔÊ¡ÂÔ£¬µ«ÊÇÔ´³ÌĞòÏÂ¼¸¸öcppÎÄ¼şµÄ±äÁ¿µ÷ÓÃĞèÒªÉùÃ÷extern
+#define MAXLINE 1000 //å®šä¹‰intè¡¨ç¤ºåˆ›å»ºå˜é‡æˆ–è€…åˆ†é…å‚¨å­˜å•å…ƒï¼Œè€Œâ€œå£°æ˜â€æŒ‡çš„æ˜¯è¯´æ˜å˜é‡çš„æ€§è´¨ï¼Œä½†ä¸åˆ†é…å­˜å‚¨å•å…ƒ
+ int max;//åœ¨åŒä¸€æ–‡ä»¶ä¸­æ”¾åœ¨å‡½æ•°å‰çš„å¤–éƒ¨å˜é‡externå¯ä»¥çœç•¥ï¼Œä½†æ˜¯æºç¨‹åºä¸‹å‡ ä¸ªcppæ–‡ä»¶çš„å˜é‡è°ƒç”¨éœ€è¦å£°æ˜extern
  char line[MAXLINE], longest[MAXLINE];
-int getline(void);//½«Ò»ĞĞ¶ÁÈë£¬²¢·µ»Ø³¤¶È£»[]±íÊ¾¶¯Ì¬·ÖÅä×Ö·û´®³¤¶È
-void copy(void);//ÓÃÓÚ¸´ÖÆ×î´óÊäÈëĞĞ
+int getline(void);//å°†ä¸€è¡Œè¯»å…¥ï¼Œå¹¶è¿”å›é•¿åº¦ï¼›[]è¡¨ç¤ºåŠ¨æ€åˆ†é…å­—ç¬¦ä¸²é•¿åº¦
+void copy(void);//ç”¨äºå¤åˆ¶æœ€å¤§è¾“å…¥è¡Œ
 
 int main()
 {
-	int num = 0;//ÓÃÓÚÌø³ö
+	int num = 0;//ç”¨äºè·³å‡º
     int len;
-	extern int max;//µ÷ÓÃÍâ²¿£¨È«¾Ö£©±äÁ¿ĞèÒªÓÃexternÃüÁî
+	extern int max;//è°ƒç”¨å¤–éƒ¨ï¼ˆå…¨å±€ï¼‰å˜é‡éœ€è¦ç”¨externå‘½ä»¤
 	extern char longest[];
 	max = 0;
 	while ((len = getline()) > 0)
@@ -36,7 +36,7 @@ int main()
 	return 0;
 }
 
-int getline(void)//sÎªÊı×é
+int getline(void)//sä¸ºæ•°ç»„
 {
 	int c, i;
 	extern char line[];
