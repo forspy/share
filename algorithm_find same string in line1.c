@@ -1,5 +1,5 @@
 #include<stdio.h>
-//ÊµÏÖÈç¹ûÒ»ÐÐÖÐÓÐÕâ¸ö×Ö·û´®£¬ÔòÊä³öÕâÐÐ
+//å®žçŽ°å¦‚æžœä¸€è¡Œä¸­æœ‰è¿™ä¸ªå­—ç¬¦ä¸²ï¼Œåˆ™è¾“å‡ºè¿™è¡Œ
 int strindex(char source[], char searchfor[]);
 char line[] = "would you please";
 char pattern[] = "you";
@@ -22,7 +22,7 @@ int strindex(char source[], char searchfor[])
 		for (j = i, k = 0; source[j] == searchfor[k]&&searchfor[k]!='\0'; j++, k++)
 			;
 		if (searchfor[k] == '\0'&&k > 0)
-			return i;
+			return i;//ç›¸å½“äºŽè·³å‡º
 	}
 	return -1;
 }
