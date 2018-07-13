@@ -22,7 +22,7 @@ int strindex(char source[], char searchfor[])
 		for (j = i, k = 0; source[j] == searchfor[k]&&searchfor[k]!='\0'; j++, k++)
 			;
 		if (searchfor[k] == '\0'&&k > 0)
-			return i;//相当于跳出
+			return i;//相当于跳出/
 	}
 	return -1;
 }
