@@ -21,7 +21,7 @@ int main()
 	for (m = 0; m < n; m++)
 		printf("%d,", k[m]);//为什么k值会被修改？
 	test(aa);//对比说明void声明的函数会改变主函数参数值，而普通传参函数不会改变值（还需要进一步验证，是不是数组调用的是地址，不新建一个数组直接在原数组上排序）
-	printf("\n%d\n", aa);
+	printf("\n%d\n", aa);/
 	test2(bb);
 	printf("\n%d\n", bb);//该组实验说明void声明后依旧不会改变原参数变量
 	test3(cc);
