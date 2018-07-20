@@ -6,7 +6,7 @@ int main()
 {
 	char s[] = "helaa!";
 	char t[] = "helAA!";
-	int j;//²»ÄÜ½«voidÀàĞÍµÄÖµ·ÖÅäµ½intÀàĞÍµÄÊµÌå£¬º¯ÊıvoidÉùÃ÷µÄÖµÊÇ²»ÄÜ´«»Øµ÷ÓÃº¯ÊıµÄ
+	int j;//ä¸èƒ½å°†voidç±»å‹çš„å€¼åˆ†é…åˆ°intç±»å‹çš„å®ä½“ï¼Œå‡½æ•°voidå£°æ˜çš„å€¼æ˜¯ä¸èƒ½ä¼ å›è°ƒç”¨å‡½æ•°çš„
 	j = strcmp2(s, t);
 	printf("%d",j);
 }
@@ -25,17 +25,14 @@ int strcmp(char *s, char *t)
 
 int strcmp1(char *s, char *t)
 {
-	while (*s == *t);
-	{
-		s++;
-		t++;
-	}
+	while (*s++ == *t++);
+	
 	return *s - *t;
 }
 int strcmp2(char *s, char *t)
 {
 	for (; *s ==*t; s++, t++)
-	//if (*s == '\0')//´ı½â¾ö£¡ ²»ÊÇËùÓĞµÄ¿Ø¼şÂ·¾¶¶¼·µ»ØÖµ
+	//if (*s == '\0')//å¾…è§£å†³ï¼ ä¸æ˜¯æ‰€æœ‰çš„æ§ä»¶è·¯å¾„éƒ½è¿”å›å€¼
 		//return 0;
 	return *s - *t;
 }
