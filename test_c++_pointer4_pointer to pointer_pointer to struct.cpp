@@ -23,6 +23,8 @@ int main()
 	//注意arp是一个指针arp[2]才对应地址，需要对(*(arp[2])).year = 2010;    或者(**(arp + 2)).year = 2010;
 	anti** ppa = arp;//因为arp是一个指针数组是anti**类型的需要两次解引用后才能变成实体，ppa的实质和arp是一样的
 	cout << (*ppa)->year << endl << (*(ppa + 1))->year <<endl<< (*(ppa + 2))->year << endl;
+	auto ppb = arp;//auto 能自动判断变量类型 
+	cout << (*ppb)->year << endl << (*(ppb + 1))->year << endl << (*(ppb + 2))->year << endl;
 
 }
 
