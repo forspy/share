@@ -6,6 +6,7 @@ int main()
 {
 	//int j=1;
 	//int j=2;
+	int jjj;
 	struct sduent
 	{
 		char name[20];
