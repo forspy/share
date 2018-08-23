@@ -2,16 +2,19 @@
 #include <stdio.h>
 #include<string.h>//strcpy的头文件
 #include<stdlib.h>//malloc free 的头文件
+struct student//定义为全局变量的结构体方便给其他函数使用，全局变量存放在静态存储区
+{
+	char name[20];
+	int age;
+};
+void print_student1(struct student a);
+void print_student2(struct student* b);
 int main()
 {
 	//int j=1;
-	//int j=2;
-	int jjj;
-	struct sduent
-	{
-		char name[20];
-		int age;
-	};
+	//int j=2;//重定义
+	
+	
 	
 	//举个例子
 	char kk[20];//kk是一个地址常量，不能直接kk="hello"
@@ -21,20 +24,20 @@ int main()
 	strcpy(kk, "hello");
 	printf("%s\n", kk);
 	/////
-	struct sduent xiaoming;
+	struct student xiaoming;
 	strcpy(xiaoming.name ,"xiaoming");
 	xiaoming.age = 18;
 	printf("%s\n", xiaoming.name);
 
-	struct sduent* ptr = (struct sduent*)malloc(sizeof(struct sduent));
-	memset(ptr, 0, sizeof(struct sduent));//建议写，这样将动态变量初始化为0，如果是数组的话要*数组元素的个数
+	struct student* ptr = (struct student*)malloc(sizeof(struct student));
+	memset(ptr, 0, sizeof(struct student));//建议写，这样将动态变量初始化为0，如果是数组的话要*数组元素的个数
 	strcpy(ptr->name, "xiaowang");
 	ptr->age = 20;
 	printf("%s\n%d\n", (ptr->name)+1, ptr->age);//这里ptr->name是一个指向name数组的指针，因为name本身是个数组，而ptr->age是一个变量
 	free(ptr);
 
 	//设置一个动态数组
-	struct sduent* pp= (struct sduent*)malloc(10*sizeof(struct sduent));
+	struct student* pp= (struct student*)malloc(10*sizeof(struct student));
 	int i;
 	for (i = 0; i < 10; i++)
 		(pp + i)->age = i;
@@ -60,4 +63,15 @@ int main()
 	for (int i = 0; i < 10; i++)
 		printf("%d\n", (pp + i)->age);
 	free(pp);
+	print_student1(xiaoming);
+	print_student2(&xiaoming);//注意是地址传入
+}
+void print_student1(struct student a)//这样是把xiaoming的整个结构体再拷贝一遍
+{
+	printf("%s\n%d\n", a.name, a.age);
+}
+
+void print_student2(struct student* b)//这样是用一个结构体指针指向把xiaoming的整个结构体，节省了储存空间
+{
+	printf("%s\n%d\n", b->name, b->age);
 }
