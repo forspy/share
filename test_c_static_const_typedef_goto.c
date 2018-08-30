@@ -1,6 +1,7 @@
 #include<stdio.h>
-//Ö÷ÒªÊÇÈÃ´úÂë±äµÃÓÅÑÅ
-static int ab;//staticĞŞÊÎÈ«¾Ö±äÁ¿Ö»ÄÜÔÚÕâ¸ö.cÎÄ¼şÀïÊ¹ÓÃ£¬¼õÉÙ´úÂëµÄÎ¬»¤³É±¾
+//ä¸»è¦æ˜¯è®©ä»£ç å˜å¾—ä¼˜é›…
+//å­˜åœ¨å››ä¸ªå‚¨å­˜åŒºï¼šæ ˆï¼Œå †ï¼Œå…¨å±€å˜é‡åŒºï¼Œåªè¯»å¸¸é‡åŒº
+static int ab;//staticä¿®é¥°å…¨å±€å˜é‡åªèƒ½åœ¨è¿™ä¸ª.cæ–‡ä»¶é‡Œä½¿ç”¨ï¼Œå‡å°‘ä»£ç çš„ç»´æŠ¤æˆæœ¬
 void change(const int* p);
 struct student
 {
@@ -9,27 +10,27 @@ struct student
 };
 int main()
 {
-	const int a = 10;//const ĞŞÊÎµÄ±äÁ¿²»ÄÜ±»ĞŞ¸Ä
+	const int a = 10;//const ä¿®é¥°çš„å˜é‡ä¸èƒ½è¢«ä¿®æ”¹
 	int xm;
 	change(&xm);
 	int* const ptr = &xm;
-	//ptr = &xh;±íÊ¾²»ÄÜĞŞ¸ÄÕâ¸öÖ¸ÕëµÄÖ¸Ïò
-	static int abc;//½«abc±äÎªÈ«¾Ö±äÁ¿£¬µ«×÷ÓÃÓòÖ»ÔÚº¯ÊıÄÚ
-	typedef unsigned int u_int;//typedef¶¨ÒåÒ»¸öĞÂµÄÀàĞÍ
+	//ptr = &xh;è¡¨ç¤ºä¸èƒ½ä¿®æ”¹è¿™ä¸ªæŒ‡é’ˆçš„æŒ‡å‘
+	static int abc;//å°†abcå˜ä¸ºå…¨å±€å˜é‡ï¼Œä½†ä½œç”¨åŸŸåªåœ¨å‡½æ•°å†…
+	typedef unsigned int u_int;//typedefå®šä¹‰ä¸€ä¸ªæ–°çš„ç±»å‹
 	typedef struct student student;
 	student xq;
-	typedef struct student *student_ptr;//¶¨ÒåÒ»¸öÖ¸ÕëÀàĞÍµÄstruct student*£¬½Ğ×östudent_ptr
+	typedef struct student *student_ptr;//å®šä¹‰ä¸€ä¸ªæŒ‡é’ˆç±»å‹çš„struct student*ï¼Œå«åšstudent_ptr
 	student_ptr xh = &xq;
-	//FILE* Ã»ÓĞ¼Óstruct¾ÍÊÇtypedefµÄ×÷ÓÃ£¬É÷ÓÃ
-	//goto²¦¶¯Ö¸ÁîÖ¸Õë£¬É÷ÓÃÌø³öÁ½²ãÒÔÉÏÑ­»·£¬´ò¿ª¶à¸öÎÄ¼ş£¬¼¯ÖĞ´¦Àí
+	//FILE* æ²¡æœ‰åŠ structå°±æ˜¯typedefçš„ä½œç”¨ï¼Œæ…ç”¨
+	//gotoæ‹¨åŠ¨æŒ‡ä»¤æŒ‡é’ˆï¼Œæ…ç”¨è·³å‡ºä¸¤å±‚ä»¥ä¸Šå¾ªç¯ï¼Œæ‰“å¼€å¤šä¸ªæ–‡ä»¶ï¼Œé›†ä¸­å¤„ç†
 	int j ;
 again: j = 1;
 	printf("%d\n", j);
-	goto again;//Ê¹ÓÃÒÔºóÈÃ´úÂë¸üÓÅÑÅ
+	goto again;//ä½¿ç”¨ä»¥åè®©ä»£ç æ›´ä¼˜é›…
 
 }
 
 void change(const int* p)
 {
-	//*p = 3;constĞŞÊÎµÄÖ¸Õë±íÊ¾¸ÃÖ¸Õë²»ÄÜĞŞ¸ÄËùÖ¸¶ÔÏóµÄÖµ£¬µ«ÊÇ¿ÉÒÔĞŞ¸ÄpµÄÖ¸Ïò
+	//*p = 3;constä¿®é¥°çš„æŒ‡é’ˆè¡¨ç¤ºè¯¥æŒ‡é’ˆä¸èƒ½ä¿®æ”¹æ‰€æŒ‡å¯¹è±¡çš„å€¼ï¼Œä½†æ˜¯å¯ä»¥ä¿®æ”¹pçš„æŒ‡å‘
 }
