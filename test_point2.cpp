@@ -42,7 +42,7 @@ int main()
 	//free(pp1);
 	free(pp2);
 	//一个进程结束以后，它所使用的所有内存资源都会被OS回收
-	//c语言memmove(ptr,ptr2,90) memcopy(ptr,ptr2,字节数)  内存拷贝
+	//c语言memmove(ptr,ptr2,90) memcopy(ptr,ptr2,字节数)  内存拷贝其中ptr是目标地址，ptr2是要开始移动的地址，90是要移动的字节数
 #if 0//条件编译
 	ssss
 #endif
