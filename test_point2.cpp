@@ -39,6 +39,7 @@ int main()
 	//c语言中有一个relloc函数可以扩大已经定好的malloc函数的边界
 	int *pp1 = (int*)malloc(100*sizeof(int));
 	int *pp2 = (int*)realloc(pp1, 200 * sizeof(int));//使用realloc函数会释放上一个malloc函数的堆内存，所以不需要free（pp1），如果一开始什么都没有游客先传一个NULL
+	//realloc相当于增加了100*sizeof(int)
 	//free(pp1);
 	free(pp2);
 	//一个进程结束以后，它所使用的所有内存资源都会被OS回收
