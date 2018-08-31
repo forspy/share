@@ -12,4 +12,15 @@ int main()
 	cout << name << endl;
 	cout << str << endl;
 	//CTRL+Z 和enter=EOF
+	char* city[3] = { "beijing","shanghai","guangdong" };//city[3]是一个指针数组
+	int a[2][2]=
+	{
+		{1,2},
+		{3,4},
+	};
+	for (int i = 0; i < 3; i++)
+	{
+		cout << city[i] << ":\t";
+	}
+	
 }
