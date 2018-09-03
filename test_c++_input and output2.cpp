@@ -19,9 +19,9 @@ int main()
 	double sum = 0.0;
 	int count = 0;
 	//infile >> value;//取得第一个数，不要预读取，这样文件指针会先偏移一位
-	while (infile.good())//while input good and not at EOF
+	while (infile >> value)//inflie>>value的方法比先判断infile.good()再在循环内infile >> value;要好（infile.good()：while input good and not at EOF）
 	{
-		infile >> value;
+		//infile >> value;
 		sum += value;
 		count++;
 	}
