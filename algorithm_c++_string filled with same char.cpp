@@ -8,6 +8,7 @@ int main()
 	char* p;
 	p = filled_with_same_char(ch, times);
 	cout << p << endl;
+	delete[] p;
 }
 char* filled_with_same_char(char ch, int n)
 {
