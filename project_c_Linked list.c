@@ -3,6 +3,7 @@
 #include<string.h>
 //#include"link_list.h"
 //¶¯Ì¬Êý×éÔÚÔö¼Ó»òÉ¾³ýÒ»¸öÊýµÄÊ±ºòÐèÒªÒÆ¶¯Õû¸öÊýÁÐ£¬À©ÈÝÊ±»¹ÐèÒª¸´ÖÆÔ­ÊýÁÐ£¬Òò´ËÁÐ±í³öÏÖÁË£¬½â¾öÕâ¸öÎÊÌâ
+//ÒÔÏÂÊÇÍ¨ÓÃÐÍÁ´±íÊý¾Ý½á¹¹
 struct link_node
 {
 	struct link_node* next;
@@ -40,13 +41,13 @@ void list_insert_tail(struct link_node** walk, struct link_node* node);//Î²²¿²åÈ
 void list_remove(struct link_node** walk, struct link_node* node);//É¾³ý½Úµã
 int main()
 {
-	struct link_node* head=NULL;//Á´±íÍ·
+	struct link_node* head = NULL;//Á´±íÍ·
 
-	//Í·²¿£¨ÏÂÃæ£©²åÈë½Úµã
+								  //Í·²¿£¨ÏÂÃæ£©²åÈë½Úµã
 	struct shape* s = alloc_shape();
 	s->order = 1;
 	list_insert_head(&head, &s->link);//->µÄÓÅÏÈ¼¶±È&¸ß£¬Òª¸Ä±äÊµ²ÎÄÚ´æµÄÖµÐèÒª´«Èë¶ÔÓ¦µÄµØÖ·
-	//Í·²¿£¨ÏÂÃæ£©¼ÌÐø²åÈë½Úµã
+									  //Í·²¿£¨ÏÂÃæ£©¼ÌÐø²åÈë½Úµã
 	s = alloc_shape();
 	s->order = 2;
 	list_insert_head(&head, &s->link);
@@ -54,7 +55,7 @@ int main()
 	s = alloc_shape();
 	s->order = 3;
 	list_insert_tail(&head, &s->link);
-	
+
 
 
 	//±éÀúÁ´±íÀïËùÓÐµÄÔªËØ
@@ -62,8 +63,13 @@ int main()
 	while (pointer)//ÓÐ½Úµã
 	{
 		//·ÃÎÊÕâ¸ö½Úµã
-		//»ùµØÖ·+offset=&£¨»ùµØÖ·->³ÉÔ±£©£¬µ±»ùµØÖ·=0Ê±£¬offset=&£¨NULL->³ÉÔ±£©
+		//»ùµØÖ·+offset=&£¨»ùµØÖ·->³ÉÔ±£©£¬µ±»ùµØÖ·=0Ê±£¬offset=&£¨NULL->³ÉÔ±£©£¬ËùÒÔÁ´±ílinkµÄµØÖ·-offsetÆ«ÒÆÁ¿=struct shapeµÄµØÖ·
+		//struct shape* elem = (struct shape*)((char*)pointer - (int)(&(((struct shape*)NULL)->link)));
 		struct shape* elem = (struct shape*)((char*)pointer - (int)(&(((struct shape*)NULL)->link)));
+		//½â´ð£º(char*)ptr+3=ptr+3*sizeof(char)
+		//      (int*)ptr+3=ptr+3*sizeof(int)
+		//µ±»ùµØÖ·=0Ê±£¬offset=&£¨NULL->³ÉÔ±£©,offsetËãÊÇ×Ö½ÚÊý£¬Òò´Ë¸ù¾ÝÉÏÃæµÄ¹«Ê½ÒªÊ¹ÓÃ(char*)pointer,¹Ø¼üµÄÎÊÌâÔÚÓÚ
+		//offsetËã³öÀ´ÒÑ¾­ÊÇ×Ö½ÚÊýÁË¶ø²»ÊÇÖ¸ÕëµÄÆ«ÒÆÁ¿
 		printf("elem->order=%d\n", elem->order);
 
 		pointer = pointer->next;
@@ -98,8 +104,9 @@ void free_shape(struct shape* s)
 void list_insert_head(struct link_node** walk, struct link_node* node)//Í·²åÈë½Úµã
 {
 	//struct link_node** walk = header;//walkÏàµ±ÓÚtempÖÐ¼ä±äÁ¿£¬ÓÃÓÚ¸Ä±äÁ´Ïò
-	node->next = *walk;
+	node->next = *walk;//×¢ÒâË³Ðò£¬ÏÈ°Ñ*walk£¬¼´headµÄÖ¸Ïò¸³Öµ¸ønode->next£¬ÔÙ°Ñ*walk£¬¼´headÖ¸Ïònode
 	*walk = node;
+	
 }
 void list_insert_tail(struct link_node** walk, struct link_node* node)//Î²²¿²åÈë½Úµã
 {
@@ -107,8 +114,8 @@ void list_insert_tail(struct link_node** walk, struct link_node* node)//Î²²¿²åÈë
 	{
 		walk = &((*walk)->next);
 	}
+	node->next = NULL;//Í¬Àí×¢ÒâË³Ðò
 	*walk = node;
-	node->next = NULL;
 }
 //ÒÆ³ýÒ»¸ö½Úµã
 void list_remove(struct link_node** walk, struct link_node* node)
@@ -117,8 +124,9 @@ void list_remove(struct link_node** walk, struct link_node* node)
 	{
 		if (*walk == node)
 		{
+			node->next = NULL;//Í¬Àí×¢ÒâË³Ðò
 			*walk = node->next;
-			node->next = NULL;
+			
 			return;//Ìø³ö
 		}
 		walk = &((*walk)->next);
