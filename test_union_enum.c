@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS//д�ڿ�ͷ
+#define _CRT_SECURE_NO_WARNINGS//写在开头
 #include<stdio.h>
 #include<string.h>
 
@@ -8,16 +8,16 @@ int main()
 	{
 		char name;
 		int age;
-	};//�����壬ֻ�������һ�����ڴ��С�����ֵ
+	};//联合体，只会存其中一个，内存大小是最大值，共用一块内存空间~~
 
 	enum AUTIO_TYPE
 	{
-		FLV,//��һ��û�и�ֵ��Ϊ0
+		FLV,//第一个没有赋值设为0
 		WAV=1,
 		MP3=2,
 		AMR=3,
-		OGG//û�и�ֵ�൱����һ��ֵ+1
-	};//�൱�������궨��
+		OGG//没有赋值相当于上一个值+1
+	};//相当于批量宏定义
 
 	struct sex
 	{
