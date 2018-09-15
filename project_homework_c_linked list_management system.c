@@ -8,17 +8,17 @@ struct student
 	int ID;
 	int age;
 	char* name;
-	struct student* next;//Ö¸ÏòÏÂÒ»¸ö½Úµã
+	struct student* next;//æŒ‡å‘ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
 };
-//¶¨ÒåÒ»¸öÁ´±íÍ·
+//å®šä¹‰ä¸€ä¸ªé“¾è¡¨å¤´
 struct student head;
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 void init();
-//²åÈëĞÅÏ¢
+//æ’å…¥ä¿¡æ¯
 void append(int ID, int age, char* name);
-//ÏÔÊ¾ËùÓĞĞÅÏ¢
+//æ˜¾ç¤ºæ‰€æœ‰ä¿¡æ¯
 void show();
-//Ìá¹©²éÕÒ¹¦ÄÜ
+//æä¾›æŸ¥æ‰¾åŠŸèƒ½
 void search(int ID);
 int main()
 {
@@ -29,12 +29,13 @@ int main()
 	append(4, 21, "Penguin");
 	append(5, 22, "scarecrow");
 	//show();
-	printf("ÇëÊäÈëÒª²éÕÒµÄÑ§ÉúIDºÅ\n");
+	printf("è¯·è¾“å…¥è¦æŸ¥æ‰¾çš„å­¦ç”ŸIDå·\n");
 	int num;
 	scanf("%d", &num);
 	search(num);
+	free(head.next);//é‡Šæ”¾å †ä¸Šå†…å­˜
 }
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 void init()
 {
 	head.ID = 0;
@@ -42,28 +43,28 @@ void init()
 	head.name = NULL;
 	head.next = NULL;
 }
-//²åÈëĞÅÏ¢
+//æ’å…¥ä¿¡æ¯
 void append(int ID,int age,char* name)
 {
-	//1.ÉêÇë½Úµã
+	//1.ç”³è¯·èŠ‚ç‚¹
 	struct student* newnode = (struct student*)malloc(sizeof(struct student));
-	//Èç¹ûÄÚ´æ²»¹»£¬·µ»Ø
+	//å¦‚æœå†…å­˜ä¸å¤Ÿï¼Œè¿”å›
 	if (!newnode)
 		return;
-	//2.¶Ô½Úµã¸³Öµ
+	//2.å¯¹èŠ‚ç‚¹èµ‹å€¼
 	newnode->ID = ID;
 	newnode->age = age;
 	newnode->name = name;
-	newnode->next = NULL;//½ÚµãÎ²²¿¸³ÖµNULL
-	//3.Á´½Ó£¨Î²²å·¨£©
-	struct student* p = &head;//ÏÈÈÃ´ıÒÆ¶¯µÄÖ¸ÕëÖ¸ÏòÍ·²¿
+	newnode->next = NULL;//èŠ‚ç‚¹å°¾éƒ¨èµ‹å€¼NULL
+	//3.é“¾æ¥ï¼ˆå°¾æ’æ³•ï¼‰
+	struct student* p = &head;//å…ˆè®©å¾…ç§»åŠ¨çš„æŒ‡é’ˆæŒ‡å‘å¤´éƒ¨
 	while (p->next)
 	{
 		p = p->next;
 	}
 	p->next = newnode;
 }
-//ÏÔÊ¾ËùÓĞĞÅÏ¢
+//æ˜¾ç¤ºæ‰€æœ‰ä¿¡æ¯
 void show()
 {
 	struct student* p = &head;
@@ -73,7 +74,7 @@ void show()
 		printf("ID=%d age=%d name=%s\n", p->ID, p->age, p->name);
 	}
 }
-//Ìá¹©²éÕÒ¹¦ÄÜ
+//æä¾›æŸ¥æ‰¾åŠŸèƒ½
 void search(int ID)
 {
 	struct student* p = &head;
