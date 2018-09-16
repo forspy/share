@@ -22,6 +22,7 @@ void show();
 void search(int ID);
 //在指定位置插入
 void insert(int pos, int ID, int age, char* name);
+//注意删除的方法都需要先用一个temp变量接住要删除的节点，再断开链接
 //头删法
 void del_node_head();
 //尾删法
@@ -40,7 +41,7 @@ int main()
 	append(5, 22, "scarecrow");
 	del_pos(3);//删掉第三个位置的数据，head算第一个，所以应该是删掉ID=2的数据
 	//del_node_head();
-	//del_node_end();
+	del_node_end();
 	insert(4, 99, 99, "insert");//注意head算1，所以pos=4是插在3后面
 	change(4, 99);
 	show();
@@ -128,8 +129,9 @@ void del_node_end()
 		{
 			p = p->next;
 		}
+		struct student* temp = p->next;//用一个temp指针先保存住要删掉的节点
 		p->next = NULL;
-		free(p->next);//指到尾部节点free最后一个节点就行
+		free(temp);//指到尾部节点free最后一个节点就行
 	}
 	else
 		printf("只有一个头节点\n");
