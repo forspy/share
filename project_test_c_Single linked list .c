@@ -8,28 +8,28 @@ struct student
 	int ID;
 	int age;
 	char* name;
-	struct student* next;//Ö¸ÏòÏÂÒ»¸ö½Úµã
+	struct student* next;//æŒ‡å‘ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
 };
-//¶¨ÒåÒ»¸öÁ´±íÍ·
+//å®šä¹‰ä¸€ä¸ªé“¾è¡¨å¤´
 struct student head;
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 void init();
-//²åÈëĞÅÏ¢
+//æ’å…¥ä¿¡æ¯
 void append(int ID, int age, char* name);
-//ÏÔÊ¾ËùÓĞĞÅÏ¢
+//æ˜¾ç¤ºæ‰€æœ‰ä¿¡æ¯
 void show();
-//Ìá¹©²éÕÒ¹¦ÄÜ
+//æä¾›æŸ¥æ‰¾åŠŸèƒ½
 void search(int ID);
-//ÔÚÖ¸¶¨Î»ÖÃ²åÈë
+//åœ¨æŒ‡å®šä½ç½®æ’å…¥
 void insert(int pos, int ID, int age, char* name);
-//×¢ÒâÉ¾³ıµÄ·½·¨¶¼ĞèÒªÏÈÓÃÒ»¸ötemp±äÁ¿½Ó×¡ÒªÉ¾³ıµÄ½Úµã£¬ÔÙ¶Ï¿ªÁ´½Ó
-//Í·É¾·¨
+//æ³¨æ„åˆ é™¤çš„æ–¹æ³•éƒ½éœ€è¦å…ˆç”¨ä¸€ä¸ªtempå˜é‡æ¥ä½è¦åˆ é™¤çš„èŠ‚ç‚¹ï¼Œå†æ–­å¼€é“¾æ¥
+//å¤´åˆ æ³•
 void del_node_head();
-//Î²É¾·¨
+//å°¾åˆ æ³•
 void del_node_end();
-//Ö¸¶¨Î»ÖÃÉ¾³ı½Úµã
+//æŒ‡å®šä½ç½®åˆ é™¤èŠ‚ç‚¹
 void del_pos(int pos);
-//¸Ä±äÖµ
+//æ”¹å˜å€¼
 void change(int ID, int value);
 int main()
 {
@@ -39,19 +39,19 @@ int main()
 	append(3, 20, "riddle");
 	append(4, 21, "Penguin");
 	append(5, 22, "scarecrow");
-	del_pos(3);//É¾µôµÚÈı¸öÎ»ÖÃµÄÊı¾İ£¬headËãµÚÒ»¸ö£¬ËùÒÔÓ¦¸ÃÊÇÉ¾µôID=2µÄÊı¾İ
+	del_pos(3);//åˆ æ‰ç¬¬ä¸‰ä¸ªä½ç½®çš„æ•°æ®ï¼Œheadç®—ç¬¬ä¸€ä¸ªï¼Œæ‰€ä»¥åº”è¯¥æ˜¯åˆ æ‰ID=2çš„æ•°æ®
 	//del_node_head();
 	del_node_end();
-	insert(4, 99, 99, "insert");//×¢ÒâheadËã1£¬ËùÒÔpos=4ÊÇ²åÔÚ3ºóÃæ
+	insert(4, 99, 99, "insert");//æ³¨æ„headç®—1ï¼Œæ‰€ä»¥pos=4æ˜¯æ’åœ¨3åé¢
 	change(4, 99);
 	show();
-	printf("ÇëÊäÈëÒª²éÕÒµÄÑ§ÉúIDºÅ\n");
+	printf("è¯·è¾“å…¥è¦æŸ¥æ‰¾çš„å­¦ç”ŸIDå·\n");
 	int num;
 	scanf("%d", &num);
 	search(num);
-	free(head.next);//ÊÍ·Å¶ÑÉÏÄÚ´æ
+	free(head.next);//é‡Šæ”¾å †ä¸Šå†…å­˜
 }
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 void init()
 {
 	head.ID = 0;
@@ -59,67 +59,67 @@ void init()
 	head.name = NULL;
 	head.next = NULL;
 }
-//²åÈëĞÅÏ¢
+//æ’å…¥ä¿¡æ¯
 void append(int ID, int age, char* name)
 {
-	//1.ÉêÇë½Úµã
+	//1.ç”³è¯·èŠ‚ç‚¹
 	struct student* newnode = (struct student*)malloc(sizeof(struct student));
-	//Èç¹ûÄÚ´æ²»¹»£¬·µ»Ø
+	//å¦‚æœå†…å­˜ä¸å¤Ÿï¼Œè¿”å›
 	if (!newnode)
 		return;
-	//2.¶Ô½Úµã¸³Öµ
+	//2.å¯¹èŠ‚ç‚¹èµ‹å€¼
 	newnode->ID = ID;
 	newnode->age = age;
 	newnode->name = name;
-	newnode->next = NULL;//½ÚµãÎ²²¿¸³ÖµNULL
-						 //3.Á´½Ó£¨Î²²å·¨£©
-	struct student* p = &head;//ÏÈÈÃ´ıÒÆ¶¯µÄÖ¸ÕëÖ¸ÏòÍ·²¿
+	newnode->next = NULL;//èŠ‚ç‚¹å°¾éƒ¨èµ‹å€¼NULL
+	 //3.é“¾æ¥ï¼ˆå°¾æ’æ³•ï¼‰
+	struct student* p = &head;//å…ˆè®©å¾…ç§»åŠ¨çš„æŒ‡é’ˆæŒ‡å‘å¤´éƒ¨
 	while (p->next)
 	{
-		p = p->next;
+		p = p->next;//é“¾åˆ°çš„æ˜¯å †ä¸Šçš„å†…å­˜ï¼Œå †ä¸Šå†…å­˜çš„nextæ¥å£å†ä¼¸å‡ºæ¥é“¾ä¸‹ä¸€ä¸ªï¼Œå½¢æˆå †ä¸Šçš„é“¾
 	}
 	p->next = newnode;
 }
 void insert(int pos, int ID, int age, char* name)
 {
-	//1.ÅĞ¶ÏposÊÇ·ñÕıÈ·
+	//1.åˆ¤æ–­posæ˜¯å¦æ­£ç¡®
 	struct student* p = &head;
 	for (int i = 0; i < pos - 1; i++)
 	{
 		p = p->next;
 		if (p==NULL)
 		{
-			printf("pos³¬³ö·¶Î§\n");
+			printf("posè¶…å‡ºèŒƒå›´\n");
 			return;
 		}
 	}
-	//2.ÉêÇë½Úµã
+	//2.ç”³è¯·èŠ‚ç‚¹
 	struct student* newnode = (struct student*)malloc(sizeof(struct student));
-	//Èç¹ûÄÚ´æ²»¹»£¬·µ»Ø
+	//å¦‚æœå†…å­˜ä¸å¤Ÿï¼Œè¿”å›
 	if (!newnode)
 		return;
-	//3.¶Ô½Úµã¸³Öµ
+	//3.å¯¹èŠ‚ç‚¹èµ‹å€¼
 	newnode->ID = ID;
 	newnode->age = age;
 	newnode->name = name;
-	newnode->next = NULL;//½ÚµãÎ²²¿¸³ÖµNULL
+	newnode->next = NULL;//èŠ‚ç‚¹å°¾éƒ¨èµ‹å€¼NULL
 	
 	newnode->next = p->next;
 	p->next = newnode;
 }
-//Í·É¾·¨
+//å¤´åˆ æ³•
 void del_node_head()
 {
 	struct student* pn = (&head)->next;
 	if (pn)
 	{
 		(&head)->next = pn->next;
-		free(pn);//ÊÍ·ÅÉ¾³ı½Úµã
+		free(pn);//é‡Šæ”¾åˆ é™¤èŠ‚ç‚¹
 	}
 	else
-		printf("Ö»ÓĞÒ»¸öheadÍ·½Úµã\n");
+		printf("åªæœ‰ä¸€ä¸ªheadå¤´èŠ‚ç‚¹\n");
 }
-//Î²É¾·¨
+//å°¾åˆ æ³•
 void del_node_end()
 {
 	struct student* p = &head;
@@ -129,14 +129,14 @@ void del_node_end()
 		{
 			p = p->next;
 		}
-		struct student* temp = p->next;//ÓÃÒ»¸ötempÖ¸ÕëÏÈ±£´æ×¡ÒªÉ¾µôµÄ½Úµã
+		struct student* temp = p->next;//ç”¨ä¸€ä¸ªtempæŒ‡é’ˆå…ˆä¿å­˜ä½è¦åˆ æ‰çš„èŠ‚ç‚¹
 		p->next = NULL;
-		free(temp);//Ö¸µ½Î²²¿½Úµãfree×îºóÒ»¸ö½Úµã¾ÍĞĞ
+		free(temp);//æŒ‡åˆ°å°¾éƒ¨èŠ‚ç‚¹freeæœ€åä¸€ä¸ªèŠ‚ç‚¹å°±è¡Œ
 	}
 	else
-		printf("Ö»ÓĞÒ»¸öÍ·½Úµã\n");
+		printf("åªæœ‰ä¸€ä¸ªå¤´èŠ‚ç‚¹\n");
 }
-//Ö¸¶¨Î»ÖÃÉ¾³ı½Úµã
+//æŒ‡å®šä½ç½®åˆ é™¤èŠ‚ç‚¹
 void del_pos(int pos)
 {
 	struct student* p = &head;
@@ -145,15 +145,15 @@ void del_pos(int pos)
 		p = p->next;
 		if (p->next== NULL)
 		{
-			printf("ÒªÉ¾³ıµÄposÎ»ÖÃ³¬³öÁ´±í½ÚµãÊı\n");
+			printf("è¦åˆ é™¤çš„posä½ç½®è¶…å‡ºé“¾è¡¨èŠ‚ç‚¹æ•°\n");
 			return;
 		}
 	}
-	struct student* temp = p->next;//±£´æÒªÉ¾³ıµÄ½Úµã
+	struct student* temp = p->next;//ä¿å­˜è¦åˆ é™¤çš„èŠ‚ç‚¹
 	p->next = p->next->next;
-	free(temp);//ÊÍ·ÅÒªÉ¾³ıµÄ½Úµã
+	free(temp);//é‡Šæ”¾è¦åˆ é™¤çš„èŠ‚ç‚¹
 }
-//¸Ä±äÖ¸¶¨ID´¦µÄÖµ
+//æ”¹å˜æŒ‡å®šIDå¤„çš„å€¼
 void change(int ID, int value)
 {
 	struct student* p = &head;
@@ -166,9 +166,9 @@ void change(int ID, int value)
 			return;
 		}
 	}
-	printf("Ã»ÓĞÕÒµ½¸ÃĞÅÏ¢\n");
+	printf("æ²¡æœ‰æ‰¾åˆ°è¯¥ä¿¡æ¯\n");
 }
-//ÏÔÊ¾ËùÓĞĞÅÏ¢
+//æ˜¾ç¤ºæ‰€æœ‰ä¿¡æ¯
 void show()
 {
 	struct student* p = &head;
@@ -178,7 +178,7 @@ void show()
 		printf("ID=%d age=%d name=%s\n", p->ID, p->age, p->name);
 	}
 }
-//Ìá¹©²éÕÒ¹¦ÄÜ
+//æä¾›æŸ¥æ‰¾åŠŸèƒ½
 void search(int ID)
 {
 	struct student* p = &head;
@@ -191,5 +191,5 @@ void search(int ID)
 			return;
 		}
 	}
-	printf("Ã»ÓĞÕÒµ½¸ÃĞÅÏ¢\n");
+	printf("æ²¡æœ‰æ‰¾åˆ°è¯¥ä¿¡æ¯\n");
 }
