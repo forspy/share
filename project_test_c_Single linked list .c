@@ -78,7 +78,7 @@ void append(int ID, int age, char* name)
 	{
 		p = p->next;//链到的是堆上的内存，堆上内存的next接口再伸出来链下一个，形成堆上的链
 	}
-	p->next = newnode;
+	p->next = newnode;//p->next实际上已经取到了头部的next指针，赋值newnode就能给头部next链接
 }
 void insert(int pos, int ID, int age, char* name)
 {
