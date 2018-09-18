@@ -72,13 +72,13 @@ void append(int ID, int age, char* name)
 	newnode->age = age;
 	newnode->name = name;
 	newnode->next = NULL;//节点尾部赋值NULL
-						 //3.链接（尾插法）
-	struct student* p = &head;//先让待移动的指针指向头部
+	//3.链接（尾插法）
+	struct student* p = &head;//先让待移动的指针指向头部，要改变右值需要对右值取地址
 	while (p->next)
 	{
-		p = p->next;
+		p = p->next;//链到的是堆上的内存，堆上内存的next接口再伸出来链下一个，形成堆上的链
 	}
-	p->next = newnode;
+	p->next = newnode;//p->next实际上已经取到了头部的next指针,注意：p->next是对head的操作，而p=newnode是对p的操作，影响不到head
 }
 void insert(int pos, int ID, int age, char* name)
 {
