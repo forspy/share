@@ -12,7 +12,8 @@ void my_swap(T& a, T& b);
 using namespace std;
 template<typename T>
 void my_swap(T& a, T& b, T& c);//三个数的交换完成 重载模板对于相同的T传入的类型要相同
-
+int x;
+decltype(x) y;//让y的类型和x一样，比强制类型转化更方便
 
 struct job
 {
