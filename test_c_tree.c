@@ -8,12 +8,12 @@
 //×Ó½ÚµãA  ×Ó½ÚµãB
 //Í¨ÓÃÊ÷ÐÎ½á¹¹Éè¼Æ£¨Á´±í·¨£©
 /* __________
-   |        |
-   |  ËÞÖ÷  |
-   |        |
-   |________|
-   | Ê÷½Úµã |
-   |________|
+|        |
+|  ËÞÖ÷  |
+|        |
+|________|
+| Ê÷½Úµã |
+|________|
 */
 
 #include<stdio.h>
@@ -39,13 +39,14 @@ struct item_node
 struct item_node* alloc_item_node(const char* name);
 void link_parent(struct tree_link* link, struct tree_link* parent);//ÔÚ×Ó½ÚµãµÄÐÖµÜ½ÚµãµÄÏÂÒ»¸ö²åÈë½Úµã
 void trans_tree(struct tree_link* root);//ÏÈ±éÀú¸ù½Úµã£¬ºó±éÀú×Ö½Úµã£¬ÏÈÐòµÝ¹é
-void trans_tree_back(struct tree_link* root);
+void trans_tree_back(struct tree_link* root);//ºóÐò±éÀú
+void del_children(struct tree_link* link);//É¾µôÄ³Ò»¸ö×Ó½Úµã
 int main()
 {
 	struct tree_link* tree_root = NULL;
 	struct item_node* root = alloc_item_node("A");//¶¨Òå¸ùÊ÷ËÞÖ÷A
-	//tree_root = &root->link;
-	//B C D¶¼Á¬A
+												  //tree_root = &root->link;
+												  //B C D¶¼Á¬A
 	struct item_node* node;
 	node = alloc_item_node("B");//¶¨Òå×ÓÊ÷ËÞÖ÷B
 	struct item_node* node_b = node;//¸´ÖÆÒ»ÏÂ
@@ -57,12 +58,14 @@ int main()
 	node = alloc_item_node("D");
 	link_parent(&node->link, &root->link);
 	//-------------------------------------B½ÚµãµÄ×ÓÊ÷
-	
+
 	node = alloc_item_node("E");
 	link_parent(&node->link, &node_b->link);
 
 	node = alloc_item_node("F");
 	link_parent(&node->link, &node_b->link);
+
+	del_children(&node->link);
 
 	trans_tree(&root->link);
 	printf("-------\n");
@@ -83,8 +86,8 @@ void link_parent(struct tree_link* link, struct tree_link* parent)//link±íÊ¾Òª²å
 	if (parent == NULL)
 		return;
 	struct tree_link** walk = &(parent->children);//walkÊÇÒª´Ó×Ó½ÚµãµÄÍ·²¿¿ªÊ¼±éÀú,ÒªÐÞ¸ÄÒ»¼¶Ö¸ÕëµÄÖ¸ÏòÔòÐèÒªÓÃ¶þ¼¶Ö¸Õë£¬
-	//ÎªÊ²Ã´ÒªÓÃ¶þ¼¶Ö¸ÕëÖ¸ÏòÒ»¼¶Ö¸Õë£¬ÒòÎª£º1.²»ÄÜÓÃÒ»¸öÒ»¼¶Ö¸Õë½á¹¹Ìå½Ó×¡Ò»¸öÒ»¼¶Ö¸Õë£¬Ïàµ±ÓÚ¸´ÖÆÁËÒ»¸öÅÓ´óµÄÁ´±í
-	//2.´´½¨µÄÒ»¼¶Ö¸ÕëÊÇÔÚÕ»ÉÏµÄÄÚ´æ£¬ÔÚº¯Êýµ÷ÓÃÍê±Ïºó»á±»ÊÍ·Å
+												  //ÎªÊ²Ã´ÒªÓÃ¶þ¼¶Ö¸ÕëÖ¸ÏòÒ»¼¶Ö¸Õë£¬ÒòÎª£º1.²»ÄÜÓÃÒ»¸öÒ»¼¶Ö¸Õë½á¹¹Ìå½Ó×¡Ò»¸öÒ»¼¶Ö¸Õë£¬Ïàµ±ÓÚ¸´ÖÆÁËÒ»¸öÅÓ´óµÄÁ´±í
+												  //2.´´½¨µÄÒ»¼¶Ö¸ÕëÊÇÔÚÕ»ÉÏµÄÄÚ´æ£¬ÔÚº¯Êýµ÷ÓÃÍê±Ïºó»á±»ÊÍ·Å
 	while (*walk)
 	{
 		walk = &(*walk)->brother;//Óë1Ê½µÄÔ­ÀíÒ»Ñù£¨*walk£©ÊÇÒ»¸ö½Úµã£¬ÓëlinkÒ»Ñù
@@ -92,16 +95,17 @@ void link_parent(struct tree_link* link, struct tree_link* parent)//link±íÊ¾Òª²å
 	*walk = link;//Ïàµ±ÓÚ¸øparent->children¸³Öµ,Í¨¹ý¶þ¼¶Ö¸Õë½âÒýÓÃ¸øparent->children¸³Öµ
 }
 /*
-        A
-      / | \
-	 /  |  \
-    B - C - D
-   /|
-  / |
- E -F
-*/    
+      A
+    / | \
+   /  |  \
+  B - C - D
+ /|
+/ |
+E -F
 
-void trans_tree(struct tree_link* root)//ÏÈ±éÀú¸ù½Úµã£¬ºó±éÀú×Ö½Úµã£¬ÏÈÐòµÝ¹é±éÀú
+*/
+
+void trans_tree(struct tree_link* root)//ÏÈ±éÀú¸ù½Úµã£¬ºó±éÀú×Ö½Úµã£¬ÏÈÐò±éÀú
 {
 	struct item_node* node = LINK_TO_ELEM(root, struct item_node, link);
 	printf("%s\n", node->name);
@@ -117,18 +121,34 @@ void trans_tree(struct tree_link* root)//ÏÈ±éÀú¸ù½Úµã£¬ºó±éÀú×Ö½Úµã£¬ÏÈÐòµÝ¹é±éÀ
 //ºóÐò±éÀú£¬ÏÈ±éÀú×ó×Ó½Úµã£¬ÐÖµÜ½Úµã£¬ÔÙ¸¸½Úµã¡£
 void trans_tree_back(struct tree_link* root)
 {
-	
-	
 	struct tree_link* walk = root->children;
-	
 	while (walk)
 	{
-		trans_tree(walk);
-		
-		
+		trans_tree_back(walk);
 		walk = walk->brother;
-		
 	}
 	struct item_node* node = LINK_TO_ELEM(root, struct item_node, link);
 	printf("%s\n", node->name);
+}
+
+void del_children(struct tree_link* del_link)
+{
+	if (del_link->parent == NULL)
+		return;
+	//ÀûÓÃlinkÕÒµ½×Ó²ãÀïlink½ÚµãµÄÉÏÒ»¼¶
+	struct tree_link** walk = &del_link->parent->children;
+	while (*walk)
+	{
+		
+		if ((*walk)->brother == del_link)
+		{
+			(*walk)->brother = del_link->brother;
+			del_link->brother = NULL;
+			break;
+		}
+		walk = &(*walk)->brother;
+	}
+	del_link->parent = NULL;
+	struct item_node* node = LINK_TO_ELEM(del_link, struct item_node, link);//
+	free(node);//×¢Òâfreeµ÷malloc·µ»ØµÄÖ¸Õë
 }
