@@ -30,6 +30,7 @@ char *getname(void)
 	return ptr;
 }
 
+
 //strcpy原理：
 void strcpy(char* s, char* t)
 {
