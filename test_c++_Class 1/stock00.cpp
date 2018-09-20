@@ -51,8 +51,15 @@ void Stock::update(double price)//股价变动
 void Stock::show()
 {
 	using std::endl;
+	std::ios_base::fmtflags orig = std::cout.setf(std::ios_base::fixed,std::ios_base::floatfield);//保存默认输出格式
+	//std是名称空间，ios_base是名称空间下的类，ftmflags是该类下的一种类型 orig是变量储存了输出格式  fixed是保持小数输出，floatfield包含定点表示和科学表示
+	std::streamsize prec = std::cout.precision(3);//记录默认输出小数点后三位
 	std::cout << "公司：" << company << endl
 		<< "持股数：" << shares << endl
-		<< "股价：" << share_val << endl
-		<< "该股总价值" << total_val << endl;
+		<< "股价：" << share_val << endl;
+	std::cout.precision(2);//以小数点后两位输出总价
+	std::cout << "该股总价值" << total_val << endl;
+	//还原默认设置
+	std::cout.setf(orig);
+	std::cout.precision(prec);
 }
