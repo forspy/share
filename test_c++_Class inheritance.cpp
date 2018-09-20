@@ -37,6 +37,7 @@ int main()
 	file_it(cout, objective, eps, LIMIT);
 }
 
+
 void file_it(ostream& os, double fo, const double* fe, int n)
 {
 	//预先储存好格式化方式
