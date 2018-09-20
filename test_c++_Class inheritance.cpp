@@ -59,4 +59,5 @@ void file_it(ostream& os, double fo, const double* fe, int n)
 		os << int(fo / fe[i] + 0.5) << endl;//放大倍数为物镜焦距处以目镜焦距
 	}
 	os.setf(initial);//重新设回fixed格式
+	
 }
