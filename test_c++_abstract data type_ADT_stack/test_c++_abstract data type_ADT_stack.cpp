@@ -8,7 +8,7 @@ int main()
 	Stack st;//没有赋值会采用构造函数赋初值
 	char ch;
 	long data;//物品编码
-	cout << "输入A增加一项物品编码" << "输入D删除一项物品编码" << "输入Q退出" << endl;
+	cout << "输入A增加一项物品编码；输入D删除一项物品编码；输入S显示清单；输入Q退出" << endl;
 	while (cin >> ch&&toupper(ch) != 'Q')//toupper()函数作用是将小写字母转换为大写字母,包括a，d，q也能识别
 	{
 		while (cin.get() != '\n')//清掉输入地多余字符为下次输入做准备
@@ -39,9 +39,12 @@ int main()
 				cout << "弹出地值为 " << data << endl;
 			}
 			break;
+		case 's':
+		case 'S':
+			st.show();
+			break;
 		}
-		cout << "输入A增加一项物品编码"<< "输入D删除一项物品编码"<< "输入Q退出" << endl;
+		cout << "输入A增加一项物品编码；输入D删除一项物品编码；输入S显示清单；输入Q退出" << endl;
 	}
-	//cout << "done!\n";
 	return 0;
 }

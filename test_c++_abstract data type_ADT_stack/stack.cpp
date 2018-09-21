@@ -37,7 +37,12 @@ bool Stack::pop(long& item)//需要改变对象地值，因此不需要const
 	else
 		return false;
 }
-
+void Stack::show()
+{
+	std::cout << "物品清单为：\n";
+	for (int i = 0; i < top; i++)
+		std::cout << items[i] << std::endl;
+}
 Stack::~Stack()
 {
 	std::cout << "析构done!\n";

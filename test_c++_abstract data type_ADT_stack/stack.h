@@ -27,6 +27,7 @@ public:
 	bool isfull() const;
 	bool push(const long& item);//如果栈满了返回false，否则返回true
 	bool pop(long& item);//如果栈空了返回false，否则返回true
+	void show();//访问私有部分地数据
 };
 
 #endif
