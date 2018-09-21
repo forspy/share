@@ -1,54 +1,54 @@
 #include<iostream>
 #include"stock03.h"
 
-//¹¹Ôìº¯Êı£¬ÊµÏÖ²¿·Ö£¨·½Ê½£ºÖØÔØ£©
-Stock::Stock()//¹¹Ôìº¯ÊıÃ»ÓĞ·µ»ØÖµ
+//æ„é€ å‡½æ•°ï¼Œå®ç°éƒ¨åˆ†ï¼ˆæ–¹å¼ï¼šé‡è½½ï¼‰
+Stock::Stock()//æ„é€ å‡½æ•°æ²¡æœ‰è¿”å›å€¼
 {
-	std::cout << "µ÷ÓÃÄ¬ÈÏ¹¹Ôìº¯Êı\n";
+	std::cout << "è°ƒç”¨é»˜è®¤æ„é€ å‡½æ•°\n";
 	company = "No company";
 	shares = 0;
 	share_val = 0.0;
 	set_tot();
 }
-Stock::Stock(const std::string& co, long n, double pr)//1.Stock::(Àà+×÷ÓÃÓò½âÎöÔËËã·û)±íÊ¾¸Ã³ÉÔ±º¯ÊıÄÜ¹»Ê¹ÓÃÕâ¸öÀàµÄËùÓĞ³ÉÔ±2.Ê¹ÓÃÒıÓÃ½Ó×¡string¶ÔÏó
+Stock::Stock(const std::string& co, long n, double pr)//1.Stock::(ç±»+ä½œç”¨åŸŸè§£æè¿ç®—ç¬¦)è¡¨ç¤ºè¯¥æˆå‘˜å‡½æ•°èƒ½å¤Ÿä½¿ç”¨è¿™ä¸ªç±»çš„æ‰€æœ‰æˆå‘˜2.ä½¿ç”¨å¼•ç”¨æ¥ä½stringå¯¹è±¡
 {
-	//std::cout << "Ê¹ÓÃ¹«Ë¾Ãû£¨µÚÒ»¸ö²ÎÊı£©£¬²ÉÓÃÄ¬ÈÏ²ÎÊıµÄ·½Ê½µ÷ÓÃ¹¹Ôìº¯Êı\n";
+	//std::cout << "ä½¿ç”¨å…¬å¸åï¼ˆç¬¬ä¸€ä¸ªå‚æ•°ï¼‰ï¼Œé‡‡ç”¨é»˜è®¤å‚æ•°çš„æ–¹å¼è°ƒç”¨æ„é€ å‡½æ•°\n";
 	company = co;
 	if (n < 0)
 	{
-		std::cout << "³Ö¹ÉÊıÄ¿²»ÄÜÎª¸ºÊı£¬ÉèÎª0\n";
+		std::cout << "æŒè‚¡æ•°ç›®ä¸èƒ½ä¸ºè´Ÿæ•°ï¼Œè®¾ä¸º0\n";
 		shares = 0;
 	}
 	else
 		shares = n;
-	share_val = pr;//½Ó×¡Ã¿¹É¼Û¸ñ
-	set_tot();//¼ÆËãË½ÓĞ³ÉÔ±ÖĞtotal_valµÄ×Ü¼Û¸ñ
+	share_val = pr;//æ¥ä½æ¯è‚¡ä»·æ ¼
+	set_tot();//è®¡ç®—ç§æœ‰æˆå‘˜ä¸­total_valçš„æ€»ä»·æ ¼
 }
-//Îö¹¹º¯ÊıµÄÊµÏÖ
+//ææ„å‡½æ•°çš„å®ç°
 Stock::~Stock()
 {
-	std::cout << "Done!\n";//ÕâÀïËäÈ»Ã»ÓĞÊ¹ÓÃnew¿ª±ÙÄÚ´æ£¬ËùÒÔÎö¹¹º¯Êı²»»á·¢»ÓºÜ´ó×÷ÓÃ£¬µ«ÖÁÉÙ¿ÉÒÔ¿´µ½StockµÄ¶ÔÏóµÄÉúÃüÖÜÆÚ
+	std::cout << "Done!\n";//è¿™é‡Œè™½ç„¶æ²¡æœ‰ä½¿ç”¨newå¼€è¾Ÿå†…å­˜ï¼Œæ‰€ä»¥ææ„å‡½æ•°ä¸ä¼šå‘æŒ¥å¾ˆå¤§ä½œç”¨ï¼Œä½†è‡³å°‘å¯ä»¥çœ‹åˆ°Stockçš„å¯¹è±¡çš„ç”Ÿå‘½å‘¨æœŸ
 }
-//Stock::(Àà+×÷ÓÃÓò½âÎöÔËËã·û)±íÊ¾¸Ã³ÉÔ±º¯ÊıÄÜ¹»Ê¹ÓÃÕâ¸öÀàµÄËùÓĞ³ÉÔ±2.Ê¹ÓÃÒıÓÃ½Ó×¡string¶ÔÏó
-void Stock::buy(long num, double price)//ÂòÈë¼¸¹É
+//Stock::(ç±»+ä½œç”¨åŸŸè§£æè¿ç®—ç¬¦)è¡¨ç¤ºè¯¥æˆå‘˜å‡½æ•°èƒ½å¤Ÿä½¿ç”¨è¿™ä¸ªç±»çš„æ‰€æœ‰æˆå‘˜2.ä½¿ç”¨å¼•ç”¨æ¥ä½stringå¯¹è±¡
+void Stock::buy(long num, double price)//ä¹°å…¥å‡ è‚¡
 {
 	if (num < 0)
-		std::cout << "ÂòÈë²»ÄÜÎª¸ºÊı\n";
+		std::cout << "ä¹°å…¥ä¸èƒ½ä¸ºè´Ÿæ•°\n";
 	else
 	{
 		shares += num;
-		share_val = price;//¹ÉÆ±ÏÖ¼Û
-		set_tot();//ÖØĞÂ¼ÆËã
+		share_val = price;//è‚¡ç¥¨ç°ä»·
+		set_tot();//é‡æ–°è®¡ç®—
 	}
 }
 
-void Stock::sell(long num, double price)//Âô³ö¼¸¹É
+void Stock::sell(long num, double price)//å–å‡ºå‡ è‚¡
 {
-	using std::cout;//Ê¹ÓÃÃû³Æ¿Õ¼ä·½±ãÒ»µã
+	using std::cout;//ä½¿ç”¨åç§°ç©ºé—´æ–¹ä¾¿ä¸€ç‚¹
 	if (num < 0)
-		cout << "Âô³ö²»ÄÜÎª¸ºÊı\n";
+		cout << "å–å‡ºä¸èƒ½ä¸ºè´Ÿæ•°\n";
 	else if (num > shares)
-		cout << "Âô³öÊıÄ¿²»ÄÜ´óÓÚÏÖ³ÖÊıÄ¿\n";
+		cout << "å–å‡ºæ•°ç›®ä¸èƒ½å¤§äºç°æŒæ•°ç›®\n";
 	else
 	{
 		shares -= num;
@@ -57,7 +57,7 @@ void Stock::sell(long num, double price)//Âô³ö¼¸¹É
 	}
 }
 
-void Stock::update(double price)//¹É¼Û±ä¶¯
+void Stock::update(double price)//è‚¡ä»·å˜åŠ¨
 {
 	share_val = price;
 	set_tot();
@@ -66,26 +66,26 @@ void Stock::update(double price)//¹É¼Û±ä¶¯
 void Stock::show() const
 {
 	using std::endl;
-	std::ios_base::fmtflags orig = std::cout.setf(std::ios_base::fixed, std::ios_base::floatfield);//±£´æÄ¬ÈÏÊä³ö¸ñÊ½
-																								   //stdÊÇÃû³Æ¿Õ¼ä£¬ios_baseÊÇÃû³Æ¿Õ¼äÏÂµÄÀà£¬ftmflagsÊÇ¸ÃÀàÏÂµÄÒ»ÖÖÀàĞÍ origÊÇ±äÁ¿´¢´æÁËÊä³ö¸ñÊ½  fixedÊÇ±£³ÖĞ¡ÊıÊä³ö£¬floatfield°üº¬¶¨µã±íÊ¾ºÍ¿ÆÑ§±íÊ¾
-	std::streamsize prec = std::cout.precision(3);//¼ÇÂ¼Ä¬ÈÏÊä³öĞ¡ÊıµãºóÈıÎ»
-	std::cout << "¹«Ë¾£º" << company << endl
-		<< "³Ö¹ÉÊı£º" << shares << endl
-		<< "¹É¼Û£º" << share_val << endl;
-	std::cout.precision(2);//ÒÔĞ¡ÊıµãºóÁ½Î»Êä³ö×Ü¼Û
-	std::cout << "¸Ã¹É×Ü¼ÛÖµ" << total_val << endl;
-	//»¹Ô­Ä¬ÈÏÉèÖÃ
+	std::ios_base::fmtflags orig = std::cout.setf(std::ios_base::fixed, std::ios_base::floatfield);//ä¿å­˜é»˜è®¤è¾“å‡ºæ ¼å¼
+																								   //stdæ˜¯åç§°ç©ºé—´ï¼Œios_baseæ˜¯åç§°ç©ºé—´ä¸‹çš„ç±»ï¼Œftmflagsæ˜¯è¯¥ç±»ä¸‹çš„ä¸€ç§ç±»å‹ origæ˜¯å˜é‡å‚¨å­˜äº†è¾“å‡ºæ ¼å¼  fixedæ˜¯ä¿æŒå°æ•°è¾“å‡ºï¼ŒfloatfieldåŒ…å«å®šç‚¹è¡¨ç¤ºå’Œç§‘å­¦è¡¨ç¤º
+	std::streamsize prec = std::cout.precision(3);//è®°å½•é»˜è®¤è¾“å‡ºå°æ•°ç‚¹åä¸‰ä½
+	std::cout << "å…¬å¸ï¼š" << company << endl
+		<< "æŒè‚¡æ•°ï¼š" << shares << endl
+		<< "è‚¡ä»·ï¼š" << share_val << endl;
+	std::cout.precision(2);//ä»¥å°æ•°ç‚¹åä¸¤ä½è¾“å‡ºæ€»ä»·
+	std::cout << "è¯¥è‚¡æ€»ä»·å€¼" << total_val << endl;
+	//è¿˜åŸé»˜è®¤è®¾ç½®
 	std::cout.setf(orig);
 	std::cout.precision(prec);
 }
 
-//ÀûÓÃthisÖ¸Õë£¬±È½ÏÁ½¸ö¶ÔÏóÖĞµÄ½Ï´óÖµ£¬·µ»ØÒ»¸ö¸Ã¶ÔÏóµÄÒıÓÃ£¨¾ÍÎªÁËÊ¡Ò»¸ö²ÎÊı...niub£©
-//1.thisÖ¸ÕëÓÃÀ´Ö¸Ïòµ÷ÓÃ³ÉÔ±º¯ÊıµÄ¶ÔÏó
-//2.Í¨¹ıÖ¸ÕëÀ´·ÃÎÊ½á¹¹³ÉÔ±Í¬ÑùÊÊÓÃÓÚÀà³ÉÔ±(ÖØÒª)
-const Stock& Stock::topval(const Stock& s) const
+//åˆ©ç”¨thisæŒ‡é’ˆï¼Œæ¯”è¾ƒä¸¤ä¸ªå¯¹è±¡ä¸­çš„è¾ƒå¤§å€¼ï¼Œè¿”å›ä¸€ä¸ªè¯¥å¯¹è±¡çš„å¼•ç”¨ï¼ˆå°±ä¸ºäº†çœä¸€ä¸ªå‚æ•°...niubï¼‰
+//1.thisæŒ‡é’ˆç”¨æ¥æŒ‡å‘è°ƒç”¨æˆå‘˜å‡½æ•°çš„å¯¹è±¡
+//2.é€šè¿‡æŒ‡é’ˆæ¥è®¿é—®ç»“æ„æˆå‘˜åŒæ ·é€‚ç”¨äºç±»æˆå‘˜(é‡è¦)
+const Stock& Stock::topval(const Stock& s) const//å¦‚æœå¸Œæœ›æˆå‘˜å‡½æ•°å¯¹å¤šä¸ªå¯¹è±¡è¿›è¡Œæ“ä½œï¼Œå¯å°†é¢å¤–å¯¹è±¡ä½œä¸ºå‚æ•°ä¼ é€’ç»™æˆå‘˜å‡½æ•°
 {
-	if (s.total_val > total_val)//ÆäÊµtotal_valÎªthis->total_val
+	if (s.total_val > total_val)//å…¶å®total_valä¸ºthis->total_val
 		return s;
 	else
-		return *this;//·µ»Øµ÷ÓÃ³ÉÔ±º¯ÊıµÄ¶ÔÏó
+		return *this;//è¿”å›è°ƒç”¨æˆå‘˜å‡½æ•°çš„å¯¹è±¡
 }
