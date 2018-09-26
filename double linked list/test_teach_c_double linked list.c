@@ -10,9 +10,9 @@ int main()
 {
 	struct dlist list;
 	init(&list);
-
-	int x = getsize(&list);//²âÊÔ
-	printf("%d\n", x);//²âÊÔ
-
+	insert_end(&list, 1);
+	insert_end(&list, 2);
+	insert_end(&list, 3);
+	del_pos_v1(&list, 2);
 	show(&list);
 }
