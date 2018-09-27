@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 struct node
 {
 	int ID;
@@ -36,8 +35,6 @@ void del_pos(struct dlist* list, int pos);
 //指定位置删除version 1.1
 void del_pos_v1(struct dlist* list, int pos);
 
-//尾删法
-int del_end();
 
 //查找节点
 int find_node(struct dlist* list, int data);
@@ -50,3 +47,7 @@ void del_head(struct dlist* list);
 
 //头插法
 void insert_head(struct dlist* list, int data);
+
+
+//尾删法
+void del_end(struct dlist* list);
