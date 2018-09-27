@@ -9,7 +9,6 @@ void init(struct dlist* list)//p_head和p_end为全局变量
 	list->p_end = NULL;
 }
 
-
 //如果没有节点
 int isempty(struct dlist* list)
 {
@@ -185,4 +184,67 @@ void del_pos_v1(struct dlist* list, int pos)
 		list->p_end = p_prv;
 	}
 
+}
+//查找节点
+int find_node(struct dlist* list, int data)
+{
+	int pos = 1;
+	struct node* p = list->p_head;
+	while (p)
+	{
+		if (p->ID == data)
+		{
+			return pos;
+		}
+		p = p->next;
+		pos++;
+	}
+	return 0;
+}
+//改变节点
+void change_node(struct dlist* list, int data, int new_data)
+{
+	struct node* p = list->p_head;
+	while (p)
+	{
+		if (p->ID == data)
+		{
+			p->ID = new_data;
+		}
+		p = p->next;
+	}
+}
+//头删法
+void del_head(struct dlist* list)
+{
+	if (isempty(list))
+	{
+		printf("没有节点\n");
+		return ;
+	}
+	struct node* p_prv = NULL;//先定义一个前节点
+	struct node* p_next = delete_node(list->p_head, &p_prv);//返回后一个节点
+	list->p_head = p_next;//头部指针移向下一个节点
+	if (list->p_head)//至少有2个节点以上，删了一个还有一个以上
+	{
+		list->p_head->prv = NULL;
+	}
+	else//仅有的一个节点也被删除了
+	{
+		list->p_end = NULL;
+	}
+}
+//头插法
+void insert_head(struct dlist* list, int data)
+{
+	list->p_head=creat_data(data, list->p_head, NULL);
+
+	if (list->p_head->next)
+	{
+		list->p_head->next->prv = list->p_head;//后一个节点的prv链上p_head
+	}
+	else//如果插入后只有一个节点，就将p_end指向p_head的同一个节点
+	{
+		list->p_end = list->p_head;
+	}
 }
