@@ -231,9 +231,31 @@ void del_head(struct dlist* list)
 	}
 	else//仅有的一个节点也被删除了
 	{
-		list->p_end = NULL;
+		//list->p_end = NULL;
+		list->p_end = list->p_head;//上下都行
 	}
 }
+//尾删法
+void del_end(struct dlist* list)
+{
+	if (isempty(list))
+	{
+		printf("没有节点\n");
+		return;
+	}
+	struct node* p_prv = NULL;//先定义一个前节点
+	struct node* p_next = delete_node(list->p_end, &p_prv);//返回后一个节点
+	list->p_end = p_prv;//尾部指针指向前一个节点
+	if (list->p_end)//至少有2个节点以上，删了一个还有一个以上
+	{
+		list->p_end->next = NULL;
+	}
+	else // 仅有的一个节点也被删除了
+	{
+		list->p_head = NULL;
+	}
+}
+
 //头插法
 void insert_head(struct dlist* list, int data)
 {
