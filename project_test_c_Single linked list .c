@@ -14,8 +14,10 @@ struct student
 struct student head;
 //初始化
 void init();
-//插入信息
-void append(int ID, int age, char* name);
+//插入信息(尾插法)
+void append_end(int ID, int age, char* name);
+//插入信息（头插法）
+void append_head(int ID, int age, char* name);
 //显示所有信息
 void show();
 //提供查找功能
@@ -34,12 +36,13 @@ void change(int ID, int value);
 int main()
 {
 	init();
-	append(1, 18, "joker");
-	append(2, 19, "batman");
-	append(3, 20, "riddle");
-	append(4, 21, "Penguin");
-	append(5, 22, "scarecrow");
-	del_pos(3);//删掉第三个位置的数据，head算第一个，所以应该是删掉ID=2的数据
+	append_end(1, 18, "joker");
+	append_end(2, 19, "batman");
+	append_end(3, 20, "riddle");
+	append_end(4, 21, "Penguin");
+	append_end(5, 22, "scarecrow");
+	append_head(0, 17, "ai");
+	//del_pos(3);//删掉第三个位置的数据，head算第一个，所以应该是删掉ID=2的数据
 	//del_node_head();
 	del_node_end();
 	insert(4, 99, 99, "insert");//注意head算1，所以pos=4是插在3后面
@@ -59,8 +62,8 @@ void init()
 	head.name = NULL;
 	head.next = NULL;
 }
-//插入信息
-void append(int ID, int age, char* name)
+//插入信息（尾插法）
+void append_end(int ID, int age, char* name)
 {
 	//1.申请节点
 	struct student* newnode = (struct student*)malloc(sizeof(struct student));
@@ -72,7 +75,7 @@ void append(int ID, int age, char* name)
 	newnode->age = age;
 	newnode->name = name;
 	newnode->next = NULL;//节点尾部赋值NULL
-	//3.链接（尾插法）
+	//3.链接
 	struct student* p = &head;//先让待移动的指针指向头部，要改变右值需要对右值取地址
 	while (p->next)
 	{
@@ -81,6 +84,25 @@ void append(int ID, int age, char* name)
 	}
 	p->next = newnode;//p->next实际上已经取到了头部的next指针,注意：p->next是对head的操作，而p=newnode是对p的操作，影响不到head
 }
+//插入信息（头插法）
+void append_head(int ID, int age, char* name)
+{
+	//1.申请节点
+	struct student* newnode = (struct student*)malloc(sizeof(struct student));
+	//如果内存不够，返回
+	if (!newnode)
+		return;
+	//2.对节点赋值
+	newnode->ID = ID;
+	newnode->age = age;
+	newnode->name = name;
+	newnode->next = NULL;//节点尾部赋值NULL
+	//3.链接
+	struct student* p = &head;//由于head是全局变量，定义一个指向头部的指针p
+	newnode->next = p->next;
+	p->next = newnode;//p->next实际上已经取到了头部的next指针,注意：p->next是对head的操作，而p=newnode是对p的操作，影响不到head
+}
+
 void insert(int pos, int ID, int age, char* name)
 {
 	//1.判断pos是否正确
@@ -88,7 +110,7 @@ void insert(int pos, int ID, int age, char* name)
 	for (int i = 0; i < pos - 1; i++)
 	{
 		p = p->next;
-		if (p==NULL)
+		if (p == NULL)
 		{
 			printf("pos超出范围\n");
 			return;
@@ -104,7 +126,7 @@ void insert(int pos, int ID, int age, char* name)
 	newnode->age = age;
 	newnode->name = name;
 	newnode->next = NULL;//节点尾部赋值NULL
-	
+
 	newnode->next = p->next;
 	p->next = newnode;
 }
@@ -115,7 +137,8 @@ void del_node_head()
 	if (pn)
 	{
 		(&head)->next = pn->next;
-		free(pn);//释放删除节点
+		pn->next = NULL;
+		free(pn);//释放删除节点,pn指向的时malloc上申请的内存，所以pn能free
 	}
 	else
 		printf("只有一个head头节点\n");
@@ -144,7 +167,7 @@ void del_pos(int pos)
 	for (int i = 0; i < pos - 2; i++)
 	{
 		p = p->next;
-		if (p->next== NULL)
+		if (p->next == NULL)
 		{
 			printf("要删除的pos位置超出链表节点数\n");
 			return;
