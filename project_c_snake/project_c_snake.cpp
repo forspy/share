@@ -3,13 +3,20 @@
 #include<stdlib.h>
 #include<stdio.h>
 #include<time.h>
+extern TCHAR playername[11];//playername成为一个全局共享变量，全局变量会自动赋值为0不需要另外赋值
+extern IMAGE img;
 
 int main()
 {
 	
-	initgraph(20 * WIDTH, 20 * HEIGHT);//(窗口标题名称要改，待完善)
+	set_background();
+	
+	loadimage(&img, L"./source/Grassland.jpg", 20 * WIDTH, 20 * WIDTH);
+	
+	InputBox(playername, 11, L"请输入参赛名");
 	srand((unsigned)time(NULL));
 	init();
+	ai_init();
 	//绘制游戏
 	//gameprint();
 	playgame();
