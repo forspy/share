@@ -103,6 +103,7 @@ namespace VECTOR
 		sum.y = y + b.y;
 		sum.set_ang();
 		sum.set_mag();
+		return sum;
 	}
 	*/
 	Vector Vector::operator-(const Vector& b)const//A-B
