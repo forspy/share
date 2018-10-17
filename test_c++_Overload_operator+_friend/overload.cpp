@@ -67,7 +67,7 @@ Time Time::operator*(double mult)const
 	return result;
 }
 
-Time operator*(double mult, const Time& t)
+Time operator*(double mult, const Time& t)//友元函数的存在主要是为了让里面的对象能够访问到类中的私有成员
 {
 	Time result;
 	long totalminutes = (long)(t.hours*mult * 60 + t.minutes*mult);

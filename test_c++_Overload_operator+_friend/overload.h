@@ -22,9 +22,10 @@ public:
 	友元函数
 	友元类
 	友元成员函数
+
 	*/
 	//通过让函数成为类的友元，可以赋予该函数于与类的函数相同的访问权限，这里先介绍友元函数
-
+	//友元函数的存在主要是为了让里面的对象能够访问到类中的私有成员
 
 	//问题：如果想total=2*total就实现不了了，因为2不是对象，因此引入一个友元函数
 	friend Time operator*(double mult, const Time& t);//注意：友元函数需要将函数原型放在类声明中，并加上friend
@@ -35,3 +36,5 @@ public:
 	*/
 	void show()const;
 };
+
+Time test(double a, const Time& t);
