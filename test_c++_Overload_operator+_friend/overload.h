@@ -38,3 +38,4 @@ public:
 };
 
 Time test(double a, const Time& t);
+void tt(int h);

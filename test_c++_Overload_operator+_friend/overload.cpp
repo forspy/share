@@ -75,3 +75,9 @@ Time operator*(double mult, const Time& t)//友元函数的存在主要是为了让里面的对象
 	result.minutes = totalminutes % 60;
 	return result;
 }
+
+void tt(int h)
+{
+	Time temp;
+	temp.addhour(h);//一般函数也可以借助类对象访问类成员访问
+}
