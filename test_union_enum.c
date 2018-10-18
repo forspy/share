@@ -8,7 +8,7 @@ int main()
 	{
 		char name;
 		int age;
-	};//联合体，只会存其中一个，内存大小是最大值，共用一块内存空间~~
+	};//联合体，只会存其中一个，内存大小是最大值，共用一块内存空间~~，注意是共用一块内存空间如果输入65给union，要显示name则会显示A
 
 	enum AUTIO_TYPE
 	{
@@ -18,7 +18,11 @@ int main()
 		AMR=3,
 		OGG//没有赋值相当于上一个值+1
 	};//相当于批量宏定义
-
+	enum TT
+	{
+		RED,GREEN
+	};
+	std::cout<<TT(1);//小tips通过枚举下标也可以找到枚举值只不过是枚举名(num)
 	struct sex
 	{
 		int type;

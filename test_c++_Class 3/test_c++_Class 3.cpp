@@ -7,7 +7,8 @@ int main()
 		//获得股票
 		//Stock business("qiushi", 50, 2.5);//隐式的创建一个名为business的类对象，并赋给这个对象初值，使用默认参数型的构造函数   
 										  //business.show();
-		Stock business = Stock("qiushi", 50, 2.5);//显式的创建一个名为business的类对象，并赋给这个对象初值，需要赋值,推荐	
+		Stock business = Stock("qiushi", 50, 2.5);//显式的创建一个名为business的类对象，并赋给这个对象初值，需要赋值,推荐
+		//其实是通过构造函数生成一个对象然后把该对象复制给business对象
 		business.show();
 		//增持
 		business.buy(10, 3.5);
