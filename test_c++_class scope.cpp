@@ -10,9 +10,11 @@ class Test
 {
 private:
 	const int Months = 12;
+	static const int MONTHS=12;
 	//int m0[Months];//这样是不行的，因为：
 	//1.声明类只是描述了对象的形式，并没有创建对象，因此在创建对象前，将没有用于存储的空间
 	//2.可以使用#define 进行文本替代
+	int m4[MONTHS];//这样是可以的
 	int m0[12];//这样是可以的
 	int m1[MM];
 	//3.可以使用枚举提供符号名称
