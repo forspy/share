@@ -3,7 +3,7 @@
 #include<iostream>
 const int SIZE = 80;
 using namespace std;
-char* left(const char* str, int n = 1);//n为要截取的字符数,默认n=1为截取左边第一个字符
+char* left(const char* str, int n = 1);//n为要截取的字符数,默认n=1为截取左边第一个字符，默认参数从左边开始匹配，默认参数从右往左开始设置
 int main()
 {
 	char name[SIZE];
