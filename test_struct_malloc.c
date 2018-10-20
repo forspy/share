@@ -1,8 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include<string.h>//strcpyµÄÍ·ÎÄ¼ş
-#include<stdlib.h>//malloc free µÄÍ·ÎÄ¼ş
-struct student//¶¨ÒåÎªÈ«¾Ö±äÁ¿µÄ½á¹¹Ìå·½±ã¸øÆäËûº¯ÊıÊ¹ÓÃ£¬È«¾Ö±äÁ¿´æ·ÅÔÚ¾²Ì¬´æ´¢Çø
+#include<string.h>//strcpyçš„å¤´æ–‡ä»¶
+#include<stdlib.h>//malloc free çš„å¤´æ–‡ä»¶
+struct student//å®šä¹‰ä¸ºå…¨å±€å˜é‡çš„ç»“æ„ä½“æ–¹ä¾¿ç»™å…¶ä»–å‡½æ•°ä½¿ç”¨ï¼Œå…¨å±€å˜é‡å­˜æ”¾åœ¨é™æ€å­˜å‚¨åŒº
 {
 	char name[20];
 	int age;
@@ -12,12 +12,37 @@ void print_student2(struct student* b);
 int main()
 {
 	//int j=1;
-	//int j=2;//ÖØ¶¨Òå
+	//int j=2;//é‡å®šä¹‰
+	 int r,c;
+    printf("row column\n");
+    scanf("%d %d",&r,&c);
+ 
+    int ** a;
+    a=(int**)malloc(r*sizeof(int*));
+ 
+    for(int i=0;i<r;i++){
+        a[i]=(int*)malloc(c*sizeof(int));
+    }
+ 
+    printf("input\n");
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            printf("(%d,%d)",i,j);
+            scanf("%d",&a[i][j]);
+        }
+    }
+ 
+    printf("output\n");
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            printf("%d\t",a[i][j]);
+        }
+        printf("\n");
+    }
+	//äºŒç»´åŠ¨æ€æ•°ç»„int a[3][3]; int** p=a; p[0]è¡¨ç¤ºæŒ‡å‘ç¬¬ä¸€æ’ p[0][0]è¡¨ç¤ºæŒ‡å‘ç¬¬ä¸€æ’çš„ç¬¬ä¸€ä¸ª
 	
-	
-	
-	//¾Ù¸öÀı×Ó
-	char kk[20];//kkÊÇÒ»¸öµØÖ·³£Á¿£¬²»ÄÜÖ±½Ókk="hello"
+	//ä¸¾ä¸ªä¾‹å­
+	char kk[20];//kkæ˜¯ä¸€ä¸ªåœ°å€å¸¸é‡ï¼Œä¸èƒ½ç›´æ¥kk="hello"
 	char* p;
 	p = "hello";
 	printf("%s\n", p);
@@ -30,48 +55,48 @@ int main()
 	printf("%s\n", xiaoming.name);
 
 	struct student* ptr = (struct student*)malloc(sizeof(struct student));
-	memset(ptr, 0, sizeof(struct student));//½¨ÒéĞ´£¬ÕâÑù½«¶¯Ì¬±äÁ¿³õÊ¼»¯Îª0£¬Èç¹ûÊÇÊı×éµÄ»°Òª*Êı×éÔªËØµÄ¸öÊı
+	memset(ptr, 0, sizeof(struct student));//å»ºè®®å†™ï¼Œè¿™æ ·å°†åŠ¨æ€å˜é‡åˆå§‹åŒ–ä¸º0ï¼Œå¦‚æœæ˜¯æ•°ç»„çš„è¯è¦*æ•°ç»„å…ƒç´ çš„ä¸ªæ•°
 	strcpy(ptr->name, "xiaowang");
 	ptr->age = 20;
-	printf("%s\n%d\n", (ptr->name)+1, ptr->age);//ÕâÀïptr->nameÊÇÒ»¸öÖ¸ÏònameÊı×éµÄÖ¸Õë£¬ÒòÎªname±¾ÉíÊÇ¸öÊı×é£¬¶øptr->ageÊÇÒ»¸ö±äÁ¿
+	printf("%s\n%d\n", (ptr->name)+1, ptr->age);//è¿™é‡Œptr->nameæ˜¯ä¸€ä¸ªæŒ‡å‘nameæ•°ç»„çš„æŒ‡é’ˆï¼Œå› ä¸ºnameæœ¬èº«æ˜¯ä¸ªæ•°ç»„ï¼Œè€Œptr->ageæ˜¯ä¸€ä¸ªå˜é‡
 	free(ptr);
 
-	//ÉèÖÃÒ»¸ö¶¯Ì¬Êı×é
+	//è®¾ç½®ä¸€ä¸ªåŠ¨æ€æ•°ç»„
 	struct student* pp= (struct student*)malloc(10*sizeof(struct student));
 	int i;
 	for (i = 0; i < 10; i++)
 		(pp + i)->age = i;
-	//²âÊÔ²¿·Ö
-    printf("iµÄÖµ%d\n", i);//Èç¹ûÏë±£ÁôiµÄÖµ£¬ĞèÒªÕâÑù¶¨Òå£¨Ñ­»·ÍâÃæÏÈ¶¨Òåi£¬È»ºóÀïÃæ²»ÖØ¶¨ÒåÖ±½Ó¸³Öµ£©
-	//Èç¹û²»Ïë±£ÁôiµÄÖµ
+	//æµ‹è¯•éƒ¨åˆ†
+    printf("içš„å€¼%d\n", i);//å¦‚æœæƒ³ä¿ç•™içš„å€¼ï¼Œéœ€è¦è¿™æ ·å®šä¹‰ï¼ˆå¾ªç¯å¤–é¢å…ˆå®šä¹‰iï¼Œç„¶åé‡Œé¢ä¸é‡å®šä¹‰ç›´æ¥èµ‹å€¼ï¼‰
+	//å¦‚æœä¸æƒ³ä¿ç•™içš„å€¼
 	/*
-	1.ÀïÃæÖØ¶¨Òå
+	1.é‡Œé¢é‡å®šä¹‰
 	for (int i = 0; i < 10; i++)
 	(pp + i)->age = i;
-	2.ÍâÃæ¸³Öµi=0ÀïÃæÈÔÈ»ÖØ¶¨Òåint i
+	2.å¤–é¢èµ‹å€¼i=0é‡Œé¢ä»ç„¶é‡å®šä¹‰int i
 
-	×Ü½á£ºÖ»ÒªÀïÃæÖØ¶¨ÒåÁËint i£¬ÕâÀïµÄi¾ÍÊÇ¸öÁÙÊ±±äÁ¿£¬ÔÚforÑ­»·½áÊøºó»á±»ÊÍ·Å
+	æ€»ç»“ï¼šåªè¦é‡Œé¢é‡å®šä¹‰äº†int iï¼Œè¿™é‡Œçš„iå°±æ˜¯ä¸ªä¸´æ—¶å˜é‡ï¼Œåœ¨forå¾ªç¯ç»“æŸåä¼šè¢«é‡Šæ”¾
 	*/
 	//
 	while ( i < 3)
 		i++;
 	
-	//²âÊÔ²¿·Ö
-	//½áÂÛ£¬for/whileÑ­»·ÄÚµÄÖ»ÒªÖØĞÂ¶¨ÒåµÄ±äÁ¿±ÈÈçi£¬jµÈ»á±»ÊÍ·Åµô£¬¶øÊ¹ÓÃÍâ²¿µÄ±äÁ¿»á±»±£Áô
-	//ÈçÉÏÀı×Ó£¬ÔÚÑ­»·ÍâÉùÃ÷µÄi£¬ÔÚÑ­»·ÀïÃæ×öµÄ²Ù×÷£¬°üÀ¨³õÊ¼»¯¡¢¸³ÖµµÈ£¬¶¼»á¸Ä±äiµÄÖµ£»
-	//Ñ­»·ÌåÄÚ²¿¶¨ÒåµÄ±ÈÈçj£¬ÔÚÑ­»·½áÊøÊ±¾ÍÊÍ·ÅÁË£¬ËùÒÔÔÚºóÃæ»¹¿ÉÒÔ¶¨Òåint j = 2£¬¶ø²»»á±¨´í
+	//æµ‹è¯•éƒ¨åˆ†
+	//ç»“è®ºï¼Œfor/whileå¾ªç¯å†…çš„åªè¦é‡æ–°å®šä¹‰çš„å˜é‡æ¯”å¦‚iï¼Œjç­‰ä¼šè¢«é‡Šæ”¾æ‰ï¼Œè€Œä½¿ç”¨å¤–éƒ¨çš„å˜é‡ä¼šè¢«ä¿ç•™
+	//å¦‚ä¸Šä¾‹å­ï¼Œåœ¨å¾ªç¯å¤–å£°æ˜çš„iï¼Œåœ¨å¾ªç¯é‡Œé¢åšçš„æ“ä½œï¼ŒåŒ…æ‹¬åˆå§‹åŒ–ã€èµ‹å€¼ç­‰ï¼Œéƒ½ä¼šæ”¹å˜içš„å€¼ï¼›
+	//å¾ªç¯ä½“å†…éƒ¨å®šä¹‰çš„æ¯”å¦‚jï¼Œåœ¨å¾ªç¯ç»“æŸæ—¶å°±é‡Šæ”¾äº†ï¼Œæ‰€ä»¥åœ¨åé¢è¿˜å¯ä»¥å®šä¹‰int j = 2ï¼Œè€Œä¸ä¼šæŠ¥é”™
 	for (int i = 0; i < 10; i++)
 		printf("%d\n", (pp + i)->age);
 	free(pp);
 	print_student1(xiaoming);
-	print_student2(&xiaoming);//×¢ÒâÊÇµØÖ·´«Èë
+	print_student2(&xiaoming);//æ³¨æ„æ˜¯åœ°å€ä¼ å…¥
 }
-void print_student1(struct student a)//ÕâÑùÊÇ°ÑxiaomingµÄÕû¸ö½á¹¹ÌåÔÙ¿½±´Ò»±é
+void print_student1(struct student a)//è¿™æ ·æ˜¯æŠŠxiaomingçš„æ•´ä¸ªç»“æ„ä½“å†æ‹·è´ä¸€é
 {
 	printf("%s\n%d\n", a.name, a.age);
 }
 
-void print_student2(struct student* b)//ÕâÑùÊÇÓÃÒ»¸ö½á¹¹ÌåÖ¸ÕëÖ¸Ïò°ÑxiaomingµÄÕû¸ö½á¹¹Ìå£¬½ÚÊ¡ÁË´¢´æ¿Õ¼ä
+void print_student2(struct student* b)//è¿™æ ·æ˜¯ç”¨ä¸€ä¸ªç»“æ„ä½“æŒ‡é’ˆæŒ‡å‘æŠŠxiaomingçš„æ•´ä¸ªç»“æ„ä½“ï¼ŒèŠ‚çœäº†å‚¨å­˜ç©ºé—´
 {
 	printf("%s\n%d\n", b->name, b->age);
 }
