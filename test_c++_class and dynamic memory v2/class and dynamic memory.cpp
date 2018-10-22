@@ -3,83 +3,84 @@
 #include<cstring>
 #include"class and dynamic memory.h"
 
-int String_medium::num_strings = 0;//³õÊ¼»¯
-//¿½±´¹¹Ôì£¨²ÎÊıÊÇÀàµÄ¶ÔÏó£©
-String_medium::String_medium(const String_medium& other)//ÖØÒª£ºÈç¹ûÀàÖĞÓĞÊ¹ÓÃnewµÄ¶ÔÏó£¬ÔÚ¶ÔÕâĞ©¶ÔÏó½øĞĞ¸´ÖÆÊ±£¬ĞèÒª¶Ô¸ÃÀàÌí¼Ó¿½±´¹¹Ôìº¯ÊıÖØĞÂ´´½¨ÄÚ´æ£¬½øĞĞÉî¶È¸´ÖÆ
+int String_medium::num_strings = 0;//åˆå§‹åŒ–
+//æ‹·è´æ„é€ ï¼ˆå‚æ•°æ˜¯ç±»çš„å¯¹è±¡ï¼‰
+String_medium::String_medium(const String_medium& other)//é‡è¦ï¼šå¦‚æœç±»ä¸­æœ‰ä½¿ç”¨newçš„å¯¹è±¡ï¼Œåœ¨å¯¹è¿™äº›å¯¹è±¡è¿›è¡Œå¤åˆ¶æ—¶ï¼Œéœ€è¦å¯¹è¯¥ç±»æ·»åŠ æ‹·è´æ„é€ å‡½æ•°é‡æ–°åˆ›å»ºå†…å­˜ï¼Œè¿›è¡Œæ·±åº¦å¤åˆ¶
 {
 	/*
-		²»ºÏÊÊ£¬¶ÔÏóºÍ¶ÔÏó¿½±´£¬this = 	other£¬ÄÇÃ´this¿Ï¶¨ÊÇÒ»¸öÁÙÊ±µÄ¶ÔÏó£¬º¯Êı½áÊøÖ®Ç°»áÊÍ·ÅÄÚ´æ¡£
-		È»ºó»áÔì³ÉÄãother¶ÔÏóµÄÄÚ´æ±»ÊÍ·ÅµôÅ¶
+		ä¸åˆé€‚ï¼Œå¯¹è±¡å’Œå¯¹è±¡æ‹·è´ï¼Œthis = 	otherï¼Œé‚£ä¹ˆthisè‚¯å®šæ˜¯ä¸€ä¸ªä¸´æ—¶çš„å¯¹è±¡ï¼Œå‡½æ•°ç»“æŸä¹‹å‰ä¼šé‡Šæ”¾å†…å­˜ã€‚
+		ç„¶åä¼šé€ æˆä½ otherå¯¹è±¡çš„å†…å­˜è¢«é‡Šæ”¾æ‰å“¦
 	*/
 	
-	this->len = other.len;//ÊÇ²»ÊÇÕâÑùÒ»¸öÒ»¸ö¿½±´¹ıÀ´¾ÍĞĞÁË£¿ÊÇµÄ£¬this.strĞèÒª·ÖÅäÄÚ´æ,Éî¿½±´£¬ÄÇÖ»¿½±´strÖ¸ÕëÄØ£¬¹²ÏíÒ»¿éÄÚ´æ¿É²»¿ÉÒÔ£¿
-	this->str = new char[this->len + 1];//ÎªÁË·ÀÖ¹ÄÚ´æ±»ÊÍ·Åµô¶ÑÁÙÊ±¶ÔÏóĞÂ½¨ÁËÒ»¿éÄÚ´æ
+	this->len = other.len;//æ˜¯ä¸æ˜¯è¿™æ ·ä¸€ä¸ªä¸€ä¸ªæ‹·è´è¿‡æ¥å°±è¡Œäº†ï¼Ÿæ˜¯çš„ï¼Œthis.stréœ€è¦åˆ†é…å†…å­˜,æ·±æ‹·è´ï¼Œé‚£åªæ‹·è´stræŒ‡é’ˆå‘¢ï¼Œå…±äº«ä¸€å—å†…å­˜å¯ä¸å¯ä»¥ï¼Ÿ
+	this->str = new char[this->len + 1];//ä¸ºäº†é˜²æ­¢å†…å­˜è¢«é‡Šæ”¾æ‰å †ä¸´æ—¶å¯¹è±¡æ–°å»ºäº†ä¸€å—å†…å­˜
 	strcpy(str, other.str);
-	num_strings++;   //ÕâÊÇÊ²Ã´¶«Î÷,¾ÍÊÇ²âÊÔÓÃµÄ£¬ËµµÄÊÇ´´½¨ÁË¶àÉÙ¸ö¶ÔÏó
+	num_strings++;   //è¿™æ˜¯ä»€ä¹ˆä¸œè¥¿,å°±æ˜¯æµ‹è¯•ç”¨çš„ï¼Œè¯´çš„æ˜¯åˆ›å»ºäº†å¤šå°‘ä¸ªå¯¹è±¡
 	cout << num_strings << ":" << str << endl;
-	//ÕâÑù¾ÍÊÇÖØĞÂ´´½¨Ò»¸ö¶ÔÏóÁË£¬ÕâÑù¶ÔÂğ£¿
-	//this->str = new char;//ÕâÑùĞĞ²»ĞĞ£¿
+	//è¿™æ ·å°±æ˜¯é‡æ–°åˆ›å»ºä¸€ä¸ªå¯¹è±¡äº†ï¼Œè¿™æ ·å¯¹å—ï¼Ÿ
+	//this->str = new char;//è¿™æ ·è¡Œä¸è¡Œï¼Ÿ
 }
 
-//ÀûÓÃ¶¯Ì¬Êı×é¹¹Ôìº¯Êı
+//åˆ©ç”¨åŠ¨æ€æ•°ç»„æ„é€ å‡½æ•°
 String_medium::String_medium(const char* s)
 {
-	len = strlen(s);//¸ù¾İÊäÈëµÄ×Ö·û´óĞ¡¾ö¶¨³¤¶È
-	this->str = new char[len + 1];//½¨Á¢Ò»¸ö¶¯Ì¬Êı×é,×Ö·û´®µ¥¶À±£´æÔÚ¶ÑÄÚ´æÖĞ£¬¶ÔÏó½ö±£´æÁËÖ¸Ïò¸ÃÄÚ´æ¶ÑµÄÖ¸Õë
-	strcpy(str, s);//°Ñs¸´ÖÆµ½strÖ¸ÏòµÄÄÚ´æÖĞ
+	len = strlen(s);//æ ¹æ®è¾“å…¥çš„å­—ç¬¦å¤§å°å†³å®šé•¿åº¦
+	this->str = new char[len + 1];//å»ºç«‹ä¸€ä¸ªåŠ¨æ€æ•°ç»„,å­—ç¬¦ä¸²å•ç‹¬ä¿å­˜åœ¨å †å†…å­˜ä¸­ï¼Œå¯¹è±¡ä»…ä¿å­˜äº†æŒ‡å‘è¯¥å†…å­˜å †çš„æŒ‡é’ˆ
+	strcpy(str, s);//æŠŠså¤åˆ¶åˆ°stræŒ‡å‘çš„å†…å­˜ä¸­
 	num_strings++;
 	cout << num_strings << ":" << str << endl;
 }
 
-String_medium::String_medium()//Ä¬ÈÏ¹¹Ôìº¯Êı
+String_medium::String_medium()//é»˜è®¤æ„é€ å‡½æ•°
 {
 	len = 0;
-	str = new char[len + 1];//ÕâÑù¼´Ê¹³õÊ¼»¯Îª0Ò²¿ÉÒÔÊ¹ÓÃdelete[] ÊÍ·Å
+	str = new char[len + 1];//è¿™æ ·å³ä½¿åˆå§‹åŒ–ä¸º0ä¹Ÿå¯ä»¥ä½¿ç”¨delete[] é‡Šæ”¾
 	num_strings++;
-	//str = nullptr;//±íÊ¾strÊÇÒ»¸ö¿ÕÖ¸Õë£¬c++11ÒıÈë
-	str[0] = '\0';//Ò²¿ÉÒÔĞ´³Éstr=0;str=NULL
+	//str = nullptr;//è¡¨ç¤ºstræ˜¯ä¸€ä¸ªç©ºæŒ‡é’ˆï¼Œc++11å¼•å…¥
+	str[0] = '\0';//ä¹Ÿå¯ä»¥å†™æˆstr=0;str=NULL
 	
 }
 
-//Îö¹¹º¯Êı
-String_medium::~String_medium()//Ê¹ÓÃÎö¹¹º¯Êı¿ÉÒÔÈ·±£¶ÔÏó¹ıÆÚÊ±£¬¶Ô¸Ã¶ÔÏóÊ¹ÓÃµÄ¶ÑÄÚ´æ½øĞĞÊÍ·Å
+//ææ„å‡½æ•°
+String_medium::~String_medium()//ä½¿ç”¨ææ„å‡½æ•°å¯ä»¥ç¡®ä¿å¯¹è±¡è¿‡æœŸæ—¶ï¼Œå¯¹è¯¥å¯¹è±¡ä½¿ç”¨çš„å †å†…å­˜è¿›è¡Œé‡Šæ”¾
+	//å½“åœ¨mainä¸­test* p=new test[4];åœ¨å †ä¸Šå¼€è¾Ÿå†…å­˜åœ¨delete[] æ—¶è°ƒç”¨ææ„ï¼Œæˆ–è€…åœ¨æ ˆä¸Šå¼€è¾Ÿå†…å­˜æ—¶test Aï¼›åœ¨ä½œç”¨åŸŸç»“æŸæ—¶è‡ªåŠ¨è°ƒç”¨
 {
 	cout << str << "  deleted  ";
 	num_strings--;
 	cout << num_strings << "  left" << endl;
-	delete[] str;//ÊÍ·Åµô¸Ã¶ÔÏó´´½¨µÄ¶¯Ì¬ÄÚ´æ
+	delete[] str;//é‡Šæ”¾æ‰è¯¥å¯¹è±¡åˆ›å»ºçš„åŠ¨æ€å†…å­˜
 }
 
-ostream& operator<<(ostream& os, const String_medium& st)//²»ÓÃĞ´Àà×÷ÓÃÓò£¬±¾À´ÓÑÔªº¯ÊıÒ²²»ÔÚÕâ¸öÀàÀïÃæ
+ostream& operator<<(ostream& os, const String_medium& st)//ä¸ç”¨å†™ç±»ä½œç”¨åŸŸï¼Œæœ¬æ¥å‹å…ƒå‡½æ•°ä¹Ÿä¸åœ¨è¿™ä¸ªç±»é‡Œé¢
 {
 	os << st.str;
 
 	return os;
 }
 /*
-ÕâÑù×ö»á²úÉú¶şÒåĞÔ£º
+è¿™æ ·åšä¼šäº§ç”ŸäºŒä¹‰æ€§ï¼š
 func(){a=0};
 func(int n=0){a=n};
 */
-//s1=s2Âú×ã
-//s1=s1.operator=(s2) ·µ»ØµÄ¶ÔÏó¸øs1
-//Ò²Âú×ãÁ¬µÈs0=s1=s2
+//s1=s2æ»¡è¶³
+//s1=s1.operator=(s2) è¿”å›çš„å¯¹è±¡ç»™s1
+//ä¹Ÿæ»¡è¶³è¿ç­‰s0=s1=s2
 //s0.operator=(s1.operator=(s2))
-//¿¼ÂÇ¶ÔÏó=¶ÔÏó
+//è€ƒè™‘å¯¹è±¡=å¯¹è±¡
 String_medium& String_medium::operator=(const String_medium& st)
 {
-	if (this == &st)//¶Ôst¶ÔÏóÈ¡µØÖ·Èç¹ûµÈÓÚthis¾ÍËµÃ÷
-		return *this;//·µ»ØÕâ¸ö¶ÔÏó±¾Éí
-	delete[] this->str;//ÊÍ·Åµô×óÖµ¶ÔÏó¿ª±ÙµÄÀÏµÄ¶ÑÄÚ´æ
+	if (this == &st)//å¯¹stå¯¹è±¡å–åœ°å€å¦‚æœç­‰äºthiså°±è¯´æ˜
+		return *this;//è¿”å›è¿™ä¸ªå¯¹è±¡æœ¬èº«
+	delete[] this->str;//é‡Šæ”¾æ‰å·¦å€¼å¯¹è±¡å¼€è¾Ÿçš„è€çš„å †å†…å­˜
 	this->len = st.len;
-	this->str = new char[len + 1];//´´½¨ĞÂµÄ¶ÑÄÚ´æ
-	strcpy(this->str, st.str);//¸´ÖÆÖ¸Ïò¸Ã¶ÑÄÚ´æµÄÖ¸Õë
-	return *this;//·µ»ØÕâ¸ö¶ÔÏó
+	this->str = new char[len + 1];//åˆ›å»ºæ–°çš„å †å†…å­˜
+	strcpy(this->str, st.str);//å¤åˆ¶æŒ‡å‘è¯¥å †å†…å­˜çš„æŒ‡é’ˆ
+	return *this;//è¿”å›è¿™ä¸ªå¯¹è±¡
 }
-//¿¼ÂÇ¶ÔÏó=char
+//è€ƒè™‘å¯¹è±¡=char
 String_medium& String_medium::operator=(const char* s)
 {
-	delete[] this->str;//ÏÈÇåµôµ±Ç°¶ÔÏóµÄ¶ÑÄÚ´æÖµ
+	delete[] this->str;//å…ˆæ¸…æ‰å½“å‰å¯¹è±¡çš„å †å†…å­˜å€¼
 	this->len = strlen(s);
 	this->str = new char[len + 1];
 	strcpy(this->str, s);
@@ -95,7 +96,7 @@ else
 return false;
 }
 */
-//½øÒ»²½¼òĞ´Îª
+//è¿›ä¸€æ­¥ç®€å†™ä¸º
 bool operator<(const String_medium& st1, const String_medium& st2)
 {
 	return (strcmp(st1.str, st2.str) < 0);
@@ -108,27 +109,27 @@ bool operator==(const String_medium& st1, const String_medium& st2)
 {
 	return (strcmp(st1.str, st2.str) == 0);
 }
-//±ÈÈç"love"==answer½«±»×ª»¯Îªoperator==("love",answer);½øÒ»²½-->operator==(String_medium("love"),answer);?ÕâÀïÎªÊ²Ã´"love"»á×Ô¶¯×ª»¯ÎªString_mediumÀàĞÍ
-//Ò²¾ÍÊÇËµString_medium& st1ÄÜ½Ó×¡"love"£¬ÒÑ½â¾öÀûÓÃString_medium¹¹Ôìº¯Êı½Ó×¡"love"
-//Õë¶Ô¶ÔÏó
+//æ¯”å¦‚"love"==answerå°†è¢«è½¬åŒ–ä¸ºoperator==("love",answer);è¿›ä¸€æ­¥-->operator==(String_medium("love"),answer);?è¿™é‡Œä¸ºä»€ä¹ˆ"love"ä¼šè‡ªåŠ¨è½¬åŒ–ä¸ºString_mediumç±»å‹
+//ä¹Ÿå°±æ˜¯è¯´String_medium& st1èƒ½æ¥ä½"love"ï¼Œå·²è§£å†³åˆ©ç”¨String_mediumæ„é€ å‡½æ•°æ¥ä½"love"
+//é’ˆå¯¹å¯¹è±¡
 char& String_medium::operator[](int i)
 {
 	return this->str[i];
 }
-//Õë¶Ô×Ö·û´®"hello world"
+//é’ˆå¯¹å­—ç¬¦ä¸²"hello world"
 const char& String_medium::operator[](int i)const
 {
 	return this->str[i];
 }
-//ÊµÏÖÏòÀàÊäÈë
+//å®ç°å‘ç±»è¾“å…¥
 istream& operator >> (istream& is, String_medium& st)
 {
 	char temp[String_medium::CLIMIT];
-	is.get(temp, String_medium::CLIMIT);//ÕâÀïÆäÊµÒÑ¾­Íê³ÉÁË¶ÑtempµÄÊäÈë£¬»á±£´æÔÚ»º´æÀï£¬Èç¹ûÔÚÊı×é´óĞ¡ÄÚ»òÆäËûÕıÈ·Çé¿öÏÂ
-	//»á°Ñtemp¸³Öµ¸øst£¬ÕâÑù¾Í¸øst²åÈëÖµÁË
+	is.get(temp, String_medium::CLIMIT);//è¿™é‡Œå…¶å®å·²ç»å®Œæˆäº†å †tempçš„è¾“å…¥ï¼Œä¼šä¿å­˜åœ¨ç¼“å­˜é‡Œï¼Œå¦‚æœåœ¨æ•°ç»„å¤§å°å†…æˆ–å…¶ä»–æ­£ç¡®æƒ…å†µä¸‹
+	//ä¼šæŠŠtempèµ‹å€¼ç»™stï¼Œè¿™æ ·å°±ç»™stæ’å…¥å€¼äº†
 	if (is)
 		st = temp;
-	while (is&&is.get() != '\n')//ÕâÀïÓÃÓÚÇåµô¶àÓàµÄ»º´æÒÔ¼°'\n'
+	while (is&&is.get() != '\n')//è¿™é‡Œç”¨äºæ¸…æ‰å¤šä½™çš„ç¼“å­˜ä»¥åŠ'\n'
 		continue;
-	return is;//·µ»Øis¶ÔÏóÓÃÓÚÓĞÊ±ºòÅĞ¶ÏÊäÈëÇé¿ö
+	return is;//è¿”å›iså¯¹è±¡ç”¨äºæœ‰æ—¶å€™åˆ¤æ–­è¾“å…¥æƒ…å†µ
 }
