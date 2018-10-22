@@ -124,10 +124,11 @@ const char& String_medium::operator[](int i)const
 istream& operator >> (istream& is, String_medium& st)
 {
 	char temp[String_medium::CLIMIT];
-	is.get(temp, String_medium::CLIMIT);
+	is.get(temp, String_medium::CLIMIT);//这里其实已经完成了堆temp的输入，会保存在缓存里，如果在数组大小内或其他正确情况下
+	//会把temp赋值给st，这样就给st插入值了
 	if (is)
 		st = temp;
-	while (is&&is.get() != '\n')
+	while (is&&is.get() != '\n')//这里用于清掉多余的缓存以及'\n'
 		continue;
-	return is;
+	return is;//返回is对象用于有时候判断输入情况
 }

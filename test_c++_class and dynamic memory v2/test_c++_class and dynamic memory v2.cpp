@@ -9,6 +9,7 @@ int main()
 	String_medium headline2("better");
 	cout << "headline1  " << headline1 << endl;
 	cout << "headline2  " << headline2 << endl;
+	cout << (headline1 > headline2) << endl;//string比较大小
 	cout << "done" << endl;
 
 	/*
