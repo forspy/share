@@ -43,6 +43,8 @@ public://公有成员  对外接口 任意一个函数都能通过对象.方法�
 	const Stock& topval(const Stock& s) const;//返回一个Stock&类型的引用，第一个const是因为参数是const Stock，返回值要与输入参数类型一致，
 	//第二个括号内的const表示不能修改显式对象的值，第三个const表示不能修改调用该类方法的对象的值
 };
+//如何快速地添加一个类.h以及实现.cpp
+//右键类视图，添加
 /* 也可以使用inline定义内联函数
 inline void Stock::set_tot()
 {
