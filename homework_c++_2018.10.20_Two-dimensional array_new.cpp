@@ -36,4 +36,28 @@ int main()
 		delete[] p[i];
 	delete[] p;
 	//p = NULL;//养成好习惯
+
+	//第二种简易方法
+	//0.输入行数（缺点是只能输入行数,数组指针的列数是确定的）
+	cout << "输入row" << endl;
+	cin >> row;
+	//1.创建一个数组指针
+	int(*ptr)[5] = new int[row][5];
+	//插入
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			ptr[i][j] = 5 * i + j;
+		}
+	}
+	//读取
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			cout << ptr[i][j] << " ";
+		}
+		cout << endl;
+	}
 }
