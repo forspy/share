@@ -7,41 +7,41 @@ void init(struct queue* qu)
 	qu->front = NULL;
 	qu->rear = NULL;
 }
-//ÏÔÊ¾Êý¾Ý
+//æ˜¾ç¤ºæ•°æ®
 void show(struct queue* qu)
 {
 	if (isempty(qu))
 	{
-		printf("¶ÓÁÐÎª¿Õ\n");
+		printf("é˜Ÿåˆ—ä¸ºç©º\n");
 		return ;
 	}
 	struct node* p = qu->front;
-	//»¨Ê½show£¨¼æÈÝÑ­»·¶ÓÁÐÐ´·¨£©
+	//èŠ±å¼showï¼ˆå…¼å®¹å¾ªçŽ¯é˜Ÿåˆ—å†™æ³•ï¼‰
 	while (p != qu->rear)
 	{
 		printf("%d->", p->data);
 		p = p->next;
 	}
-	//ÐèÒªÔÚÑ­»·ÖÐ´òÓ¡×îºóÒ»¸öÔªËØ
+	//éœ€è¦åœ¨å¾ªçŽ¯ä¸­æ‰“å°æœ€åŽä¸€ä¸ªå…ƒç´ 
 	printf("%d->NULL\n", p->data);
 }
-//»ñµÃ¶ÓÊ×ÔªËØ
+//èŽ·å¾—é˜Ÿé¦–å…ƒç´ 
 int get_front(struct queue* qu)
 {
 	if (isempty(qu))
 	{
-		printf("¶ÓÁÐÎª¿Õ\n");
+		printf("é˜Ÿåˆ—ä¸ºç©º\n");
 		return 0;
 	}
 	return qu->front->data;
 }
 
-//µÃµ½¶ÓÁÐ´óÐ¡
+//å¾—åˆ°é˜Ÿåˆ—å¤§å°
 int get_size(struct queue* qu)
 {
 	if (isempty(qu))
 	{
-		printf("¶ÓÁÐÎª¿Õ\n");
+		printf("é˜Ÿåˆ—ä¸ºç©º\n");
 		return 0;
 	}
 	int size = 1;
@@ -53,40 +53,40 @@ int get_size(struct queue* qu)
 	}
 	return size;
 }
-//ÅÐ¶ÏÊÇ·ñÎª¿Õ
+//åˆ¤æ–­æ˜¯å¦ä¸ºç©º
 int isempty(struct queue* qu)
 {
-	return !qu->front&&!qu->rear;//Èç¹ûÎª¶ÓÁÐÎª¿Õ·µ»Ø1£¬ÓÐ·µ»Ø0
+	return !qu->front&&!qu->rear;//å¦‚æžœä¸ºé˜Ÿåˆ—ä¸ºç©ºè¿”å›ž1ï¼Œæœ‰è¿”å›ž0
 }
-//ÉêÇë½Úµã
+//ç”³è¯·èŠ‚ç‚¹
 struct node*  creat_node(int data)
 {
 	struct node* p_new = (struct node*)malloc(sizeof(struct node));
 	if (!p_new)
 	{
-		printf("ÉêÇë½ÚµãÊ§°Ü\n");
+		printf("ç”³è¯·èŠ‚ç‚¹å¤±è´¥\n");
 		return NULL;
 	}
 	p_new->data = data;
-	p_new->next = NULL;//Á´½ÓNULL
-	return p_new;//·µ»Ø½ÚµãµØÖ·
+	p_new->next = NULL;//é“¾æŽ¥NULL
+	return p_new;//è¿”å›žèŠ‚ç‚¹åœ°å€
 }
-//Èë¶ÓÁÐ
+//å…¥é˜Ÿåˆ—
 void push(struct queue* qu, int data)
 {
-	//Á´±íÎ²²å·¨
+	//é“¾è¡¨å°¾æ’æ³•
 	struct node* p_new = creat_node(data);
-	if (qu->rear)//ÖÁÉÙÓÐÒ»¸öÔªËØ
+	if (qu->rear)//è‡³å°‘æœ‰ä¸€ä¸ªå…ƒç´ 
 	{
 		qu->rear->next = p_new;
 	}
-	else//Ã»ÓÐÔªËØ
+	else//æ²¡æœ‰å…ƒç´ 
 	{
-		qu->front = p_new;//¸ø¶ÓÊ×²åÈë
+		qu->front = p_new;//ç»™é˜Ÿé¦–æ’å…¥
 	}
-	qu->rear = p_new;
+	qu->rear = p_new;//å› ä¸ºä¸æ˜¯é‚£ç§ä»Žå¤´éåŽ†çš„æ–¹å¼ï¼Œæ‰€ä»¥éœ€è¦ç§»åŠ¨å°¾æŒ‡é’ˆæŒ‡å‘é“¾è¡¨çš„æœ€åŽä¸€ä¸ªå¯¹è±¡
 }
-//É¾³ý½Úµã
+//åˆ é™¤èŠ‚ç‚¹
 struct node* del_node(struct node* node)
 {
 	struct node* temp = node->next;
@@ -94,17 +94,17 @@ struct node* del_node(struct node* node)
 	free(node);
 	return temp;
 }
-//³ö¶ÓÁÐ
+//å‡ºé˜Ÿåˆ—
 int pop(struct queue* qu)
 {
-	if (isempty(qu))//ÅÐ¶ÏÊÇ·ñÎª¿Õ
+	if (isempty(qu))//åˆ¤æ–­æ˜¯å¦ä¸ºç©º
 	{
 		return -1;
 	}
-	//µ¯³öÁ´±í
+	//å¼¹å‡ºé“¾è¡¨
 	int data = qu->front->data;
 	qu->front = del_node(qu->front);
-	if (!qu->front)//µ±½öÓÐµÄÒ»¸ö½ÚµãÒ²É¾³ýÁËÒÔºó
+	if (!qu->front)//å½“ä»…æœ‰çš„ä¸€ä¸ªèŠ‚ç‚¹ä¹Ÿåˆ é™¤äº†ä»¥åŽ
 	{
 		qu->rear = NULL;//
 	}
