@@ -5,24 +5,26 @@ struct node
 	struct node* next;
 };
 
-//ÎªÁË´«²Î·½±ã£¬·â×°¸ü°²È«
+//ä¸ºäº†ä¼ å‚æ–¹ä¾¿ï¼Œå°è£…æ›´å®‰å…¨
+//è¿™æ ·è®¿é—®å’Œä¿®æ”¹frontå’Œrearæ›´æ–¹ä¾¿ï¼Œé€šè¿‡ï¼ˆå½¢å‚ï¼‰queue* qu=&qu;å¯ä»¥qu->frontï¼Œqu->rearæ–¹ä¾¿çš„ä¿®æ”¹frontå’Œrearçš„æŒ‡å‘ï¼Œå¦‚æœ
+//å•ç‹¬ä¼ å…¥å¤´å°¾æŒ‡é’ˆéœ€è¦(&front,&rear),ä»¥åŠç”¨struct node**front,å’Œstruct node** rearæ¥æ¥
 struct queue
 {
-	struct node* front;//¶ÓÁĞµÄÍ·
-	struct node* rear;//¶ÓÁĞµÄÎ²
+	struct node* front;//é˜Ÿåˆ—çš„å¤´
+	struct node* rear;//é˜Ÿåˆ—çš„å°¾
 };
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 void init(struct queue* qu);
 
-//Èë¶ÓÁĞ
+//å…¥é˜Ÿåˆ—
 void push(struct queue* qu, int data);
-//³ö¶ÓÁĞ
+//å‡ºé˜Ÿåˆ—
 int pop(struct queue* qu);
-//ÏÔÊ¾ËùÓĞÊı¾İ
+//æ˜¾ç¤ºæ‰€æœ‰æ•°æ®
 void show(struct queue* qu);
-//»ñÈ¡¶ÓÊ×ÔªËØ
+//è·å–é˜Ÿé¦–å…ƒç´ 
 int get_front(struct queue* qu);
-//µÃµ½¶ÓÁĞ´óĞ¡
+//å¾—åˆ°é˜Ÿåˆ—å¤§å°
 int get_size(struct queue* qu);
-//ÅĞ¶ÏÊÇ·ñÎª¿Õ
+//åˆ¤æ–­æ˜¯å¦ä¸ºç©º
 int isempty(struct queue* qu);
