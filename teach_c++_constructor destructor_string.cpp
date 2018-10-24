@@ -1,24 +1,25 @@
 /*
-QQ1-²Ù×÷ÏµÍ³--µ×²ãÓ²¼þ£¨tcp/ip£©--µ×²ãÓ²¼þ--²Ù×÷ÏµÍ³--QQ2
-·Ö²¼Ê½Ó¦ÓÃ--ACE¿â
-Êý×ÖÍ¼Ïñ´¦Àí--openCV
+QQ1-æ“ä½œç³»ç»Ÿ--åº•å±‚ç¡¬ä»¶ï¼ˆtcp/ipï¼‰--åº•å±‚ç¡¬ä»¶--æ“ä½œç³»ç»Ÿ--QQ2
+åˆ†å¸ƒå¼åº”ç”¨--ACEåº“
+æ•°å­—å›¾åƒå¤„ç†--openCV
 
-¼ÆËã»úÐÐÒµTÐÍ·¢Õ¹£¬ÏÈ×ÝÉîÔÙºáÏòÀ©Õ¹T
-endlÇå»º´æ
+è®¡ç®—æœºè¡Œä¸šTåž‹å‘å±•ï¼Œå…ˆçºµæ·±å†æ¨ªå‘æ‰©å±•T
+endlæ¸…ç¼“å­˜
 const char* p="hello";
-Ãû³Æ¿Õ¼ä±ðÃûnamespace abc=a:b:c
-ÁªºÏÌåÄÚµÄ±äÁ¿¹²ÓÃÒ»¿éÄÚ´æ
-c++ÀàÐÍ¼ì²é¸üÑÏ¸ñ
+åç§°ç©ºé—´åˆ«ånamespace abc=a:b:c
+è”åˆä½“å†…çš„å˜é‡å…±ç”¨ä¸€å—å†…å­˜
+c++ç±»åž‹æ£€æŸ¥æ›´ä¸¥æ ¼
+*/
+//tmainæ˜¯#define
+/*
+é¢å‘å¯¹è±¡ä¸‰å¤§ç‰¹æ€§ï¼šå°è£…ã€ç»§æ‰¿ã€å¤šæ€
 */
 /*
-ÃæÏò¶ÔÏóÈý´óÌØÐÔ£º·â×°¡¢¼Ì³Ð¡¢¶àÌ¬
-*/
-/*
-ÀàÓÐÄÚ´æ¶ÔÆë 
-string 28×Ö½Ú
-Àà´óÐ¡¿´±äÁ¿ º¯Êý²»Õ¼ÄÚ´æ
-ÀàÊ²Ã´Ò²²»Ð´Õ¼1×Ö½Ú
-Èô¶¨ÒåÁË¹¹Ôìº¯Êý£¬Ôò±àÒëÆ÷²»»áÌá¹©Ä¬ÈÏ¹¹Ôìº¯Êý
+ç±»æœ‰å†…å­˜å¯¹é½ 
+string 28å­—èŠ‚
+ç±»å¤§å°çœ‹å˜é‡ å‡½æ•°ä¸å å†…å­˜
+ç±»ä»€ä¹ˆä¹Ÿä¸å†™å 1å­—èŠ‚
+è‹¥å®šä¹‰äº†æž„é€ å‡½æ•°ï¼Œåˆ™ç¼–è¯‘å™¨ä¸ä¼šæä¾›é»˜è®¤æž„é€ å‡½æ•°
 */
 #include<iostream>
 #include<string>
@@ -33,95 +34,95 @@ public:
 	void show();
 };
 
-//³õÊ¼»¯±í
+//åˆå§‹åŒ–è¡¨
 test::test()
 {
 
 }
-test::test(int a):num(a)
+test::test(int a):num(a)//åˆå§‹åŒ–åˆ—è¡¨å…ˆäºŽæž„é€ å‡½æ•°ä»£ç æ‰§è¡Œ
 {
-	cout << "³õÊ¼»¯±í·½Ê½¹¹Ôì"<<num << endl;
+	cout << "åˆå§‹åŒ–è¡¨æ–¹å¼æž„é€ "<<num << endl;
 }
 void test::show()
 {
 
 }
 
-//¹¹ÔìºÍÎö¹¹µÄË³Ðò
+//æž„é€ å’Œæžæž„çš„é¡ºåº
 class A
 {
 public:
-	A() { cout << "A¹¹Ôì" << endl; }
-	~A() { cout << "AÎö¹¹" << endl; }
+	A() { cout << "Aæž„é€ " << endl; }
+	~A() { cout << "Aæžæž„" << endl; }
 	/*
-	Ö´ÐÐÎö¹¹º¯Êý´úÂë
-	Îö¹¹³ÉÔ±±äÁ¿
-	Îö¹¹»ùÀà²¿·Ö
-	ÊÍ·ÅÕû¸ö¶ÔÏóÕ¼ÓÃÄÚ´æ
+	æ‰§è¡Œæžæž„å‡½æ•°ä»£ç 
+	æžæž„æˆå‘˜å˜é‡
+	æžæž„åŸºç±»éƒ¨åˆ†
+	é‡Šæ”¾æ•´ä¸ªå¯¹è±¡å ç”¨å†…å­˜
 	*/
 };
 
 class B
 {
 public:
-	B() { cout << "B¹¹Ôì" << endl; }
-	~B() { cout << "BÎö¹¹" << endl; }
+	B() { cout << "Bæž„é€ " << endl; }
+	~B() { cout << "Bæžæž„" << endl; }
 	A aaa;
 };
 class C
 {
 public:
-	C() { cout << "C¹¹Ôì" << endl; }//´Ó½á¹ûÀ´¿´£¬¹¹Ôì³ÉÔ±bbbÊÇÒªÏÈÓÚ¹¹Ôìº¯ÊýÖ´ÐÐµÄ
-	~C() { cout << "CÎö¹¹" << endl; }//´Ó½á¹ûÀ´¿´£¬ÏÈÎö¹¹Îö¹¹º¯ÊýºóÎö¹¹³ÉÔ±
+	C() { cout << "Cæž„é€ " << endl; }//ä»Žç»“æžœæ¥çœ‹ï¼Œæž„é€ æˆå‘˜bbbæ˜¯è¦å…ˆäºŽæž„é€ å‡½æ•°æ‰§è¡Œçš„
+	~C() { cout << "Cæžæž„" << endl; }//ä»Žç»“æžœæ¥çœ‹ï¼Œå…ˆæžæž„æžæž„å‡½æ•°åŽæžæž„æˆå‘˜
 	B bbb;
 };
 int main()
 {
-	test k{ 1 };//²»ÍÆ¼öÊ¹ÓÃ
-	test* pa = new test[7];//¶ÑÇønew¶ÔÏó
+	test k{ 1 };//ä¸æŽ¨èä½¿ç”¨
+	test* pa = new test[7];//å †åŒºnewå¯¹è±¡
 	cout << *((int*)pa - 1) << endl;
 	delete[] pa;
-	test a[4];//´´½¨Ò»¸ö4¸ö¶ÔÏóµÄÊý×é
-	//¹¹Ôìº¯ÊýµÄ¶ÔÏó´´½¨¹ý³Ì£º
+	test a[4];//åˆ›å»ºä¸€ä¸ª4ä¸ªå¯¹è±¡çš„æ•°ç»„
+	//æž„é€ å‡½æ•°çš„å¯¹è±¡åˆ›å»ºè¿‡ç¨‹ï¼š
 	/*
-	1.ÎªÕû¸ö¶ÔÏó·ÖÅäÄÚ´æ
-	2.¹¹Ôì»ùÀà²¿·Ö£¨Èç¹ûÓÐµã»°£©
-	3.¹¹Ôì³ÉÔ±±äÁ¿
-	4.Ö´ÐÐ¹¹Ôìº¯Êý´úÂë
+	1.ä¸ºæ•´ä¸ªå¯¹è±¡åˆ†é…å†…å­˜
+	2.æž„é€ åŸºç±»éƒ¨åˆ†ï¼ˆå¦‚æžœæœ‰ç‚¹è¯ï¼‰
+	3.æž„é€ æˆå‘˜å˜é‡
+	4.æ‰§è¡Œæž„é€ å‡½æ•°ä»£ç 
 	*/
-	test* p = a;//´´½¨Ò»¸öÖ¸Ïò¶ÔÏóÊý×éµÄÖ¸Õë
+	test* p = a;//åˆ›å»ºä¸€ä¸ªæŒ‡å‘å¯¹è±¡æ•°ç»„çš„æŒ‡é’ˆ
 	a[1].show();
 	(p + 1)->show();
 	1[a].show();//x[y]=*(x+y)=*(y+x)=y[x];
 	
-	//stringÀà×Ü½á
+	//stringç±»æ€»ç»“
 	char* str = "name";
 	char str1[] = "name";
-	string s1 = "name";//=ÖØÔØ¸³Öµ
-	string s2("name");//ÒþÊ½¹¹Ôì¸³Öµ
+	string s1 = "name";//=é‡è½½èµ‹å€¼
+	string s2("name");//éšå¼æž„é€ èµ‹å€¼
 	string* ptr = new string("name");
 	cout << str << str1 << s1 << s2 << *ptr << endl;
 	delete ptr;
-	//stringÀàµÄ·½·¨
+	//stringç±»çš„æ–¹æ³•
 	string mm1 = "hello";
 	string mm2 = "world";
-	//¸´ÖÆ
+	//å¤åˆ¶
 	string mm3;
 	mm3 = mm1;
 	cout << mm3 << endl;
-	//[]ÖØÔØ ÏÂ±ê·ÃÎÊ
+	//[]é‡è½½ ä¸‹æ ‡è®¿é—®
 	cout << mm1[0] << endl;
-	//Æ´½Ó
+	//æ‹¼æŽ¥
 	cout << mm1 + mm2 << endl;
-	//½»»»
+	//äº¤æ¢
 	mm1.swap(mm2);
 	cout << mm1 << endl;
-	//±È½Ï
+	//æ¯”è¾ƒ
 	bool TF = mm1 > mm2;
 	cout << TF << endl;
-	//³¤¶È
+	//é•¿åº¦
 	cout << mm1.length() << endl;
-	//×Ó´®
+	//å­ä¸²
 	string temp = mm1.substr(0, 3);
 	cout << temp << endl;
 	
@@ -129,10 +130,10 @@ int main()
 	delete pc;
 	cout << "--------" << endl;
 	{
-		C cc;//²é¿´¹¹ÔìË³ÐòºÍÎö¹¹Ë³Ðò
+		C cc;//æŸ¥çœ‹æž„é€ é¡ºåºå’Œæžæž„é¡ºåº
 	}
 	cout << "--------" << endl;
 	A* paa = new A[3];
-	cout << *((int*)paa - 1) << endl;//Õâ¸öÒ²¾ÍÊÇËµÔÚ¶ÑÄÚ´æÖ®Ç°»¹ÓÐ4¸ö×Ö½ÚµÄintÐÍÄÚ´æ¿Õ¼ä´æ·ÅÁË±íÊ¾¿ª±ÙÁË¶àÉÙ¸ö¶ÑÄÚ´æ
+	cout << *((int*)paa - 1) << endl;//è¿™ä¸ªä¹Ÿå°±æ˜¯è¯´åœ¨å †å†…å­˜ä¹‹å‰è¿˜æœ‰4ä¸ªå­—èŠ‚çš„intåž‹å†…å­˜ç©ºé—´å­˜æ”¾äº†è¡¨ç¤ºå¼€è¾Ÿäº†å¤šå°‘ä¸ªå †å†…å­˜
 	delete[] paa;
 }
