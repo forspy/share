@@ -1,5 +1,7 @@
 #include<iostream>
-#include<new>//å®šä½newè¿ç®—ç¬¦å¤´æ–‡ä»¶ï¼Œè®©newæŒ‡å®šè¦ä½¿ç”¨çš„ä½ç½®
+#include<new>//¶¨Î»newÔËËã·ûÍ·ÎÄ¼ş£¬ÈÃnewÖ¸¶¨ÒªÊ¹ÓÃµÄÎ»ÖÃ
+#include<string>
+using namespace std;
 struct test
 {
 	char name[20];
@@ -7,10 +9,27 @@ struct test
 };
 char buffer1[50];
 char buffer2[100];
+//²âÊÔÀà
+class Test
+{
+private:
+	string words;
+public:
+	Test(const string& s="testing")
+	{
+		words = s;
+		cout << words << " constructed" << endl;
+	}
+	~Test()
+	{
+		cout << words << " destroyed" << endl;
+	}
+	void show() { cout << words << endl; }
+};
 int main()
 {
-	//newåˆå§‹åŒ–
-	int* pi = new int(6);//ç»™*piè®¾å€¼6
+	//new³õÊ¼»¯
+	int* pi = new int(6);//¸ø*piÉèÖµ6
 	/*int* p = new int[6,1];
 	std::cout << p[5] << std::endl;*/
 	struct where
@@ -20,13 +39,36 @@ int main()
 	};
 	where* one = new where{1.0, 2.0};
 	int* ar = new int[4]{ 1,2,3,4 };
-	cout<<ar[6]<<endl;//å¯ä»¥è®¿é—®ç¬¬7ä¸ªå…ƒç´ å¦‚æœè¯¥åœ°å€è¢«å ç”¨åˆ™ä¿é”™ï¼Œæ²¡æœ‰è¢«å ç”¨åˆ™å‡ºç°é‡æŒ‡é’ˆå€¼
-	
+	delete one;
 	delete[] ar;
-	//--------å®šä½è¿ç®—ç¬¦
-	test* p1 = new (buffer1) test;//åœ¨å…¨å±€æ•°ç»„ä¸­buffer1ä¸­åˆ†é…å†…å­˜ç»™ç»“æ„test
-	int* p2 = new(buffer2) int[20];//åœ¨å…¨å±€æ•°ç»„ä¸­buffer2ä¸­åˆ†é…å†…å­˜ç»™20ä¸ªintç±»å‹
-	std::cout << (void*)buffer2 << std::endl;//å› ä¸ºp2çš„ç±»å‹ä¸buffer2çš„ç±»å‹ä¸åŒï¼Œå¦‚æœä¸è½¬æ¢å°†è¾“å‡ºå­—ç¬¦ä¸²ï¼Œæ‰€ä»¥éœ€è¦å¯¹buffer2åš(void*)ç±»å‹çš„è½¬æ¢
-	//è¿™æ ·å¾—åˆ°buffer2çš„åœ°å€ï¼Œè€Œbuffer2é‡Œé¢å­˜çš„æ˜¯intç±»å‹ï¼Œæ‰€ä»¥coutä¼šè¾“å‡ºintç±»å‹çš„å€¼
-	//ä¸èƒ½ç”¨deleteæˆ–delete[]é‡Šæ”¾ï¼Œå› ä¸ºå®šä½newå¼€è¾Ÿåœ¨é™æ€åŒº
+	//--------¶¨Î»ÔËËã·û
+	test* p1 = new (buffer1) test;//ÔÚÈ«¾ÖÊı×éÖĞbuffer1ÖĞ·ÖÅäÄÚ´æ¸ø½á¹¹test
+	int* p2 = new(buffer2) int[20];//ÔÚÈ«¾ÖÊı×éÖĞbuffer2ÖĞ·ÖÅäÄÚ´æ¸ø20¸öintÀàĞÍ
+	std::cout << (void*)buffer2 << std::endl;//ÒòÎªp2µÄÀàĞÍÓëbuffer2µÄÀàĞÍ²»Í¬£¬Èç¹û²»×ª»»½«Êä³ö×Ö·û´®£¬ËùÒÔĞèÒª¶Ôbuffer2×ö(void*)ÀàĞÍµÄ×ª»»
+	//ÕâÑùµÃµ½buffer2µÄµØÖ·£¬¶øbuffer2ÀïÃæ´æµÄÊÇintÀàĞÍ£¬ËùÒÔcout»áÊä³öintÀàĞÍµÄÖµ
+	//²»ÄÜÓÃdelete»òdelete[]ÊÍ·Å£¬ÒòÎª¶¨Î»new¿ª±ÙÔÚ¾²Ì¬Çø
+
+	//---------Àà¶¨Î»new²âÊÔ
+	cout << "--------" << endl;
+	char* buffer = new char[512];
+	Test *pc1, *pc2;
+	pc1 = new (buffer)Test;
+	pc2 = new Test("hello");
+	cout << "buffer address:" << (void*)buffer << endl;
+	cout << "pc1 address:" << pc1;
+	pc1->show();
+	cout << "pc2 address:" << pc2;
+	pc2->show();
+	//ĞŞ¸Änew¶¨Î»Î»ÖÃ
+	Test* pc3 = new (buffer + sizeof(Test)) Test("hello world!!");
+	cout << "pc3 address:" << pc3;
+	pc3->show();
+	delete pc2;
+	//ÒòÎªÊÇ¶¨Î»newµÄËùÒÔÏµÍ³²»»á×Ô¶¯Îö¹¹£¬ĞèÒªÏÔÊ½ÊÖ¶¯Îö¹¹
+	//1.ÊÖ¶¯Îö¹¹ĞèÒª×¢ÒâÎö¹¹Ë³Ğò£¬Íí´´½¨µÄ¶ÔÏó¿ÉÄÜÒÀÀµÔç´´½¨µÄ¶ÔÏó£¬ËùÒÔÊÇºó½øÏÈ³öµÄÎö¹¹·½Ê½ºÍÕ»Ò»Ñù
+	//2.µ±ËùÓĞ¶ÔÏó¶¼±»Îö¹¹ÒÔºó£¬²ÅÄÜÊÍ·ÅÓÃÓÚ´¢´æÕâĞ©¶ÔÏóµÄ»º´æÇø
+	pc3->~Test();//µ÷ÓÃº¯Êı¶¼Òª¼ÓÀ¨ºÅ
+	pc1->~Test();
+	//¶¨Î»newÒòÎªÊÇ¶¨Î»ÔÚbufferÉÏ£¬ËùÒÔ²»ĞèÒªÍ¨¹ıpc1ºÍpc3ÊÍ·Å
+	delete[] buffer;//Ö±½ÓÊÍ·Åbuffer¼´¿É
 }
