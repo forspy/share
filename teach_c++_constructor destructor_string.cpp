@@ -80,6 +80,7 @@ int main()
 {
 	test k{ 1 };//不推荐使用
 	test* pa = new test[7];//堆区new对象
+	//new失败了会返回异常exception
 	cout << *((int*)pa - 1) << endl;
 	delete[] pa;
 	test a[4];//创建一个4个对象的数组
@@ -92,6 +93,7 @@ int main()
 	*/
 	test* p = a;//创建一个指向对象数组的指针
 	a[1].show();
+	//test::show(test * const this);创建这个对象后就有this指针指向这个对象//test::show(&a[1]);//相当于传入当前对象的地址，const以*为界
 	(p + 1)->show();
 	1[a].show();//x[y]=*(x+y)=*(y+x)=y[x];
 	
