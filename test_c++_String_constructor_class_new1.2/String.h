@@ -9,6 +9,7 @@ private:
 	static int num;//静态成员
 	int len;
 	string* str;//因为需要在堆上开内存，所以需要一个string*的指针
+	//如果类中的指针成员是new初始化的，则需要1.析构函数delete 2.拷贝构造函数 3.=重载开辟内存
 public:
 	String();//默认构造函数
 	String(const string& st);//默认带参构造函数
