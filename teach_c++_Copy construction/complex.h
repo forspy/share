@@ -6,10 +6,15 @@ class Complex
 private:
 	double m_real;
 	double m_vir;
+	//c++è‡ªåŠ¨æä¾›ä¸‹é¢æˆå‘˜å‡½æ•°ï¼š
+	/*
+	if no ...
+	æä¾›é»˜è®¤æ„é€ å‡½æ•°ã€æ‹·è´æ„é€ ã€ææ„å‡½æ•°ã€èµ‹å€¼è¿ç®—ç¬¦ã€åœ°å€è¿ç®—ç¬¦
+	*/
 public:
 	Complex();
-	Complex(double real);//µ¥²ÎÀàĞÍ×ª»»¹¹Ôìº¯Êı ÓÃexplicit¿ÉÒÔ·ÀÖ¹ÒşÊ½Ê¹ÓÃ ±ÈÈçcomplex a=1.2;²»ĞĞ 
-	Complex(const Complex& that);//µ¥²ÎÍ¬ÀàĞÍ¹¹Ôì
+	Complex(double real);//å•å‚ç±»å‹è½¬æ¢æ„é€ å‡½æ•° ç”¨explicitå¯ä»¥é˜²æ­¢éšå¼ä½¿ç”¨ æ¯”å¦‚complex a=1.2;ä¸è¡Œ 
+	Complex(const Complex& that);//å•å‚åŒç±»å‹æ„é€ 
 	~Complex();
 	void print()const;
 };
@@ -21,7 +26,7 @@ private:
 public:
 	ninjia()
 	{
-		cout << "Ä¬ÈÏ¹¹Ôì" << endl;
+		cout << "é»˜è®¤æ„é€ " << endl;
 	}
 	explicit ninjia(int age) :m_age(NULL)
 	{
@@ -29,7 +34,7 @@ public:
 		{
 			m_age = new int(age);
 		}
-		cout << "µ¥²Î¹¹Ôì" << endl;
+		cout << "å•å‚æ„é€ " << endl;
 	}
 
 	ninjia(const ninjia& that)
@@ -45,10 +50,10 @@ public:
 			delete m_age;
 			//m_age = NULL;
 		}
-		cout << "Îö¹¹" << endl;
+		cout << "ææ„" << endl;
 	}
 	void show()
 	{
-		cout << *m_age << "Ëê" << endl;
+		cout << *m_age << "å²" << endl;
 	}
 };
