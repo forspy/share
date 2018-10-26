@@ -5,17 +5,18 @@ using namespace std;
 class String
 {
 private:
-	static int num;//¾²Ì¬³ÉÔ±
+	//c++11æ”¯æŒç±»å†…æˆå‘˜åˆå§‹åŒ–ï¼Œå¦‚:int len=0;è¿™ä¸æˆå‘˜åˆå§‹åŒ–åˆ—è¡¨ç­‰ä»·
+	static int num;//é™æ€æˆå‘˜
 	int len;
-	string* str;//ÒòÎªĞèÒªÔÚ¶ÑÉÏ¿ªÄÚ´æ£¬ËùÒÔĞèÒªÒ»¸östring*µÄÖ¸Õë
+	string* str;//å› ä¸ºéœ€è¦åœ¨å †ä¸Šå¼€å†…å­˜ï¼Œæ‰€ä»¥éœ€è¦ä¸€ä¸ªstring*çš„æŒ‡é’ˆ
 public:
-	String();//Ä¬ÈÏ¹¹Ôìº¯Êı
-	String(const string& st);//Ä¬ÈÏ´ø²Î¹¹Ôìº¯Êı
-	String(const String& origin);//¿½±´¹¹Ôìº¯Êı
-	String& operator=(const String& st);//ÖØÔØ=Éî¶È¸´ÖÆ
+	String();//é»˜è®¤æ„é€ å‡½æ•°
+	String(const string& st);//é»˜è®¤å¸¦å‚æ„é€ å‡½æ•°
+	String(const String& origin);//æ‹·è´æ„é€ å‡½æ•°
+	String& operator=(const String& st);//é‡è½½=æ·±åº¦å¤åˆ¶
 	~String();
 	String operator+(const String& b)const;
-	friend ostream& operator<<(ostream& os, const String& st);//ÒòÎªostreamÊÇÍâ²¿Àà£¬ÎªÁËÈÃosÄÜ¹»·ÃÎÊµ½StringÀàÄÚ²¿µÄ³ÉÔ±£¬ĞèÒªÉùÃ÷ÓÑÔªº¯Êı
+	friend ostream& operator<<(ostream& os, const String& st);//å› ä¸ºostreamæ˜¯å¤–éƒ¨ç±»ï¼Œä¸ºäº†è®©osèƒ½å¤Ÿè®¿é—®åˆ°Stringç±»å†…éƒ¨çš„æˆå‘˜ï¼Œéœ€è¦å£°æ˜å‹å…ƒå‡½æ•°
 
 };
 void call(const String temp);
