@@ -1,7 +1,7 @@
 #pragma once
 #include<iostream>
 using namespace std;
-//ÖØÔØµÄÓÅÏÈ¼¶²»»á¸Ä±ä
+//é‡è½½çš„ä¼˜å…ˆçº§ä¸ä¼šæ”¹å˜
 class Complex
 {
 private:
@@ -11,14 +11,14 @@ public:
 	Complex(double real=0,double vir=0):m_real(real),m_vir(vir){}
 	void print() { cout << m_real << "+" << m_vir << "i" << endl; }
 	Complex operator-(const Complex& c2);
-	Complex& operator++();//Ç°++
-	Complex operator++(int);//ºó++
-	//ÓÑÔª
+	Complex& operator++();//å‰++
+	Complex operator++(int);//å++
+	//å‹å…ƒ
 	friend Complex operator+(const Complex& c1,const Complex& c2);
 	friend ostream& operator<<(ostream& os,const Complex&c);
 };
-//ËùÓĞ´ø.ÔËËã·ûºÍsizeof²»ÄÜÖØÔØ£¨5¸ö£©. £¬.* £¬:: £¬? : £¬sizeof£¬typeid
-//= () [] -> ->* ±ØĞëÊÇ³ÉÔ±º¯Êı
-//<< >>ÓÑÔªÖØÔØ
-//µ¥Ä¿½¨Òé³ÉÔ±
-//Ë«Ä¿½¨ÒéÓÑÔª
+//æ‰€æœ‰å¸¦.è¿ç®—ç¬¦å’Œsizeofä¸èƒ½é‡è½½ï¼ˆ5ä¸ªï¼‰ ç±»æˆå‘˜è®¿é—®(.)ï¼ŒæŒ‡å‘æˆå‘˜çš„æŒ‡é’ˆ (.*)ï¼ŒèŒƒå›´è§£æ (::)ï¼Œæ¡ä»¶è¡¨è¾¾å¼ (? :)ï¼Œå’Œsizeofã€‚
+//= () [] -> ->* å¿…é¡»æ˜¯æˆå‘˜å‡½æ•°
+//<< >>å‹å…ƒé‡è½½
+//å•ç›®å»ºè®®æˆå‘˜
+//åŒç›®å»ºè®®å‹å…ƒ
