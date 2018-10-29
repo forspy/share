@@ -67,7 +67,9 @@ func(int n=0){a=n};
 //也满足连等s0=s1=s2
 //s0.operator=(s1.operator=(s2))
 //考虑对象=对象
+//也有默认的=重载，默认=重载是浅拷贝，会将当前对象的成员指针指向等号后面的对象，导致原堆丢失指向，内存泄漏，另外释放2个对象的时候会导致2次释放
 String_medium& String_medium::operator=(const String_medium& st)
+//为什么重载=要释放后开辟内存？因为对象已经开辟出来了而这个对象的大小可能和=对象不一样，所以要先delete，再开内存
 {
 	if (this == &st)//对st对象取地址如果等于this就说明
 		return *this;//返回这个对象本身
