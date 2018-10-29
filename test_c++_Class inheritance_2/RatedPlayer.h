@@ -32,6 +32,16 @@ TableTennisPlayer xiaogong;
 xiaohong=xiaoming;
 这种情况调用的是隐式赋值重载=运算符
 TableTennisPlayer& operator=（const TableTennisPlayer& a）const
+
+继承的形象说明：
+假设有一个Fruit类可以保存水果的重量和热量，因为香蕉banana是一种特殊的水果，所以可以从Fruit类中派生出banana这个类，派生的类将继承原始类的所有数据成员类型
+新的banana类还可以添加专门用于香蕉的成员 所以这种是 派生is a kind of继承 的关系，简称is-a
+如果是午餐中有水果的模型，则不能使用Fruit派生出Lunch，因为Lunch类中还可能有其他类，而这些类跟Fruit类没有关系，也不能访问Fruit类的成员，因此，将Fruit
+对象作为Lunch的成员？（可以用其他类当作成员，比如string类当成员，但是不能使用同一类对象当成员（自身类的指针和引用可以），会出现无限初始化的情况）。
+公有继承不建立is-like-a的关系，人们通常说律师就像鲨鱼，但律师并不是鲨鱼。例如：鲨鱼可以在水下生活，继承可以在基类的基础上添加属性但不能删除基类的属性
+所以不应该从Shark类派生出Laywer类
+公有继承不建立use-a的关系，例如计算机computer可以控制Printer打印，但是computer派生Printer是不合适的，因为Printer没有Computer的功能，可以在Computer
+类下建立Printer友元函数，或者友元对象来实现两者之间的通信
 */
 class RatedPlayer :
 	public TableTennisPlayer//公有派生
