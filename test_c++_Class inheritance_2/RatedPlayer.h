@@ -11,6 +11,17 @@ c.继承机制只需提供新的特性，甚至不需要访问源代码就可以
 //派生类储存了基类的数据成员
 //派生类对象可以使用基类的公有方法
 //基类引用可以接住派生类的对象 如：ostream& a=cout,也可以是ostream& a=fout;（基类->派生类（如：ostream->ofstream））
+/*
+基类指针可以指向派生类对象
+基类引用可以引用派生类对象
+如：
+TableTennisPlayer* p=&rplayer;
+TableTennisPlayer& rt=rplayer;
+p->name();
+rt.name();
+但是基类指针和引用只能调用基类的方法，不能调用派生类的方法
+c++要求类型一致对类继承来说是例外，但也只是单向的，不可以将基类对象和地址赋给派生类指针或引用
+*/
 class RatedPlayer :
 	public TableTennisPlayer//公有派生
 	/*
