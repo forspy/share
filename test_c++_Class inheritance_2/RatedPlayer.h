@@ -21,6 +21,17 @@ p->name();
 rt.name();
 但是基类指针和引用只能调用基类的方法，不能调用派生类的方法
 c++要求类型一致对类继承来说是例外，但也只是单向的，不可以将基类对象和地址赋给派生类指针或引用
+在公有继承中，可以将基类对象初始化为派生类对象
+RatedPlayer xiaoming(1840,"wang","xiaoming",true);
+TableTennisPlayer xiaogong(xiaoming);
+TableTennisPlayer存在隐式拷贝构造函数TableTennisPlayer（const TableTennisPlayer& a）,因为基类引用a能接住派生类对象所以这个
+默认拷贝构造函数把派生类对象xiaoming的所有成员复制了一遍给基类对象，完成了用派生类对象初始化基类对象
+也可以通过
+RatedPlayer xiaoming(1840,"wang","xiaoming",true);
+TableTennisPlayer xiaogong;
+xiaohong=xiaoming;
+这种情况调用的是隐式赋值重载=运算符
+TableTennisPlayer& operator=（const TableTennisPlayer& a）const
 */
 class RatedPlayer :
 	public TableTennisPlayer//公有派生
