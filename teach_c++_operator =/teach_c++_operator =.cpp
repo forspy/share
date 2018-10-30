@@ -15,9 +15,10 @@ int  main()
 	cout << a1 << endl;
 	my_Array a2(*p);//拷贝构造,如果my_Array a2=a3;这不算=重载，而算隐式调用拷贝构造my_Array a2=my_Array(a3);
 	cout << a2 << endl;
-	delete p;
+	
 	my_Array a3 ;
 	//a3 = a2;//1.默认=重载会导致a3原来成员指针指向的内存泄露，2.析构2个对象的时候会导致2次释放3.总结就是浅拷贝
-	a3 = a1;
+	a3 = *p;
 	cout << a3 << endl;
+	delete p;
 }
