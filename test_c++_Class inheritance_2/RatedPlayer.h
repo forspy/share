@@ -15,6 +15,8 @@ c.继承机制只需提供新的特性，甚至不需要访问源代码就可以
 基类指针可以指向派生类对象
 基类引用可以引用派生类对象
 基类对象可以接住派生类对象（因为基类拷贝构造函数是一个引用），当然接住后的基类对象只能使用基类方法（无论有没有声明virtual）
+以上为向上强制转换upcasting，表示范围的缩小，这是可行的；继承也体现了集合的概念，即BrassPlus对象都是Brass对象（子集）；如果从BrassPlus派生出
+BrassPlusPlus类，则Brass指针或引用也可以指向该对象。
 如：
 TableTennisPlayer* p=&rplayer;
 TableTennisPlayer& rt=rplayer;
