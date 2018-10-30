@@ -16,6 +16,7 @@ public:
 	//友元
 	friend Complex operator+(const Complex& c1,const Complex& c2);
 	friend ostream& operator<<(ostream& os,const Complex&c);//引用可以当左值，一般函数的返回值不能当左值，所以要返回引用
+	friend istream& operator >> (istream&is, Complex& c);
 };
 //所有带.运算符和sizeof不能重载（5个） 类成员访问(.)，指向成员的指针 (.*)，范围解析 (::)，条件表达式 (? :)，和sizeof。
 //= () [] -> ->* 必须是成员函数

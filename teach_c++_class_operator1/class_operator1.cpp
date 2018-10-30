@@ -35,3 +35,10 @@ ostream& operator<<(ostream& os, const Complex&c)
 	os << c.m_real << "+" << c.m_vir << "i";
 	return os;
 }
+
+istream & operator >> (istream & is, Complex & c)
+{
+	is >> c.m_real >> c.m_vir;
+	return is;
+	// TODO: 在此处插入 return 语句
+}
