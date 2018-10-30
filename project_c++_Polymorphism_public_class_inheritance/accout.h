@@ -4,58 +4,60 @@ using namespace std;
 class Brass
 {
 private:
-	string fullname;//¿Í»§ĞÕÃû
-	long accout_num;//ÕËºÅ
-	double balance;//½áÓà
+	string fullname;//å®¢æˆ·å§“å
+	long accout_num;//è´¦å·
+	double balance;//ç»“ä½™
 public:
 	Brass(const string& s = "NUllBODY", long an = -1, double bal = 0.0);
 	
-	//¶ÔÓÚÏàÍ¬µÄ·½·¨£¬ÔÚ»ùÀàÖĞÉùÃ÷¼´¿É
-	void Deposit(double amt);//´æ¿î
+	//å¯¹äºç›¸åŒçš„æ–¹æ³•ï¼Œåœ¨åŸºç±»ä¸­å£°æ˜å³å¯
+	void Deposit(double amt);//å­˜æ¬¾
 	double Balance() const;
-	//Ğé·½·¨
+	//è™šæ–¹æ³•
 	/*
-	ÎªÊ²Ã´Òª¼Óvirtual¹Ø¼ü×Ö£¿
-	1.Èç¹ûÃ»ÓĞ¼Óvirtual£¬²¢ÇÒ·½·¨ÊÇÍ¨¹ıÒıÓÃ»òÖ¸Õë¶ø²»ÊÇ¶ÔÏóµ÷ÓÃµÄ£¬³ÌĞò½«¸ù¾İÒıÓÃÀàĞÍ»òÖ¸ÕëÀàĞÍÑ¡Ôñ·½·¨
+	ä¸ºä»€ä¹ˆè¦åŠ virtualå…³é”®å­—ï¼Ÿ
+	1.å¦‚æœæ²¡æœ‰åŠ virtualï¼Œå¹¶ä¸”æ–¹æ³•æ˜¯é€šè¿‡å¼•ç”¨æˆ–æŒ‡é’ˆè€Œä¸æ˜¯å¯¹è±¡è°ƒç”¨çš„ï¼Œç¨‹åºå°†æ ¹æ®å¼•ç”¨ç±»å‹æˆ–æŒ‡é’ˆç±»å‹é€‰æ‹©æ–¹æ³•
 	Brass A;
 	BrassPlus B;
 	Brass& c1=A;
 	Brass* c2=B;
 	c1.view_acct();//use Brass::view_acct()
 	c2->view_acct();//use Brass::view_acct()
-	2.Èç¹û¼ÓÁËvirtual£¬³ÌĞò½«Í¨¹ıÒıÓÃ»òÖ¸ÕëÖ¸ÏòµÄÀàĞÍ¶ÔÏóÑ¡Ôñ·½·¨
+	2.å¦‚æœåŠ äº†virtualï¼Œç¨‹åºå°†é€šè¿‡å¼•ç”¨æˆ–æŒ‡é’ˆæŒ‡å‘çš„ç±»å‹å¯¹è±¡é€‰æ‹©æ–¹æ³•
 	Brass A;
 	BrassPlus B;
 	Brass& c1=A;
 	Brass* c2=B;
 	c1.view_acct();//use Brass::view_acct()
 	c2->view_acct();//use BrassPlus::view_acct()
-	2.·½·¨ÔÚ»ùÀàÖĞ±»ÉùÃ÷ÎªĞé·½·¨ºó£¬ÔÚÅÉÉúÀàÖĞÒ²½«×Ô¶¯Éú³ÉĞé·½·¨¡££¨ÍÆ¼öÔÚÅÉÉúÀàÖĞÊ¹ÓÃvirtualÏÔÊ¾µØÖ¸³öĞé·½·¨£©
+	2.æ–¹æ³•åœ¨åŸºç±»ä¸­è¢«å£°æ˜ä¸ºè™šæ–¹æ³•åï¼Œåœ¨æ´¾ç”Ÿç±»ä¸­ä¹Ÿå°†è‡ªåŠ¨ç”Ÿæˆè™šæ–¹æ³•ã€‚ï¼ˆæ¨èåœ¨æ´¾ç”Ÿç±»ä¸­ä½¿ç”¨virtualæ˜¾ç¤ºåœ°æŒ‡å‡ºè™šæ–¹æ³•ï¼‰
+	//ç¼–è¯‘å™¨åœ¨ç¨‹åºè¿è¡Œçš„æ—¶å€™é€‰æ‹©æ­£ç¡®çš„è™šæ–¹æ³•çš„ä»£ç è¢«ç§°ä¸ºåŠ¨æ€è¿ç¼–ï¼Œéšå¼å‘ä¸Šå¼ºåˆ¶è½¬åŒ–ä¹Ÿä¼šå‘ç”ŸåŠ¨æ€è¿ç¼–ã€‚
+	//ç¼–è¯‘å™¨å¯¹éè™šæ–¹æ³•ä½¿ç”¨é™æ€è¿ç¼–ï¼Œå› ä¸ºç¼–è¯‘çš„æ—¶å€™å·²ç»çŸ¥é“å·¦å€¼çš„ç±»å‹äº†
 	*/
-	virtual void WithDraw(double amt);//È¡³ö(Ğé·½·¨)
+	virtual void WithDraw(double amt);//å–å‡º(è™šæ–¹æ³•)
 	/*
-	Ï£ÍûÍ¬Ò»¸ö·½·¨ÔÚÅÉÉúÀàºÍ»ùÀàÖĞµÄĞĞÎªÊÇ²»Í¬µÄ£¬·½·¨µÄĞĞÎªÈ¡¾öÓÚµ÷ÓÃ¸Ã·½·¨µÄ¶ÔÏó--¶àÌ¬
-	¶àÌ¬¹«ÓĞ¼Ì³Ğ£º
-	1.ÔÚÅÉÉúÀàÖĞÖØĞÂ¶¨Òå»ùÀàµÄ·½·¨
-	2.Ê¹ÓÃĞé·½·¨
+	å¸Œæœ›åŒä¸€ä¸ªæ–¹æ³•åœ¨æ´¾ç”Ÿç±»å’ŒåŸºç±»ä¸­çš„è¡Œä¸ºæ˜¯ä¸åŒçš„ï¼Œæ–¹æ³•çš„è¡Œä¸ºå–å†³äºè°ƒç”¨è¯¥æ–¹æ³•çš„å¯¹è±¡--å¤šæ€
+	å¤šæ€å…¬æœ‰ç»§æ‰¿ï¼š
+	1.åœ¨æ´¾ç”Ÿç±»ä¸­é‡æ–°å®šä¹‰åŸºç±»çš„æ–¹æ³•
+	2.ä½¿ç”¨è™šæ–¹æ³•
 	*/
 	virtual void ViewAcct()const;
-	virtual ~Brass();//ĞéÎö¹¹º¯Êı£¬ÔİÊ±»¹Ã»ÓÃµ½£¬´ıÊ¹ÓÃ£¬ÎªÁËÈ·±£ÊÍ·ÅÅÉÉú¶ÔÏóÊ±£¬°´ÕıÈ·µÄË³Ğòµ÷ÓÃÎö¹¹º¯Êı
+	virtual ~Brass();//è™šææ„å‡½æ•°ï¼Œæš‚æ—¶è¿˜æ²¡ç”¨åˆ°ï¼Œå¾…ä½¿ç”¨ï¼Œä¸ºäº†ç¡®ä¿é‡Šæ”¾æ´¾ç”Ÿå¯¹è±¡æ—¶ï¼ŒæŒ‰æ­£ç¡®çš„é¡ºåºè°ƒç”¨ææ„å‡½æ•°
 };
 
 class BrassPlus :public Brass
 {
 private:
-	double max_loan;//Í¸Ö§ÉÏÏŞ
-	double rate;//´û¿îÀûÂÊ
-	double owes_bank;//Ç·¿î×Ü¶î
+	double max_loan;//é€æ”¯ä¸Šé™
+	double rate;//è´·æ¬¾åˆ©ç‡
+	double owes_bank;//æ¬ æ¬¾æ€»é¢
 public:
 	BrassPlus(const string& s = "NULLBODY", long an = -1, double bal = 0.0, double ml = 500, double r = 0.11125);
 	BrassPlus(const Brass& ba, double ml = 500, double r = 0.11125);
-	//Ğé·½·¨
-	virtual void WithDraw(double amt);//È¡¿î(Ğé·½·¨)
-	virtual void ViewAcct()const;//ÏÔÊ¾ÕË»§(Ğé·½·¨)
-	//ÅÉÉúĞÂ·½·¨
+	//è™šæ–¹æ³•
+	virtual void WithDraw(double amt);//å–æ¬¾(è™šæ–¹æ³•)
+	virtual void ViewAcct()const;//æ˜¾ç¤ºè´¦æˆ·(è™šæ–¹æ³•)
+	//æ´¾ç”Ÿæ–°æ–¹æ³•
 	void Reset_max(double m) { max_loan = m; }
 	void Reset_rate(double r) { rate = r; }
 	void Reset_owes() { owes_bank = 0; }
