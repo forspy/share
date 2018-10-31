@@ -7,6 +7,7 @@ private:
 	int len;
 	static int num_strings;//对象的个数 这里通过static将num_strings声明为静态储存类，
 	//静态储存类特点：无论创建了多少个对象，程序都只创建一个静态变量副本 类的所有对象共享一个静态成员
+	//相当于局部的全局变量，生命周期随进程开始而开始，随进程结束而结束，多了类的作用域和访问限制
 	static const int CLIMIT = 80;
 public:
 	/*

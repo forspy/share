@@ -15,4 +15,7 @@ int main()
 	cout << "------" << endl;
 	cout << cp1++ << endl;
 	cout << cp1 << endl;
+	Complex cp6;
+	cin >> cp6;
+	cout << cp6 << endl;
 }
