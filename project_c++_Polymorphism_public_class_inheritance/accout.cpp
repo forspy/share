@@ -47,14 +47,16 @@ Brass::~Brass()
 {
 }
 
-BrassPlus::BrassPlus(const string & s, long an, double bal, double ml, double r):Brass(s,an,bal)//利用基类的构造函数进行代码复用。注：只有构造函数才能使用初始化列表
+BrassPlus::BrassPlus(const string & s, long an, double bal, double ml, double r):Brass(s,an,bal)
+//1.利用基类的构造函数进行代码复用。2.也需要为基类成员赋值，因为派生类继承了基类的所有成员，只是private不能访问，但还是要给他们赋值
+//注：只有构造函数才能使用初始化列表
 {
 	max_loan = ml;
 	owes_bank = 0.0;
 	rate = r;
 }
 
-BrassPlus::BrassPlus(const Brass & ba, double ml, double r):Brass(ba)//隐式调用Brss拷贝构造函数进行代码复用
+BrassPlus::BrassPlus(const Brass & ba, double ml, double r):Brass(ba)//1.隐式调用Brss拷贝构造函数进行代码复用2.也需要为基类成员赋值
 {
 	max_loan = ml;
 	owes_bank = 0.0;
