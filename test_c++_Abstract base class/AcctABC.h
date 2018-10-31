@@ -69,7 +69,6 @@ public:
 	BaseEllipse(double x0 = 0, double y0 = 0) :x(x0), y(y0) {}
 	virtual~BaseEllipse() {}
 	void Move(int nx, int ny) { x = nx; y = ny; }
-	//add..
 	virtual double Area()const = 0;//纯虚函数，虽然不能在抽象基类中实现Area的方法，因为它没有包含必要的数据成员（纯虚函数可以有定义）
 								   //所以C++通过使用纯虚函数提供未实现的函数
 								   //所以在一个抽象基类中必须要有一个纯虚函数，有一个纯虚函数是抽象基类的标志
