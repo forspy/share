@@ -12,7 +12,7 @@ inline Brass::Brass(const string & s, long an, double bal)
 void Brass::Deposit(double amt)
 {
 	if (amt < 0)
-		cout << "¸ºÊý´æÈëÎÞÐ§" << endl;
+		cout << "è´Ÿæ•°å­˜å…¥æ— æ•ˆ" << endl;
 	else
 		balance += amt;
 }
@@ -27,34 +27,34 @@ double Brass::Balance() const
 void Brass::WithDraw(double amt)
 {
 	if (amt < 0)
-		cout << "È¡³ö±ØÐëÊÇÕýÊý£¬²Ù×÷ÎÞÐ§" << endl;
+		cout << "å–å‡ºå¿…é¡»æ˜¯æ­£æ•°ï¼Œæ“ä½œæ— æ•ˆ" << endl;
 	else if (amt <= balance)
 		balance -= amt;
 	else
-		cout << "È¡¿îÊý´óÓÚ´æ¿îÊý£¬²Ù×÷ÎÞÐ§" << endl;
+		cout << "å–æ¬¾æ•°å¤§äºŽå­˜æ¬¾æ•°ï¼Œæ“ä½œæ— æ•ˆ" << endl;
 }
 
 
 
 void Brass::ViewAcct() const
 {
-	cout << "¿Í»§ÐÕÃû£º" << fullname << endl;
-	cout << "ÕËºÅ£º" << accout_num << endl;
-	cout << "½áÓà£º" << balance << endl;
+	cout << "å®¢æˆ·å§“åï¼š" << fullname << endl;
+	cout << "è´¦å·ï¼š" << accout_num << endl;
+	cout << "ç»“ä½™ï¼š" << balance << endl;
 }
 
 Brass::~Brass()
 {
 }
 
-BrassPlus::BrassPlus(const string & s, long an, double bal, double ml, double r):Brass(s,an,bal)//ÀûÓÃ³õÊ¼»¯ÁÐ±íÓÅÏÈ¹¹Ôì»ùÀà¡£×¢£ºÖ»ÓÐ¹¹Ôìº¯Êý²ÅÄÜÊ¹ÓÃ³õÊ¼»¯ÁÐ±í
+BrassPlus::BrassPlus(const string & s, long an, double bal, double ml, double r):Brass(s,an,bal)//åˆ©ç”¨åŸºç±»çš„æž„é€ å‡½æ•°è¿›è¡Œä»£ç å¤ç”¨ã€‚æ³¨ï¼šåªæœ‰æž„é€ å‡½æ•°æ‰èƒ½ä½¿ç”¨åˆå§‹åŒ–åˆ—è¡¨
 {
 	max_loan = ml;
 	owes_bank = 0.0;
 	rate = r;
 }
 
-BrassPlus::BrassPlus(const Brass & ba, double ml, double r):Brass(ba)//ÒþÊ½µ÷ÓÃBrss¿½±´¹¹Ôìº¯ÊýÓÃÒ»¸ö¶ÔÏó³õÊ¼»¯»ùÀà
+BrassPlus::BrassPlus(const Brass & ba, double ml, double r):Brass(ba)//éšå¼è°ƒç”¨Brssæ‹·è´æž„é€ å‡½æ•°è¿›è¡Œä»£ç å¤ç”¨
 {
 	max_loan = ml;
 	owes_bank = 0.0;
@@ -65,26 +65,26 @@ void BrassPlus::WithDraw(double amt)
 {
 	double bal = Balance();
 	if (amt <= bal)
-		Brass::WithDraw(amt);//ÔÚÊµÏÖµÄÄ£¿é£¬µ÷ÓÃ»ùÀà¹«ÓÐ·½·¨±ØÐëÓÐ»ùÀà::£¬·ñÔò±àÒëÆ÷»áµ±×÷ÅÉÉúÀà·½·¨´¦Àí
+		Brass::WithDraw(amt);//åœ¨å®žçŽ°çš„æ¨¡å—ï¼Œè°ƒç”¨åŸºç±»å…¬æœ‰æ–¹æ³•å¿…é¡»æœ‰åŸºç±»::ï¼Œå¦åˆ™ç¼–è¯‘å™¨ä¼šå½“ä½œæ´¾ç”Ÿç±»æ–¹æ³•å¤„ç†
 	else if (amt <= bal + max_loan - owes_bank)
 	{
-		double advance = amt - bal;//Í¸Ö§²¿·Ö
+		double advance = amt - bal;//é€æ”¯éƒ¨åˆ†
 		owes_bank += advance*(1 + rate);
-		cout << "Í¸Ö§ÁË£º" << advance << endl;
-		cout << "ÀûÏ¢Îª£º" << advance*rate << endl;
-		//ÏÂÃæÁ½¾ä¾ÍÊÇÎªÁËÊ¹balance=0;
+		cout << "é€æ”¯äº†ï¼š" << advance << endl;
+		cout << "åˆ©æ¯ä¸ºï¼š" << advance*rate << endl;
+		//ä¸‹é¢ä¸¤å¥å°±æ˜¯ä¸ºäº†ä½¿balance=0;
 		Deposit(advance);
 		Brass::WithDraw(amt);
-		//ÒòÎª¹«ÓÐ¼Ì³ÐÖ»ÄÜ¼Ì³Ðµ½»ùÀàµÄpublic³ÉÔ±£¬·ÃÎÊ²»ÁËprivate³ÉÔ±balance,ÅÉÉúÀà²»¿ÉÒÔ·ÃÎÊ»ùÀàprivate³ÉÔ±£¬ÖØÒª£¬Ö»ÄÜÍ¨¹ý»ùÀà·½·¨
+		//å› ä¸ºå…¬æœ‰ç»§æ‰¿åªèƒ½ç»§æ‰¿åˆ°åŸºç±»çš„publicæˆå‘˜ï¼Œè®¿é—®ä¸äº†privateæˆå‘˜balance,æ´¾ç”Ÿç±»ä¸å¯ä»¥è®¿é—®åŸºç±»privateæˆå‘˜ï¼Œé‡è¦ï¼Œåªèƒ½é€šè¿‡åŸºç±»æ–¹æ³•
 	}
 	else
-		cout << "ÎÞÇ®¿ÉÍ¸Ö§ÁË" << endl;
+		cout << "æ— é’±å¯é€æ”¯äº†" << endl;
 }
 
 void BrassPlus::ViewAcct() const
 {
 	Brass::ViewAcct();
-	cout << "×î´ó´û¿î£º" << max_loan << endl;
-	cout << "Ç·ÒøÐÐ:"<<owes_bank << endl;
-	cout << "´û¿îÀûÂÊ£º" << 100 * rate << "%" << endl;
+	cout << "æœ€å¤§è´·æ¬¾ï¼š" << max_loan << endl;
+	cout << "æ¬ é“¶è¡Œ:"<<owes_bank << endl;
+	cout << "è´·æ¬¾åˆ©çŽ‡ï¼š" << 100 * rate << "%" << endl;
 }
