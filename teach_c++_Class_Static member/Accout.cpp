@@ -1,10 +1,15 @@
 #include "Accout.h"
+//静态变量
+double Accout::m_rate = 0.02;//只能在实现文件了定义,定义为私有在main里面不能访问，在全局能访问
 
-
-double Accout::m_rate = 0.02;//只能在实现文件了定义
 //饿汉模式----
 Single Single::s_instance(100);//注意在cpp实现
 //------------
+
+//懒汉模式--
+Singleton* Singleton::s_instance_p=NULL;//注意在cpp实现一开始先赋值NULL
+//--------
+
 void Accout::draw(double money)
 {
 	if (money > m_balance)
@@ -29,7 +34,7 @@ void Accout::show()
 
 void Accout::adjust(double value)
 {
-	//m_balance += 1;非静态函数不能访问非静态成员，只能访问静态成员	
+	//m_balance += 1;静态函数不能访问非静态成员，只能访问静态成员	
 	m_rate += value;
 }
 

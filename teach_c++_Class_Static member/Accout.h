@@ -27,19 +27,53 @@ class Single
 {
 private:
 	int m_data;
-	//不能有一个对象创建
+	//私有了以后，构造函数就不能被外部调用，从而不能有任何一个对象创建
+	//把所有的构造函数写为私有，防止默认函数
 	Single(){}
 	Single(int data) :m_data(data) {}
 	Single(const Single& ){}
 	//-----
+	//1.人为创建一个例外的静态对象，2.程序进程一开始就存在了3.但是是私有的拿不到
 	static Single s_instance;//静态成员对象
 public:
+	//写一个公有的方法去获取私有成员对象
 	static Single& get_instance()
 	{
 		return s_instance;
 	}
 };
 
+//懒汉模式（随用随创建）
 
-//懒汉模式
-
+class Singleton
+{
+private:
+	int m_data;
+	//私有了以后，构造函数就不能被外部调用，从而不能有任何一个对象创建
+	//把所有的构造函数写为私有，防止默认函数
+	Singleton() {}
+	Singleton(int data) :m_data(data) {}
+	Singleton(const Singleton&) {}
+	//-----
+	//1.人为创建一个例外的静态对象，2.程序进程一开始就存在了3.但是是私有的拿不到
+	static Singleton* s_instance_p;//静态成员对象指针
+public:
+	//写一个公有的方法去获取私有成员对象
+	static Singleton& get_instance_p()
+	{
+		if (!s_instance_p)//如果为空则开辟内存
+		{
+			s_instance_p = new Singleton(100);
+		}
+		return *s_instance_p;
+	}
+	//因为对象没法生成，所以也没法销毁就不会自动调用析构函数，可以手动调用析构函数
+	static void clear()//释放静态成员必须用静态函数
+	{
+		if (s_instance_p)
+		{
+			delete s_instance_p;
+			s_instance_p = NULL;
+		}
+	}
+};
