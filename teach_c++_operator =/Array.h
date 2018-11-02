@@ -1,24 +1,24 @@
 #pragma once
 #include<iostream>
 using namespace std;
-class my_Array//¶¨ÒåÒ»¸öÊı×éÀà
+class my_Array//å®šä¹‰ä¸€ä¸ªæ•°ç»„ç±»
 {
 private:
-	int m_size;//¶øÔÚ64Î»¼Ü¹¹ÖĞ±»¶¨ÒåÎª£ºtypedef unsigned long size_t;ÕâÀï±íÊ¾ÎªÒ»¹²¼¸¸ö
+	int m_size;//è€Œåœ¨64ä½æ¶æ„ä¸­è¢«å®šä¹‰ä¸ºï¼štypedef unsigned long size_t;è¿™é‡Œè¡¨ç¤ºä¸ºä¸€å…±å‡ ä¸ª
 	int *m_array;
 public:
 	my_Array(int size=1);
-	my_Array(const my_Array& arr);//¿½±´¹¹Ôì
+	my_Array(const my_Array& arr);//æ‹·è´æ„é€ 
 	~my_Array();
 	int size() {return m_size;}
-	int& at(int index);//×óÖµ·µ»Ø&
-	//ËùÓĞ´ø.ÔËËã·ûºÍsizeof²»ÄÜÖØÔØ£¨5¸ö£© Àà³ÉÔ±·ÃÎÊ(.)£¬Ö¸Ïò³ÉÔ±µÄÖ¸Õë (.*)£¬·¶Î§½âÎö (::)£¬Ìõ¼ş±í´ïÊ½ (? :)£¬ºÍsizeof¡£
-	//= () [] -> ->* ±ØĞëÊÇ³ÉÔ±º¯Êı
-	//<< >>ÓÑÔªÖØÔØ
-	//µ¥Ä¿½¨Òé³ÉÔ±
-	//Ë«Ä¿½¨ÒéÓÑÔª
-	//operator=ÖØÔØ
-	my_Array& operator=(const my_Array& arr);//×óÖµÒıÓÃ
-	friend ostream& operator<<(ostream& os, const my_Array& arr);
+	int& at(int index);//å·¦å€¼è¿”å›&
+	//æ‰€æœ‰å¸¦.è¿ç®—ç¬¦å’Œsizeofä¸èƒ½é‡è½½ï¼ˆ5ä¸ªï¼‰ ç±»æˆå‘˜è®¿é—®(.)ï¼ŒæŒ‡å‘æˆå‘˜çš„æŒ‡é’ˆ (.*)ï¼ŒèŒƒå›´è§£æ (::)ï¼Œæ¡ä»¶è¡¨è¾¾å¼ (? :)ï¼Œå’Œsizeofã€‚
+	//= () [] -> ->* å¿…é¡»æ˜¯æˆå‘˜å‡½æ•°
+	//<< >>å‹å…ƒé‡è½½
+	//å•ç›®å»ºè®®æˆå‘˜
+	//åŒç›®å»ºè®®å‹å…ƒ
+	//operator=é‡è½½
+	my_Array& operator=(const my_Array& arr);//å·¦å€¼å¼•ç”¨
+	friend ostream& operator<<(ostream& os, const my_Array& arr);//æ³¨æ„é‡è½½<<è¦ä½¿ç”¨using namespace std;
 };
 
