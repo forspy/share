@@ -26,6 +26,15 @@ public:
 	//如果已经定义了某种构造函数，编译器将不会定义默认构造函数
 	//提供构造函数的目的是使得所有成员能够被正确的初始化
 	lacksDMA(const char* c, const baseDMA& rs);//基类拷贝构造
+	//小总结：
+	//在下述情况下，将使用拷贝构造函数
+	//1.将新的对象初始化为同类
+	//2.传递对象给参数
+	//3.函数按值返回
+	//4.编译器生成临时对象
+	//小tips:
+	//例如 baseDMA A;
+	//A="HELLO"; 这里先使用了构造函数 baseDMA::baseDMA（const char*）生成一个临时对象，再调用baseDMA::operator=重载函数复制。
 	friend ostream& operator<<(ostream& os, const lacksDMA& rs);
 	//不需要析构函数
 };
