@@ -3,11 +3,13 @@
 #include<string>
 using namespace std;
 class AcctABC//抽象基类
+
 {
 private:
 	string fullName;
 	long acctNum;
 	double balance;
+	//对于包含虚成员的类，不能用它来创建对象，只能创建指针？
 protected:
 	const string& FullName()const { return fullName; }
 	long AcctNum()const { return acctNum; }
