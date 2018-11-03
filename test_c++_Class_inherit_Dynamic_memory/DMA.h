@@ -41,6 +41,7 @@ public:
 	//友元函数是不能继承的，如果想使用基类友元可以使用例如：(const baseDMA&)hs派生类强转基类引用或者强转基类指针的方式来使用基类的友元函数
 	//也可以使用os<<dynamic_cast<const baseDMA&>(hs);来强制类型转换
 	//不需要析构函数
+	//类继承的is-a模型，和抽象基类模型，多态
 };
 
 class hasDMA :public baseDMA
