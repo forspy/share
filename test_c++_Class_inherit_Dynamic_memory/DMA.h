@@ -42,6 +42,7 @@ public:
 	//也可以使用os<<dynamic_cast<const baseDMA&>(hs);来强制类型转换
 	//不需要析构函数
 	//类继承的is-a模型，和抽象基类模型，多态
+	//基类指针Base* p规定了基类指针的滑动范围；派生类指针BasePlus* p规定了派生类指针的滑动范围
 };
 
 class hasDMA :public baseDMA
