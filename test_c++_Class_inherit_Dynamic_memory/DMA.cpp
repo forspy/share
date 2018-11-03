@@ -2,15 +2,15 @@
 #include"DMA.h"
 #include<cstring>
 
-//»ùÀàÊµÏÖ
-baseDMA::baseDMA(const char* l, int r)//Ä¬ÈÏ¹¹Ôì
+//åŸºç±»å®ç°
+baseDMA::baseDMA(const char* l, int r)//é»˜è®¤æ„é€ 
 {
 	label = new char[strlen(l) + 1];
 	strcpy(label, l);
 	rating = r;
 }
 
-baseDMA::baseDMA(const baseDMA& rs)//¿½±´¹¹Ôì
+baseDMA::baseDMA(const baseDMA& rs)//æ‹·è´æ„é€ 
 {
 	label = new char[strlen(rs.label) + 1];
 	strcpy(label, rs.label);
@@ -27,7 +27,11 @@ baseDMA& baseDMA::operator=(const baseDMA& rs)
 	if (this == &rs)
 		return *this;
 	delete[] label;
-	//baseDMA(rs);//µ÷ÓÃ¿½±´¹¹Ôì£¬ÎªÊ²Ã´ÕâÀïµ÷ÓÃ¹¹Ôìº¯Êı²»ĞĞ£¿Ã÷Ã÷´úÂëÒ»Ñù£¬´ı½â¾ö
+	//baseDMA::baseDMA(rs);//è°ƒç”¨æ‹·è´æ„é€ ï¼Œä¸ºä»€ä¹ˆè¿™é‡Œè°ƒç”¨æ„é€ å‡½æ•°ä¸è¡Œï¼Ÿæ˜æ˜ä»£ç ä¸€æ ·ï¼Œå¾…è§£å†³ã€‚å·²è§£å†³ï¼Œå› ä¸ºè°ƒç”¨äº†ææ„å‡½æ•°
+	//ä¸‰ä¸ªé—®é¢˜ï¼š
+	//1.åœ¨ä¸Šé¢è¿™å¥ç»“æŸåä¼šè°ƒç”¨baseDMA::~baseDMA()çš„ææ„å‡½æ•°ï¼Œé€ æˆæå‰é‡Šæ”¾ï¼Œä¸ºä»€ä¹ˆä¼šè°ƒç”¨ææ„å‡½æ•°ï¼Ÿ
+	//2.ä¸ºä»€ä¹ˆbaseDMA::ä¸å†™ä¸è¡Œï¼Ÿ
+	//3.å¯¹äºä¸Šé¢è¿™ç§ç»§æ‰¿æƒ…å†µï¼Œåˆ°åº•è¯¥ä¸è¯¥ä»£ç å¤ç”¨ï¼Ÿï¼ˆæœ‰é£é™©å—ï¼‰
 	label = new char[strlen(rs.label) + 1];
 	strcpy(label, rs.label);
 	rating = rs.rating;
@@ -36,76 +40,76 @@ baseDMA& baseDMA::operator=(const baseDMA& rs)
 
 ostream& operator<<(ostream& os, const baseDMA& rs)
 {
-	//×¢ÒâÊÇ×Ö·û´®Êä³ö£¬Ö±½ÓcoutÖ¸Õë
+	//æ³¨æ„æ˜¯å­—ç¬¦ä¸²è¾“å‡ºï¼Œç›´æ¥coutæŒ‡é’ˆ
 	cout << "label:"<<rs.label;
 	cout << "rating:" << rs.rating;
 	return os;
 }
 
-//ÅÉÉúÀàlacksDMAµÄÊµÏÖ
+//æ´¾ç”Ÿç±»lacksDMAçš„å®ç°
 
-lacksDMA::lacksDMA(const char * c, const char * l, int r):baseDMA::baseDMA(l,r)//±ØĞë²ÉÓÃ³õÊ¼»¯ÁĞ±íµÄ·½Ê½Ê¹µÃ¹¹ÔìÅÉÉúÀà³ÉÔ±ºÍ¹¹Ôì»ùÀà³ÉÔ±ÔÚÍ¬Ò»ÆğÅÜÏßÉÏ
+lacksDMA::lacksDMA(const char * c, const char * l, int r):baseDMA::baseDMA(l,r)//å¿…é¡»é‡‡ç”¨åˆå§‹åŒ–åˆ—è¡¨çš„æ–¹å¼ä½¿å¾—æ„é€ æ´¾ç”Ÿç±»æˆå‘˜å’Œæ„é€ åŸºç±»æˆå‘˜åœ¨åŒä¸€èµ·è·‘çº¿ä¸Š
 {
-	strncpy(color, c, 39);//°ÑcÖ¸ÕëÖ¸ÏòµÄ×Ö·û´®Ç°39¸ö¿½±´µ½colorÖĞ£¬²¢·µ»Øcolor£¨µÚ40¸öÎª'\0',ËùÒÔ²»ÄÜ¿½£©
+	strncpy(color, c, 39);//æŠŠcæŒ‡é’ˆæŒ‡å‘çš„å­—ç¬¦ä¸²å‰39ä¸ªæ‹·è´åˆ°colorä¸­ï¼Œå¹¶è¿”å›colorï¼ˆç¬¬40ä¸ªä¸º'\0',æ‰€ä»¥ä¸èƒ½æ‹·ï¼‰
 	color[39] = '\0';
 }
 
 lacksDMA::lacksDMA(const char * c, const baseDMA & rs):baseDMA::baseDMA(rs)
 {
-	strncpy(color, c, COL_LEN-1);//°ÑcÖ¸ÕëÖ¸ÏòµÄ×Ö·û´®Ç°39¸ö¿½±´µ½colorÖĞ£¬²¢·µ»Øcolor£¨µÚ40¸öÎª'\0',ËùÒÔ²»ÄÜ¿½£©
+	strncpy(color, c, COL_LEN-1);//æŠŠcæŒ‡é’ˆæŒ‡å‘çš„å­—ç¬¦ä¸²å‰39ä¸ªæ‹·è´åˆ°colorä¸­ï¼Œå¹¶è¿”å›colorï¼ˆç¬¬40ä¸ªä¸º'\0',æ‰€ä»¥ä¸èƒ½æ‹·ï¼‰
 	color[COL_LEN-1] = '\0';
 }
 
 ostream& operator<<(ostream& os, const lacksDMA& ls)
 {
-	os << (const baseDMA&)ls;//ÖØÒª£ºÇ¿×ª»ùÀàÒıÓÃ£¬µ÷ÓÃ»ùÀàÖØÔØ<<£¬const baseMDA& temp=ls;½Ó×¡Ò²¿ÉÒÔµ«ÊÇ»á¶à=ÖØÔØ¹¹Ôì
+	os << (const baseDMA&)ls;//é‡è¦ï¼šå¼ºè½¬åŸºç±»å¼•ç”¨ï¼Œè°ƒç”¨åŸºç±»é‡è½½<<ï¼Œconst baseMDA& temp=ls;æ¥ä½ä¹Ÿå¯ä»¥ä½†æ˜¯ä¼šå¤š=é‡è½½æ„é€ 
 	os << "color:" << ls.color;
 	return os;
 }
 
-//ÅÉÉúÀàhasDMAµÄÊµÏÖ
+//æ´¾ç”Ÿç±»hasDMAçš„å®ç°
 
-hasDMA::hasDMA(const char * s, const char * l, int r):baseDMA(l,r)//ÅÉÉúÀàÄ¬ÈÏ¹¹Ôìº¯Êı
+hasDMA::hasDMA(const char * s, const char * l, int r):baseDMA(l,r)//æ´¾ç”Ÿç±»é»˜è®¤æ„é€ å‡½æ•°
 {
-	style = new char[strlen(s) + 1];//×Ö·û´®ÏÈ¿ª±ÙÄÚ´æ
-	strcpy(style, s);//ÔÙ¿½±´ÄÚ´æ
+	style = new char[strlen(s) + 1];//å­—ç¬¦ä¸²å…ˆå¼€è¾Ÿå†…å­˜
+	strcpy(style, s);//å†æ‹·è´å†…å­˜
 }
 
-hasDMA::hasDMA(const char * s, const baseDMA & rs):baseDMA(rs)//ÅÉÉúÀà»ùÀà¿½±´¹¹Ôìº¯Êı
+hasDMA::hasDMA(const char * s, const baseDMA & rs):baseDMA(rs)//æ´¾ç”Ÿç±»åŸºç±»æ‹·è´æ„é€ å‡½æ•°
 {
-	style = new char[strlen(s) + 1];//×Ö·û´®ÏÈ¿ª±ÙÄÚ´æ
-	strcpy(style, s);//ÔÙ¿½±´ÄÚ´æ
+	style = new char[strlen(s) + 1];//å­—ç¬¦ä¸²å…ˆå¼€è¾Ÿå†…å­˜
+	strcpy(style, s);//å†æ‹·è´å†…å­˜
 }
 
-hasDMA::hasDMA(const hasDMA & hs):baseDMA(hs)//ÅÉÉúÀà¿½±´¹¹Ôìº¯Êı£¬ÏÈ¹¹Ôì»ùÀà²¿·Ö£¬ÒòÎªconst baseDMA& tempÄÜ½Ó×¡hs½øĞĞhs»ùÀà²¿·ÖµÄ¹¹Ôì
+hasDMA::hasDMA(const hasDMA & hs):baseDMA(hs)//æ´¾ç”Ÿç±»æ‹·è´æ„é€ å‡½æ•°ï¼Œå…ˆæ„é€ åŸºç±»éƒ¨åˆ†ï¼Œå› ä¸ºconst baseDMA& tempèƒ½æ¥ä½hsè¿›è¡ŒhsåŸºç±»éƒ¨åˆ†çš„æ„é€ 
 {
-	//¶ÔĞÂµÄÅÉÉú³ÉÔ±²¿·Ö½øĞĞ¿½±´¹¹Ôì
-	style = new char[strlen(hs.style) + 1];//×Ö·û´®ÏÈ¿ª±ÙÄÚ´æ
-	strcpy(style, hs.style);//ÔÙ¿½±´ÄÚ´æ
+	//å¯¹æ–°çš„æ´¾ç”Ÿæˆå‘˜éƒ¨åˆ†è¿›è¡Œæ‹·è´æ„é€ 
+	style = new char[strlen(hs.style) + 1];//å­—ç¬¦ä¸²å…ˆå¼€è¾Ÿå†…å­˜
+	strcpy(style, hs.style);//å†æ‹·è´å†…å­˜
 }
 
 hasDMA::~hasDMA()
 {
-	delete[] style;//Îö¹¹µ÷ÅÉÉúÀà²¿·Öºó»á×Ô¶¯µ÷ÓÃ»ùÀà²¿·Ö
+	delete[] style;//ææ„è°ƒæ´¾ç”Ÿç±»éƒ¨åˆ†åä¼šè‡ªåŠ¨è°ƒç”¨åŸºç±»éƒ¨åˆ†
 }
 
 hasDMA & hasDMA::operator=(const hasDMA & hs)
 {
 	if (this == &hs)
-		return *this;//1.ÏÈ¿¼ÂÇ×ÔµÈ
-	//2.Îö¹¹ÄÚ´æ(ÊÍ·Å»ùÀàºÍÅÉÉúÀàµÄÄÚ´æ)
-	baseDMA::operator=(hs);//1.ÒòÎªconst baseDMA& tempÄÜ½Ó×¡hs µ«Ò²Ö»ÄÜ½øĞĞ»ùÀà²¿·ÖµÄ=2.operator=µÄ¹ı³ÌÖĞ°üº¬ÁË¶Ô»ùÀàµÄÄÚ´æÊÍ·Å
+		return *this;//1.å…ˆè€ƒè™‘è‡ªç­‰
+	//2.ææ„å†…å­˜(é‡Šæ”¾åŸºç±»å’Œæ´¾ç”Ÿç±»çš„å†…å­˜)
+	baseDMA::operator=(hs);//1.å› ä¸ºconst baseDMA& tempèƒ½æ¥ä½hs ä½†ä¹Ÿåªèƒ½è¿›è¡ŒåŸºç±»éƒ¨åˆ†çš„=2.operator=çš„è¿‡ç¨‹ä¸­åŒ…å«äº†å¯¹åŸºç±»çš„å†…å­˜é‡Šæ”¾
 	delete[] style;
-	style = new char[strlen(hs.style) + 1];//×Ö·û´®ÏÈ¿ª±ÙÄÚ´æ
-	strcpy(style, hs.style);//ÔÙ¿½±´ÄÚ´æ
+	style = new char[strlen(hs.style) + 1];//å­—ç¬¦ä¸²å…ˆå¼€è¾Ÿå†…å­˜
+	strcpy(style, hs.style);//å†æ‹·è´å†…å­˜
 	return *this;
 }
 
 ostream & operator<<(ostream & os, const hasDMA & hs)
 {
-	os << (const baseDMA&)hs;//Ç¿×ª+µ÷ÓÃ»ùÀàÒıÓÃ£¬ÏòÉÏµÄÇ¿×ªÊÇºÏ·¨µÄ£¿´ı½â¾ö£¬Ô­ÀíÊÇÊ²Ã´
+	os << (const baseDMA&)hs;//å¼ºè½¬+è°ƒç”¨åŸºç±»å¼•ç”¨ï¼Œå‘ä¸Šçš„å¼ºè½¬æ˜¯åˆæ³•çš„ï¼Ÿå¾…è§£å†³ï¼ŒåŸç†æ˜¯ä»€ä¹ˆ
 	os << "style:" << hs.style;
 	return os;
 
-	// TODO: ÔÚ´Ë´¦²åÈë return Óï¾ä
+	// TODO: åœ¨æ­¤å¤„æ’å…¥ return è¯­å¥
 }
