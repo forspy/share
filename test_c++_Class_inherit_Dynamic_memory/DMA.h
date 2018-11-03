@@ -53,6 +53,6 @@ public:
 	hasDMA(const char* s, const baseDMA& rs);//基类拷贝构造
 	hasDMA(const hasDMA& hs);
 	~hasDMA();
-	hasDMA& operator=(const hasDMA& hs);
+	hasDMA& operator=(const hasDMA& hs);//派生类有成员指针new内存，就得为派生部分写一个派生类的重载=
 	friend ostream& operator<<(ostream& os, const hasDMA& hs);
 };
