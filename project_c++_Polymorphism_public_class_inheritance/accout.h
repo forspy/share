@@ -63,7 +63,7 @@ private:
 public:
 	BrassPlus(const string& s = "NULLBODY", long an = -1, double bal = 0.0, double ml = 500, double r = 0.11125);
 	BrassPlus(const Brass& ba, double ml = 500, double r = 0.11125);
-	//虚方法
+	//虚方法：要使用虚方法必须函数名相同并且特征标相同（返回类型可以不同），如果特征标不同，则会形成同名隐藏，覆盖基类函数
 	virtual void WithDraw(double amt);//取款(虚方法)
 	virtual void ViewAcct()const;//显示账户(虚方法)
 	//派生新方法
