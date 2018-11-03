@@ -35,7 +35,10 @@ public:
 	//小tips:
 	//例如 baseDMA A;
 	//A="HELLO"; 这里先使用了构造函数 baseDMA::baseDMA（const char*）生成一个临时对象，再调用baseDMA::operator=重载函数复制。
+	//构造函数不能被继承，析构函数也不能被继承，赋值运算符不能被继承？可以基类对象=派生类对象但是只是调用基类的=运算符，不可以派生类=基类，因为派生类引用无法接住基类对象
 	friend ostream& operator<<(ostream& os, const lacksDMA& rs);
+	//友元函数是不能继承的，如果想使用基类友元可以使用例如：(const baseDMA&)hs派生类强转基类引用或者强转基类指针的方式来使用基类的友元函数
+	//也可以使用os<<dynamic_cast<const baseDMA&>(hs);来强制类型转换
 	//不需要析构函数
 };
 
