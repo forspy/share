@@ -30,6 +30,7 @@ public:
 	Brass* c2=B;
 	c1.view_acct();//use Brass::view_acct()
 	c2->view_acct();//use BrassPlus::view_acct()
+	//引用的另外一个好处是可以确保从虚函数受益（另外也可以节省内存和时间）
 	2.方法在基类中被声明为虚方法后，在派生类中也将自动生成虚方法。（推荐在派生类中使用virtual显示地指出虚方法）
 	//编译器在程序运行的时候选择正确的虚方法的代码被称为动态连编，隐式向上强制转化也会发生动态连编。
 	//编译器对非虚方法使用静态连编，因为编译的时候已经知道左值的类型了
@@ -62,7 +63,7 @@ private:
 public:
 	BrassPlus(const string& s = "NULLBODY", long an = -1, double bal = 0.0, double ml = 500, double r = 0.11125);
 	BrassPlus(const Brass& ba, double ml = 500, double r = 0.11125);
-	//虚方法
+	//虚方法：要使用虚方法必须函数名相同并且特征标相同（返回类型可以不同），如果特征标不同，则会形成同名隐藏，覆盖基类函数
 	virtual void WithDraw(double amt);//取款(虚方法)
 	virtual void ViewAcct()const;//显示账户(虚方法)
 	//派生新方法
