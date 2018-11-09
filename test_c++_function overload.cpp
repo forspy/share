@@ -1,16 +1,16 @@
-//µ±Ã»ÓÐÍùº¯ÊýÖÐÌí¼Ó²ÎÊýÊ±£¬Èç¹ûÏëÈÃº¯ÊýÊ¹ÓÃÄ¬ÈÏÖµ£¬Ôò±ØÐëÔÚº¯ÊýÔ­ÐÍÖÐ¸ø²ÎÊý¸³Ä¬ÈÏÖµ£¨¶ÔÓÚÍ¬Ò»ÀàÐÍµÄ²ÎÊý£©
-//Í¨¹ýÊ¹ÓÃÄ¬ÈÏ²ÎÊý£¬¿ÉÒÔ¼õÉÙÒª¶¨ÒåµÄÎö¹¹º¯Êý¡¢·½·¨ÒÔ¼°·½·¨ÖØÔØµÄÊýÁ¿
+//å½“æ²¡æœ‰å¾€å‡½æ•°ä¸­æ·»åŠ å‚æ•°æ—¶ï¼Œå¦‚æžœæƒ³è®©å‡½æ•°ä½¿ç”¨é»˜è®¤å€¼ï¼Œåˆ™å¿…é¡»åœ¨å‡½æ•°åŽŸåž‹ä¸­ç»™å‚æ•°èµ‹é»˜è®¤å€¼ï¼ˆå¯¹äºŽåŒä¸€ç±»åž‹çš„å‚æ•°ï¼‰
+//é€šè¿‡ä½¿ç”¨é»˜è®¤å‚æ•°ï¼Œå¯ä»¥å‡å°‘è¦å®šä¹‰çš„æžæž„å‡½æ•°ã€æ–¹æ³•ä»¥åŠæ–¹æ³•é‡è½½çš„æ•°é‡
 //-----------------
-//º¯ÊýÖØÔØ(¶ÔÓÚ²»Í¬ÀàÐÍµÄ²ÎÊý)
-//1.º¯ÊýÖØÔØµÄ¹Ø¼üÊÇº¯ÊýµÄ²ÎÊýÁÐ±í--º¯ÊýµÄÌØÕ÷±ê
-//2.Èç¹û²ÎÊýÊýÄ¿»ò²ÎÊýÀàÐÍ²»Í¬£¬ÔòÌØÕ÷±ê²»Í¬
-//3.ÀàÐÍºÍÀàÐÍÒýÓÃÊÓÎªÒ»¸öÌØÕ÷±ê£¬Èç£ºint xºÍint& x
-//4.ÌØÕ÷±ê²»Çø·ÖconstºÍ·Çconst±äÁ¿
-//5.·µ»ØÀàÐÍ²»Í¬£¬µ«ÌØÕ÷±êÏàÍ¬²»ÄÜ×÷Îªº¯ÊýÖØÔØ
+//å‡½æ•°é‡è½½(å¯¹äºŽä¸åŒç±»åž‹çš„å‚æ•°)
+//1.å‡½æ•°é‡è½½çš„å…³é”®æ˜¯å‡½æ•°çš„å‚æ•°åˆ—è¡¨--å‡½æ•°çš„ç‰¹å¾æ ‡
+//2.å¦‚æžœå‚æ•°æ•°ç›®æˆ–å‚æ•°ç±»åž‹ä¸åŒï¼Œåˆ™ç‰¹å¾æ ‡ä¸åŒ
+//3.ç±»åž‹å’Œç±»åž‹å¼•ç”¨è§†ä¸ºä¸€ä¸ªç‰¹å¾æ ‡ï¼Œå¦‚ï¼šint xå’Œint& x
+//4.ç‰¹å¾æ ‡ä¸åŒºåˆ†constå’Œéžconstå˜é‡
+//5.è¿”å›žç±»åž‹ä¸åŒï¼Œä½†ç‰¹å¾æ ‡ç›¸åŒä¸èƒ½ä½œä¸ºå‡½æ•°é‡è½½
 #include<iostream>
 const int SIZE = 80;
 using namespace std;
-char* left(const char* str, int n = 1);//nÎªÒª½ØÈ¡µÄ×Ö·ûÊý,Ä¬ÈÏn=1Îª½ØÈ¡×ó±ßµÚÒ»¸ö×Ö·û
+char* left(const char* str, int n = 1);//nä¸ºè¦æˆªå–çš„å­—ç¬¦æ•°,é»˜è®¤n=1ä¸ºæˆªå–å·¦è¾¹ç¬¬ä¸€ä¸ªå­—ç¬¦
 unsigned long left(unsigned long num, int n);
 int main()
 {
@@ -29,20 +29,19 @@ int main()
 	cin >> number;
 	cout << left(value, number) << endl;
 }
-
-char* left(const char* str, int n)//nÎªÒª½ØÈ¡µÄ×Ö·ûÊý
+char* left(const char* str, int n)//nä¸ºè¦æˆªå–çš„å­—ç¬¦æ•°
 {
 	if (n < 0)
 		n = 0;
-	//Ò²¿ÉÒÔÏÈ²â²â³¤¶È
-	//int len=strlen(str) ·µ»ØÓÐÐ§³¤¶È,ÐèÒª#include<cstring>
+	//ä¹Ÿå¯ä»¥å…ˆæµ‹æµ‹é•¿åº¦
+	//int len=strlen(str) è¿”å›žæœ‰æ•ˆé•¿åº¦,éœ€è¦#include<cstring>
 	//n=(n<len)?n:len;
 	//char* p=new char[n+1];
 	char* p = new char[n + 1];
 	int i;
 	for (i = 0; i < n&&str[i]; i++)
 	{
-		p[i] = str[i];//¸´ÖÆ×Ö·û´®µ½¶ÑÉÏ
+		p[i] = str[i];//å¤åˆ¶å­—ç¬¦ä¸²åˆ°å †ä¸Š
 	}
 	p[i] = '\0';
 	return p;
@@ -55,7 +54,7 @@ unsigned long left(unsigned long num, int n)
 		return 0;
 	unsigned long temp = num;
 	while (temp /= 10)
-		digits++;//ÅÐ¶Ï´«ÈëµÄÊýÒ»¹²ÓÐ¼¸Î»
+		digits++;//åˆ¤æ–­ä¼ å…¥çš„æ•°ä¸€å…±æœ‰å‡ ä½
 	if (digits > n)
 		for (int i = 0; i < digits - n; i++)
 			num /= 10;
