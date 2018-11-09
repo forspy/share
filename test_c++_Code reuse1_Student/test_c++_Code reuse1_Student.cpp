@@ -1,3 +1,6 @@
+//c++µÄÒ»¸öÖ÷ÒªµÄÄ¿µÄÊÇ´Ù½ø´úÂëÖØÓÃ£¬¹«ÓĞ¼Ì³ĞÊÇÊµÏÖÕâÑùµÄÄ¿±êÖ®Ò»
+//has-aµÄ¹ØÏµÒ²¿ÉÒÔÊµÏÖ´úÂëÖØÓÃ£¬°üÀ¨ÔÚÀàÀïÃæÊ¹ÓÃÀà³ÉÔ±£¬Ë½ÓĞ¼Ì³Ğ¡¢±£»¤¼Ì³Ğ
+//ÀàÄ£°åÒ²¿ÉÒÔÊµÏÖ´úÂëÖØÓÃ
 //Ä¿±êÉè¼ÆÒ»¸öStudentÀà£¬±ÈÈç³ÉÔ±º¯ÊıÊÇĞÕÃûºÍÊı×é£¬¶¼ÊÇ¿É±ä³¤¶ÈµÄ¡£ÒıÈëÀàÖĞµÄÀà³ÉÔ±¶ÔÏó1.ĞÕÃû¿ÉÒÔÊ¹ÓÃstringÀà¶ÔÏó
 //2.Êı×é¿ÉÒÔÊ¹ÓÃÄ£°åÀàÊı×évalarray
 //½éÉÜvalarray£º
@@ -7,7 +10,11 @@ valarryÊÇÓÉÍ·ÎÄ¼ş<valarray>Ö§³ÖµÄ£¬ÓÃÓÚ´¦ÀíÊı×éÊıÖµ£¬ÀıÈçÖ§³Ö½«Êı×éÖĞËùÓĞÔªËØµÄÖ
 #include<valarray>
 #include<string>
 #include<iostream>
+#include"Student.h"
 using namespace std;
+void set(Student& sa, int n);
+const int pupils = 3;
+const int quizzes = 5;
 int main()
 {
 	valarray<double> v1;//ÉùÃ÷Ò»¸ödoubleÀàĞÍµÄ0¸öÔªËØµÄÊı×é£¨valarrayÒ²ĞèÒªÃû³Æ¿Õ¼ästdµÄÖ§³Ö£©
@@ -25,4 +32,26 @@ int main()
 	min()·µ»Ø×îĞ¡ÖµµÄÔªËØ
 	*/
 	cout << v5.max() << v5.min() << endl;
+	Student ada[pupils] = { Student(quizzes),Student(quizzes),Student(quizzes) };
+	int i;
+	for (i = 0; i < pupils; ++i)
+		set(ada[i], quizzes);//ÊäÈë
+	cout << "Student list" << endl;
+	for (i = 0; i < pupils; ++i)
+		cout << ada[i].Name() << endl;//Êä³öÃû×Ö
+	for (i = 0; i < pupils; ++i)
+	{
+		cout << ada[i];
+		cout << "average:" << ada[i].Average() << endl;
+	}
+}
+void set(Student& sa, int n)
+{
+	cout << "ÇëÊäÈëÑ§ÉúĞÕÃû£º";
+	getline(cin, sa);
+	cout << "Please enter" << n << "quiz scores" << endl;
+	for (int i = 0; i < n; i++)
+		cin >> sa[i];
+	while (cin.get() != '\n')//Çå³ı¶àÓà×Ö·û
+		continue;
 }
