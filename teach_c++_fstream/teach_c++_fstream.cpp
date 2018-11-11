@@ -152,7 +152,7 @@ void packfile()
 	char ch;
 	for (int i = 0; i < listnum; i++)
 	{
-		while (!file[i].eof())   //while (ch = file[i].get()&&!file[i].eof())这种写法在ch='\0'就会结束,不可用，//但是while (ch = file[i].get(),!file[i].eof()) 这种写法是什么鬼？  ，有什么用？
+		//while (!file[i].eof())   //while (ch = file[i].get()&&!file[i].eof())这种写法在ch='\0'就会结束,不可用，//但是while (ch = file[i].get(),!file[i].eof()) 这种写法是什么鬼？  ，有什么用？
 		while (ch = file[i].get(),!file[i].eof()) //逐字符输入时需要先读取get()后判断也可以写成EOF！=（ch=file[i].get()）
 		//其实文件是这样的AB'end',1.先判断会把'end'也写进去但是大小之到B位置，所以'end'会留到后一个文件的首字符影响了下一个文件
 			//2.先读就不会把'end'读进去，所以不会影响
