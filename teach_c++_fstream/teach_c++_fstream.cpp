@@ -17,22 +17,25 @@ struct fileinfo
 	char filename[20];//文件名
 };
 void packfile();//文件打包
+//该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+//高级保存选项 改变编码格式为【简体中文（GB2312）- 代码页936】或【Unicode（UTF-8 带签名）-代码页65001】，保存。
 
 int main()
 {
 	student stu[3] = {
-		{"小马",1001,18,'m'},
-		{"小红",1002,19,'w'},
-		{"小明",1003,20,'m'},
+		{ "小王",1001,18,'m' },
+		{ "小红",1002,19,'w' },
+		{ "小明",1003,20,'m' },
 	};//txt里面输入int会出现乱码，所以最好全以字符串方式输入(如果是为了看的话)
-	//写是从流里面输出，就相当于从一个罐子流出，所以是ofstream
-	ofstream outfile("stu.txt",ios_base::out);//以txt方式打开(以构造方式)  
-	//ofstream outfile("stu.dat", ios::binary);//以二进制方式打开(以构造方式) -n 编码方式有小区别
-	/*ofstream outfile;
-	outfile.open("stu.dat", ios::binary);//与上面等价*/
-	//ios_base::in---'r'  ios_base::out----'w'  ios_base::out| ios_base::app----'a' 
-	//ios_base::out|ios_base::in---'r+'  ios_base::out|ios_base::in|ios_base::trunc---'w+'
-	//这里也可以省略_base 变成 ios::in
+	  //ofstream outfile("stu.dat", ios::binary);//以二进制方式打开(以构造方式) -n 编码方式有小区别
+	  
+	ofstream outfile("stu.txt", ios_base::out);//以txt方式打开(以构造方式)  
+	//ofstream outfile;
+	//outfile.open("stu.dat", ios::binary);与上面等价 
+											   //写是从流里面输出，就相当于从一个罐子流出，所以是ofstream
+											   //ios_base::in---'r'  ios_base::out----'w'  ios_base::out| ios_base::app----'a' 
+											   //ios_base::out|ios_base::in---'r+'  ios_base::out|ios_base::in|ios_base::trunc---'w+'
+											   //这里也可以省略_base 变成 ios::in										   
 	if (!outfile)
 	{
 		cerr << "open error!" << endl;
@@ -57,9 +60,9 @@ int main()
 
 	file2.write((const char*)&a, sizeof a);//发现txt输入int数字不行，会产生乱码
 	file2.close();
-	
+
 	student rstu[3];//读出来也需要另外一个对象数组接住
-	ifstream infile("stu.txt", ios_base::in); 
+	ifstream infile("stu.txt", ios_base::in);
 	if (!infile)
 	{
 		cerr << "open error!" << endl;
@@ -78,7 +81,7 @@ int main()
 		cout << "编号:" << rstu[i].num << endl;
 		cout << "年龄:" << rstu[i].age << endl;
 		cout << "性别:" << rstu[i].sex << endl;
-	} 
+	}
 	//说明其实虽然txt里面显示的是乱码，但是输入的数据是正确的，所以int的输入需要处理
 	/*文件打包
 	文件数量：(4字节)，索引表大小：(4字节)（索引表的意思是记录下面文件信息一共有多少个字节）
@@ -87,6 +90,7 @@ int main()
 	...
 	然后开始读打包文件信息
 	*/
+
 	packfile();
 }
 
@@ -120,7 +124,7 @@ void packfile()
 	}
 	//然后把整合的信息写入到一个新的文件流里面去，所以需要创建一个新的文件对象
 	fstream newfile("new.pack", ios::out | ios::binary);
-	newfile.write((char*)&listsize, 4);//索引表大小是4个字节的存的是打包文件的大小的信息，比如一共145603个字节存一下
+	newfile.write((char*)&listsize, 4);//索引表大小是4个字节的存的是打包文件的大小的信息，比如一共72个字节存一下
 	newfile.write((char*)&listnum, sizeof(int));//同理，比如4个文件
 	//写逐个文件的信息
 	for (int i = 0; i < listnum; i++)
@@ -140,7 +144,7 @@ void packfile()
 			//剩下的文件的偏移值为前一个文件的偏移值+前一个文件的大小
 			filelist[i].fileoff = filelist[i - 1].fileoff + filelist[i - 1].filesize;
 		}
-		newfile.write((char*)&filelist[i].filenamesize, 4);//写入文件i的大小
+		newfile.write((char*)&filelist[i].filesize, 4);//写入文件i的大小
 		newfile.write((char*)&filelist[i].fileoff, 4);//写文件i的偏移
 		newfile.write((char*)&filelist[i].filenamesize, 4);//文件i名的长度
 		newfile.write(filelist[i].filename, filelist[i].filenamesize);//文件i名,因为文件名本来就是char*的
@@ -150,10 +154,13 @@ void packfile()
 	char ch;
 	for (int i = 0; i < listnum; i++)
 	{
-		while (!file[i].eof())//while (ch = file[i].get()&&!file[i].eof())这种写法在ch='\0'就会结束
-			//如果硬要写在一起可以while (ch = file[i].get(),!file[i].eof()) 但是不建议
+		//while (!file[i].eof())   //while (ch = file[i].get()&&!file[i].eof())这种写法在ch='\0'就会结束,不可用，//但是while (ch = file[i].get(),!file[i].eof()) 这种写法是什么鬼？  ，有什么用？
+		while (ch = file[i].get(),!file[i].eof()) //逐字符输入时需要先读取get()后判断也可以写成EOF！=（ch=file[i].get()）
+		//其实文件是这样的AB'end',1.先判断会把'end'也写进去但是大小之到B位置，所以'end'会留到后一个文件的首字符影响了下一个文件
+			//2.先读就不会把'end'读进去，所以不会影响
+			//3.就像字符串char name[10]="AB";只用输入AB就行不用额外添加'\0'，会自动加上
 		{
-			ch = file[i].get();
+			//ch = file[i].get();
 			newfile.put(ch);
 		}
 	}
@@ -163,3 +170,5 @@ void packfile()
 	}
 	newfile.close();
 }
+
+
