@@ -7,25 +7,25 @@ const int Num = 5;
 using namespace std;
 int main()
 {
-	//»ù±¾Á÷³ÌÊÇÕâÑùµÄ£¬Ê×ÏÈÅĞ¶ÏÕ»ÊÇ²»ÊÇÂúµÄ£¬Èç¹ûÂúÁË¾Í·µ»ØÎ´½ÓÊÕµÄÖ¸ÕëÊı×é£»Èç¹ûÃ»Âú¾ÍÀûÓÃËæ»úÊıÅĞ¶Ï£º
-	//Èç¹ûËæ»úÊıÎªÅ¼Êı¾Í½ÓÊÜ²¢Ñ¹ÈëÕ»ÖĞ£¬Èç¹ûËæ»úÊıÎªÆæÊı¾Íµ¯³ö²¢·µ»ØÎ´½ÓÊÕµÄÖ¸ÕëÊı×é
-	srand(unsigned(time(NULL)));//ÖÖÏÂÒ»¸öËæ»úÊıÖÖ×Ó
-	cout << "ÇëÊäÈëÕ»µÄ´óĞ¡" << endl;
+	//åŸºæœ¬æµç¨‹æ˜¯è¿™æ ·çš„ï¼Œé¦–å…ˆåˆ¤æ–­æ ˆæ˜¯ä¸æ˜¯æ»¡çš„ï¼Œå¦‚æœæ»¡äº†å°±è¿”å›æœªæ¥æ”¶çš„æŒ‡é’ˆæ•°ç»„ï¼›å¦‚æœæ²¡æ»¡å°±åˆ©ç”¨éšæœºæ•°åˆ¤æ–­ï¼š
+	//å¦‚æœéšæœºæ•°ä¸ºå¶æ•°å°±æ¥å—å¹¶å‹å…¥æ ˆä¸­ï¼Œå¦‚æœéšæœºæ•°ä¸ºå¥‡æ•°å°±å¼¹å‡ºå¹¶è¿”å›æœªæ¥æ”¶çš„æŒ‡é’ˆæ•°ç»„
+	srand(unsigned(time(NULL)));//ç§ä¸‹ä¸€ä¸ªéšæœºæ•°ç§å­
+	cout << "è¯·è¾“å…¥æ ˆçš„å¤§å°" << endl;
 	int stacksize;
 	cin >> stacksize;
-	Stack<char*>st(stacksize);//Ä¬ÈÏ¹¹Ôì³õÊ¼»¯st¶ÔÏó
-	char* in[Num] = { "xiaoming","xiaohong","xiaowang" ,"xiaozhang","xiaohua" };//´´½¨Ò»¸öÖ¸ÕëÊı×é
-	char* out[Num] = { 0 };//´´½¨Ò»¸öÓÃÓÚ½ÓÊÕpopµÄÖ¸ÕëÊı×é
-	int processed = 0;//¼ÇÂ¼Õ»ÂúÁËµÄµ¯³ö¸öÊı£¬¼´outµÄ¼ÆÊıÆ÷
+	Stack<char*>st(stacksize);//é»˜è®¤æ„é€ åˆå§‹åŒ–stå¯¹è±¡
+	char* in[Num] = { "xiaoming","xiaohong","xiaowang" ,"xiaozhang","xiaohua" };//åˆ›å»ºä¸€ä¸ªæŒ‡é’ˆæ•°ç»„
+	char* out[Num] = { 0 };//åˆ›å»ºä¸€ä¸ªç”¨äºæ¥æ”¶popçš„æŒ‡é’ˆæ•°ç»„
+	int processed = 0;//è®°å½•æ ˆæ»¡äº†çš„å¼¹å‡ºä¸ªæ•°ï¼Œå³outçš„è®¡æ•°å™¨
 	int nextin = 0;
 	char ch;
-	cout << "ÊäÈëqÍË³ö" << endl;
+	cout << "è¾“å…¥qé€€å‡º" << endl;
 	while(ch=_getch()!='q')
 	{
 		if (!st.isfull() && nextin < Num)
 		{
 			st.push(in[nextin++]);
-			cout << "ÊäÈëqÍË³ö" << endl;
+			cout << "è¾“å…¥qé€€å‡º" << endl;
 		}
 		else
 			break;
@@ -34,7 +34,6 @@ int main()
 	{
 		st.pop(out[i]);
 	}
-	
 	cout << "out:" << endl;
 	for (int i = 0; i < Num; i++)
 	{
