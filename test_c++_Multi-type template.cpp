@@ -1,8 +1,8 @@
-//¶àÀàĞÍÄ£°å£¬Ò»°ã¹¹Ôìº¯Êı¿ÉÒÔÊäÈëÁ½¸öÀàĞÍÒÔÉÏµÄÖµ
+//å¤šç±»å‹æ¨¡æ¿ï¼Œä¸€èˆ¬æ„é€ å‡½æ•°å¯ä»¥è¾“å…¥ä¸¤ä¸ªç±»å‹ä»¥ä¸Šçš„å€¼
 #include<iostream>
 #include<string>
 template<class T1,class T2>
-//Ò²¿ÉÒÔÌá¹©Ä¬ÈÏÀàĞÍtemplate<class T1,class T2=int>
+//ä¹Ÿå¯ä»¥æä¾›é»˜è®¤ç±»å‹template<class T1,class T2=int>
 class Pair
 {
 private:
@@ -10,21 +10,21 @@ private:
 	T2 b;
 public:
 	T1& first();
-	T2& second();//¿ÉÒÔµ±ÓÒÖµ£¬Ò²¿ÉÒÔµ±×óÖµ
-	T1 first() const { return a; }//ºóÃæ¼ÓconstÒ²ĞÎ³ÉÖØÔØ£¬Ö»ÄÜµ±ÓÒÖµ
+	T2& second();//å¯ä»¥å½“å³å€¼ï¼Œä¹Ÿå¯ä»¥å½“å·¦å€¼
+	T1 first() const { return a; }//åé¢åŠ constä¹Ÿå½¢æˆé‡è½½ï¼Œåªèƒ½å½“å³å€¼
 	T2 second() const { return b; }
 	Pair (const T1& aval,const T2& bval): a(aval),b(bval){ }
 	Pair(){ }
 };
-//´ËÍâ»¹¿ÉÒÔÊ¹ÓÃÏÔÊ¾ÍêÈ«¾ßÌå»¯ºÍ²¿·Ö¾ßÌå»¯À´ÏŞÖÆÄ£°åµÄÍ¨ÓÃĞÔ
-//ÍêÈ«¾ßÌå»¯:template <> class Pair<cha*>{...}
-//²¿·Ö¾ßÌå»¯:template<class T1>class Pair<T1,int>{...}
-//³ÌĞòµÄµ÷ÓÃÓÅÏÈ¼¶Îª£º1.Ö¸ÕëÄ£°åtemplate<class T*> 2.¾ßÌå»¯Ä£°å 3.ÆÕÍ¨Ä£°å
+//æ­¤å¤–è¿˜å¯ä»¥ä½¿ç”¨æ˜¾ç¤ºå®Œå…¨å…·ä½“åŒ–å’Œéƒ¨åˆ†å…·ä½“åŒ–æ¥é™åˆ¶æ¨¡æ¿çš„é€šç”¨æ€§
+//å®Œå…¨å…·ä½“åŒ–:template <> class Pair<cha*>{...}
+//éƒ¨åˆ†å…·ä½“åŒ–:template<class T1>class Pair<T1,int>{...}
+//ç¨‹åºçš„è°ƒç”¨ä¼˜å…ˆçº§ä¸ºï¼š1.æŒ‡é’ˆæ¨¡æ¿template<class T*> 2.å…·ä½“åŒ–æ¨¡æ¿ 3.æ™®é€šæ¨¡æ¿
 
 template<class T1,class T2>
 T1& Pair<T1, T2>::first()
 {
-	return a;//·µ»ØÒ»¸öÀàĞÍÎªT1µÄ³ÉÔ±±äÁ¿
+	return a;//è¿”å›ä¸€ä¸ªç±»å‹ä¸ºT1çš„æˆå‘˜å˜é‡
 }
 
 template<class T1,class T2>
@@ -32,24 +32,23 @@ T2& Pair<T1, T2>::second()
 {
 	return b;
 }
-
 int main()
 {
 	using namespace std;
-	//×¢ÒâPair<char*,int>ÓëÏÂÃæÊÇÍêÈ«²»Í¬µÄÁ½¸öÀàĞÍ
+	//æ³¨æ„Pair<char*,int>ä¸ä¸‹é¢æ˜¯å®Œå…¨ä¸åŒçš„ä¸¤ä¸ªç±»å‹
 	Pair<string, int> rating[4] = {
 		Pair<string,int>("xiaoming",5),
 		Pair<string,int>("xiaowang",4),
 		Pair<string,int>("xiaozhang",3),
 		Pair<string,int>("xiaohong",2),
-	};//³õÊ¼»¯ÍêÒªĞ´;
-	int joints = sizeof(rating) / sizeof (Pair<string, int>);//¶ÔÏóÊı×éµÄ´óĞ¡³ıÒÔÒ»¸ö¶ÔÏóµÄ´óĞ¡µÈÓÚ¶ÔÏóÊı×éµÄ¸öÊı
+	};//åˆå§‹åŒ–å®Œè¦å†™;
+	int joints = sizeof(rating) / sizeof (Pair<string, int>);//å¯¹è±¡æ•°ç»„çš„å¤§å°é™¤ä»¥ä¸€ä¸ªå¯¹è±¡çš„å¤§å°ç­‰äºå¯¹è±¡æ•°ç»„çš„ä¸ªæ•°
 	cout << "Rating:\t eatery" << endl;
 	for (int i = 0; i < joints; i++)
 	{
 		cout << rating[i].second() << "\t" << rating[i].first() << endl;
 	}
-	//¸ü¸ÄÆäÖĞÒ»¸ö¶ÔÏóµÄ³ÉÔ±º¯Êı
+	//æ›´æ”¹å…¶ä¸­ä¸€ä¸ªå¯¹è±¡çš„æˆå‘˜å‡½æ•°
 	rating[3].first() = "xiaohua";
 	rating[3].second() = 1;
 	cout << rating[3].second() << "\t" << rating[3].first() << endl;
