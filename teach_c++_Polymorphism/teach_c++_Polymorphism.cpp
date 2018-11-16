@@ -53,6 +53,7 @@ public:
 void CallVirtualFunc(void *pthis, int index = 0)
 {
 	void(*funptr)(void*);//定义一个函数指针，第一个void是返回类型，第二个void*是该函数的参数表类型
+	//如果嫌写函数指针麻烦，可以使用typedef定义一个类型： typedef void(*Funptr)(void*); Funptr ptr;这也是一个函数指针
 	long vptrAddr;//保存虚函数表地址
 	memcpy(&vptrAddr, pthis, 4);//把对象的前4个字节也就是虚指针地址传过去
 	memcpy(&funptr, (long*)(vptrAddr)+index, 4);//memcpy的方法是传入对象的地址，这样需要将funptr的地址传入，
