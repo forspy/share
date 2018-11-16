@@ -2,7 +2,7 @@
 #include<vector>//STL C++98 模板类
 #include<array>//C++11 模板类
 #include<string>
-
+#include<map>
 int main(int agrc, char* argv[])
 {
 	using namespace std;
@@ -27,8 +27,32 @@ int main(int agrc, char* argv[])
 	float m=v[1];//vector重载了[]
 	//vector的迭代器
 	vector<float>::iterator it;//类似于元素指针
+	it=v.begin();//第一个元素开始的位置
+	it=v.end();//最后一个元素的下一个元素的位置
+	
+	//把迭代器it当成指针来使用
+	it=v.begin();
+	while(it<v.end())//输出vector容器内的值
+	{
+		cout<<*it<<endl;
+		it++;
+	}
+	//删除（迭代器）
+	v.erase(v.begin());//删除第一个元素位置
+	v.erase(v.begin(),v.begin+2);//删除前三个
+	//插入（迭代器）
+	v.insert(v.begin());//插入到第一个位置
+	//.at(),等同[]
+	//.size();容器大小
+	for(int i=0;i<v.size();i++)
+	{
+		cout<<v[i]<<endl;
+	}
+	//删除所有的元素
+	v.clear();
+	
 	//vector储存在堆里，array储存在栈里，所以array的效率比较高
-
+	
 	array<int, 5> ai = { 1,2,3,4,5 };//创建一个5个元素的array并初始化
 	array<int, 5>ai2;
 	ai2 = ai;//1.array的对象是可以赋值给另一个变量的2.变量的类型和大小必须一样
@@ -54,4 +78,7 @@ int main(int agrc, char* argv[])
 	string cc;
 	getline(cin, cc);//getline是string类的
 	cout << cc << endl;
+	
+	 
+	
 }
