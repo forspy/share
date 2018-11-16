@@ -20,7 +20,7 @@
 #define STACK_H_
 #include<iostream>
 //与模板函数相同，模板类需要在前面声明
-//模板类是泛型编程的重要方法之一，主要针对基础库的开发，Type是泛型名
+//模板类是泛型编程的重要方法之一，主要针对基础库的开发（也就是说除非很多人会使用你，所以要慎用），Type是泛型名
 template<class Type>//template<typename Type>这样也行
 class Stack
 {
