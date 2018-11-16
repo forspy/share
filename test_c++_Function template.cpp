@@ -38,7 +38,7 @@ int main()
 	int p = 222;
 	int q = 333;
 	my_swap(o, p, q);
-	//也可以在使用函数的时候就指出模板类型 my_swap<int>(o,p,q);
+	//也可以在使用函数的时候就指出模板类型 my_swap<int>(o,p,q);尽量指出函数模板类型，编译器有时候推断不准确
 	cout << "o=" << o << endl << "p=" << p << endl << "q=" << q << endl;
 	job A = { "xiaoming",5000 };
 	job B = { "xiaowang",15000 };
