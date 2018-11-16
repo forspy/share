@@ -127,7 +127,12 @@ int main()
 	//子串
 	string temp = mm1.substr(0, 3);
 	cout << temp << endl;
-	
+	//查找
+	int index=mm1.find("hello");//如果找到，返回h的位置，从0开始
+	cout<<index<<endl;
+	//清理
+	mm1.clear();
+	//或者 mm1="";也行
 	C* pc = new C;
 	delete pc;
 	cout << "--------" << endl;
