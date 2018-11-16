@@ -29,6 +29,7 @@ private:
 	Type items[MAX];//1.long items[MAX];原来是long类型的，为了使得该栈不仅仅适用于double类型使用类模板
 	//2.因为items数组的类型改了，所以所有的以items为参数的函数原型都要改
 	int top;
+	
 public:
 	Stack();
 	~Stack();
