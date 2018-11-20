@@ -1,58 +1,58 @@
 #include<iostream>
-#include<list>//ÒÑ¾­ÊµÏÖºÃµÄÁ´±íSTLÈİÆ÷
-#include<iomanip>//¸ñÊ½»¯Í·ÎÄ¼ş
+#include<list>//å·²ç»å®ç°å¥½çš„é“¾è¡¨STLå®¹å™¨
+#include<iomanip>//æ ¼å¼åŒ–å¤´æ–‡ä»¶
 using namespace std;
-//½¨Á¢Ò»¸öÕ»ÄÚÁ´±íÀà
-//»ùÓÚÁ´±íÊµÏÖµÄÕ»
+//å»ºç«‹ä¸€ä¸ªæ ˆå†…é“¾è¡¨ç±»
+//åŸºäºé“¾è¡¨å®ç°çš„æ ˆ
 template <typename T>
 class Stack
 {
 private:
-	list<T> m_list;//Éú³ÉÒ»¸öÁ´±íÀà¶ÔÏó
+	list<T> m_list;//ç”Ÿæˆä¸€ä¸ªé“¾è¡¨ç±»å¯¹è±¡,å°è£…å¥½çš„listä¸ºåŒå‘é“¾è¡¨
 public:
 	Stack();
-	Stack(const Stack<T>& that) :m_list(that.m_list) { }//¿½±´¹¹Ôì,Stack<T>±íÊ¾ÀàĞÍ£¬Ãû×ÖStack¿ÉÒÔÊ¡ÂÔ
+	Stack(const Stack<T>& that) :m_list(that.m_list) { }//æ‹·è´æ„é€ ,Stack<T>è¡¨ç¤ºç±»å‹ï¼Œåå­—Stackå¯ä»¥çœç•¥
 	Stack<T>& operator=(const Stack<T>& that);
 	~Stack();
 
 	void push(const T& data);
 	void pop();
 	T& top();
-	const T& top()const;//È¨µ±¸´Ï°Ò»ÏÂ³£º¯Êı
+	const T& top()const;//æƒå½“å¤ä¹ ä¸€ä¸‹å¸¸å‡½æ•°
 	bool empty() const;
 };
 int main()
 {
-	try//ÔÚµ÷ÓÃtopµÄÊ±ºòÒ»¶¨Òªµ÷ÓÃtry
+	try//åœ¨è°ƒç”¨topçš„æ—¶å€™ä¸€å®šè¦è°ƒç”¨try
 	{
-		Stack<int> s1;//ÊµÀı»¯¶ÔÏó
+		Stack<int> s1;//å®ä¾‹åŒ–å¯¹è±¡
 		for (int i = 0; i < 10; i++)
 		{
 			s1.push(i);
 		}
 		while (!s1.empty())
 		{
-			cout << setw(2) << left << s1.top();//setw(2)±íÊ¾¿ÕÁ½¸ñ´òÓ¡
+			cout << setw(2) << left << s1.top();//setw(2)è¡¨ç¤ºç©ºä¸¤æ ¼æ‰“å°
 			s1.pop();
 		}
 	}
 	catch (exception& ex)
 	{
-		cout << ex.what() << endl;//Êä³öÒì³£
-		return -1;//-1±íÊ¾Òì³£¸ø³ÌĞòÔ±¿´
+		cout << ex.what() << endl;//è¾“å‡ºå¼‚å¸¸
+		return -1;//-1è¡¨ç¤ºå¼‚å¸¸ç»™ç¨‹åºå‘˜çœ‹
 	}
 }
 
 template<typename T>
-Stack<T>::Stack()//¹¹ÔìµÄÊ±ºòÏÈ³õÊ¼»¯Á´±í
+Stack<T>::Stack()//æ„é€ çš„æ—¶å€™å…ˆåˆå§‹åŒ–é“¾è¡¨
 {
-	m_list.clear();//°ÑÁ´±íÇå¿Õ
+	m_list.clear();//æŠŠé“¾è¡¨æ¸…ç©º
 }
 
 template<typename T>
 Stack<T>& Stack<T>::operator=(const Stack<T>& that)
 {
-	//ÏÈÅĞ¶Ï×Ô¸³Öµ
+	//å…ˆåˆ¤æ–­è‡ªèµ‹å€¼
 	if (that = *this)
 		return *this;
 	m_list = that.m_list;
@@ -62,13 +62,13 @@ Stack<T>& Stack<T>::operator=(const Stack<T>& that)
 template<typename T>
 Stack<T>::~Stack()
 {
-	m_list.clear();//Îö¹¹Ò²ÊÇ°ÑÁ´±íÇå¿Õ
+	m_list.clear();//ææ„ä¹Ÿæ˜¯æŠŠé“¾è¡¨æ¸…ç©º
 }
 
 template<typename T>
 void Stack<T>::push(const T & data)
 {
-	m_list.push_back(data);//ÀûÓÃ·â×°ºÃµÄlistÁ´±íÄ£°åÖ±½Óµ÷ÓÃ¶ÔÏó·½·¨Ñ¹Èë
+	m_list.push_back(data);//åˆ©ç”¨å°è£…å¥½çš„listé“¾è¡¨æ¨¡æ¿ç›´æ¥è°ƒç”¨å¯¹è±¡æ–¹æ³•å‹å…¥
 }
 
 template<typename T>
@@ -76,25 +76,25 @@ void Stack<T>::pop()
 {
 	if (empty())
 	{
-		throw underflow_error("¶ÑÕ»ÏÂÒç");//Å×³öÒ»¸öÒì³££¨ÏÂÒç³öÒì³££©
+		throw underflow_error("å †æ ˆä¸‹æº¢");//æŠ›å‡ºä¸€ä¸ªå¼‚å¸¸ï¼ˆä¸‹æº¢å‡ºå¼‚å¸¸ï¼‰
 	}
 	m_list.pop_back();
 }
 
 template<typename T>
-T & Stack<T>::top()//·µ»ØÕ»¶¥ÔªËØ£¬¼´Á´±íµÄ×îºóÒ»¸öÔªËØ
+T & Stack<T>::top()//è¿”å›æ ˆé¡¶å…ƒç´ ï¼Œå³é“¾è¡¨çš„æœ€åä¸€ä¸ªå…ƒç´ 
 {
 	if (empty())
 	{
-		throw exception("Òì³£");//exception ÊÇËùÓĞÒì³£µÄ»ùÀà
+		throw exception("å¼‚å¸¸");//exception æ˜¯æ‰€æœ‰å¼‚å¸¸çš„åŸºç±»
 	}
-	return m_list.back();//È¡Á´±íµÄ×îºóÒ»¸öÔªËØ
+	return m_list.back();//å–é“¾è¡¨çš„æœ€åä¸€ä¸ªå…ƒç´ 
 }
-//´¦Àí³£º¯ÊıĞ¡ĞÄ£¬³£º¯ÊıÖ»ÄÜµ÷ÓÃ³£°æ±¾
+//å¤„ç†å¸¸å‡½æ•°å°å¿ƒï¼Œå¸¸å‡½æ•°åªèƒ½è°ƒç”¨å¸¸ç‰ˆæœ¬
 template<typename T>
 const T & Stack<T>::top() const
 {
-	return ((Stack<T>*)this)->top();//this¾ßÓĞ³£ÊôĞÔËùÒÔ²»Ç¿×ªÒ»Ö±Ñ­»·µ÷ÓÃ×Ô¼º£¬ËùÒÔĞèÒªÈ¥³£
+	return ((Stack<T>*)this)->top();//thiså…·æœ‰å¸¸å±æ€§æ‰€ä»¥ä¸å¼ºè½¬ä¸€ç›´å¾ªç¯è°ƒç”¨è‡ªå·±ï¼Œæ‰€ä»¥éœ€è¦å»å¸¸
 }
 
 template<typename T>
