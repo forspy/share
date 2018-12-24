@@ -20,6 +20,7 @@ sudo apt-get install vim-gtk
 注意需要把VMware tools 光盘拷出只读文件夹tar （或者）解压 运行 ./vmware-install.pl  如果需要以管理员身份运行可以输入 sudo ./vmware-install.pl
 或者先sudu su
 然后./vmware-install.pl
+装完reboot重启生效
 */
 /*
 linux常用命令：
