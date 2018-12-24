@@ -18,7 +18,8 @@ sudo apt-get install vim-gtk
 虚拟机 sata0:1找不到 是因为主机没有光驱  需要把光驱中的启动时连接勾掉
 如果ubuntu不能自适应窗口需要安装VMware tools 
 注意需要把VMware tools 光盘拷出只读文件夹tar （或者）解压 运行 ./vmware-install.pl  如果需要以管理员身份运行可以输入 sudo ./vmware-install.pl
-
+或者先sudu su
+然后./vmware-install.pl
 */
 /*
 linux常用命令：
