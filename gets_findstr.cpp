@@ -7,9 +7,9 @@ int main()
 	char  str[2000] = { 0 };
 	char a[1000];
 	char b[1000];
-	gets_s(a);//输入a字符串
-	gets_s(b);//输入b字符串
-	//连接a字符串
+	gets_s(a);//脢盲脠毛a脳脰路没麓庐
+	gets_s(b);//脢盲脠毛b脳脰路没麓庐
+	//脕卢陆脫a脳脰路没麓庐
 	strcat(str, a);
 	strcat(str, a);
 	//printf("%s\n", str);
@@ -26,7 +26,7 @@ int findstr(char* source, char* searchfor)
 		for (j = i, k = 0; source[j] == searchfor[k] && searchfor[k] != '\0'; j++, k++)
 			;
 		if (searchfor[k] == '\0'&&k > 0)
-			return 1;//相当于跳出/
+			return 1;//脧脿碌卤脫脷脤酶鲁枚/
 	}
 	return 0;
 }
