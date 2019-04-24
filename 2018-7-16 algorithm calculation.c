@@ -61,7 +61,7 @@ double val[MAXVAL];
 void push(double f)
 {
 	if (sp < MAXVAL)
-		val[sp++] = f;
+		val[sp++] = f;//╨С++
 	else
 		printf("error:stack full");
 }
@@ -70,7 +70,7 @@ void push(double f)
 double pop(void)
 {
 	if (sp > 0)
-		return val[--sp];
+		return val[--sp];//ох--
 	else
 	{
 		printf("error:stack empty\n");
