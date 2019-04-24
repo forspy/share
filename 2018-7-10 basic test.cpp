@@ -20,10 +20,10 @@ int main()
 }
 
 //类型，运算符与表达式
-//int 整形16位或者32位 4字节
+//int 32位 4字节
 //float 单精度浮点型 4字节
 //double 双精度浮点型 8字节
-//short int 短整型
+//short int 短整型 16
 //long int 长整形 如12345L
 //介绍一些小函数
 //标准库函数strlen(s) 返回字符串参数s的长度（头文件<string.h>）
