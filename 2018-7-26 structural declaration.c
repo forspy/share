@@ -5,14 +5,20 @@ struct point
 {
 	int x;
 	int y;
+	
+	point()//??????
+	{
+		x=0;
+		y=0;
+	}
 };
 struct point makepoint(int x, int y);
-struct point pt = { 3,4 };
+struct point pt = { 3,4 };//???
 struct rect {
 		struct point pt1;
 		struct point pt2;
 	};
-struct rect screen = { 1,4, 5,6 };//��ʼ����ֵ
+struct rect screen = { 1,4, 5,6 };//³õÊ¼»¯¸³Öµ
 int main() {
 	printf("%d,%d\n", pt.x, pt.y);
 	double dist;
@@ -24,7 +30,7 @@ int main() {
 	printf("%d %d\n", screen.pt1);
 }
 
-struct point makepoint(int x, int y) 
+struct point makepoint(int x, int y) //??????,?????????
 {
 	struct point temp;
 	temp.x = x;
