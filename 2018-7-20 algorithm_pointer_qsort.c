@@ -10,7 +10,7 @@ int readlines(char *lineptr[], int nlines);
 void writelines(char *lineptr[], int nlines);
 
 void qsort(char *lineptr[], int left, int right);
-
+//模块功能：实现对多行文本每行按字母顺序快速排序
 main()
 {
 	int nlines;
@@ -75,7 +75,7 @@ int readlines(char *lineptr[], int maxlines)
 		{
 			line[len - 1] = '\0';
 			strcpy(p, line);
-			lineptr[nlines++] = p;
+			lineptr[nlines++] = p;//每行字符串的地址
 		}
 	return nlines;
 }
@@ -83,7 +83,7 @@ int readlines(char *lineptr[], int maxlines)
 void writelines(char *lineptr[], int nlines)
 {
 	int i;
-	for (i = 0; i < nlines; i++)
+	for (i = 0; i < nlines; i++)//逐行输出
 		printf("%s\n", lineptr[i]);
 }
 
