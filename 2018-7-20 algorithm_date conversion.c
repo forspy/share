@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 char daytab[2][13] = {
-	{0,31,28,31,30,31,30,31,31,30,31,30,31},
-	{0,31,29,31,30,31,30,31,31,30,31,30,31 }
+	{0,31,28,31,30,31,30,31,31,30,31,30,31},//不是闰年
+	{0,31,29,31,30,31,30,31,31,30,31,30,31 }//瑞年
 };
 int day_of_year(int year, int month, int day);
 void month_day(int year, int yearday, int *pmonth, int *pday);
@@ -25,7 +25,7 @@ main()
 int day_of_year(int year, int month, int day)
 {
 	int i, leap;
-	leap = (year % 4 == 0 && year % 100 != 0 || year % 400 == 0);//逻辑表达式的值只有0或1
+	leap = (year % 4 == 0 && year % 100 != 0 || year % 400 == 0);//逻辑表达式的值只有0或1 闰年：能被4整除不能被100整除或者能被400整除
 	for (i = 1; i <month; i++)
 		day += daytab[leap][i];
 	return day;
