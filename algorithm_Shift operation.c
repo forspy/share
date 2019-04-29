@@ -1,27 +1,44 @@
 #include <stdio.h>
 
+typedef struct result
+{
+	int count;//ç”¨äºè®¡æ•°
+	bool flag;//ç”¨äºåˆ¤æ–­
+}result;
+
+result is_2intpower(int number);
+
 int main(int agrc, char** argv)
 {
 	int value;
-	printf("ÇëÊäÈëÒ»¸öÊıÅĞ¶ÏÊÇ²»ÊÇ2µÄÕûÊı´ÎÃİ\n");
+	printf("è¯·è¾“å…¥ä¸€ä¸ªæ•°åˆ¤æ–­æ˜¯ä¸æ˜¯2çš„æ•´æ•°æ¬¡å¹‚\n");
 	scanf("%d", &value);
-	int count = 0;
-	//ºËĞÄÊÇÅĞÅĞ¶ÏÓĞ¼¸¸ö1£¬Óë1Óë¿ÉÒÔµÄ½á¹ûÀÛ¼Óµ½count£¬ÅĞ¶Ïcount
-	count = is_2intpower(value);
-	
-	if (count < 2)
-		printf("%dÊÇ2µÄÕûÊı´ÎÃİ\n",value);
+	//æ ¸å¿ƒæ˜¯åˆ¤åˆ¤æ–­æœ‰å‡ ä¸ª1ï¼Œä¸1ä¸å¯ä»¥çš„ç»“æœç´¯åŠ åˆ°countï¼Œåˆ¤æ–­count
+	result status = is_2intpower(value);
+
+	if (status.count >0 &&status.flag==true)
+		printf("%dæ˜¯2çš„%dæ¬¡å¹‚\n", value,status.count);
 	else
-		printf("%d²»ÊÇ2µÄÕûÊı´ÎÃİ\n",value);
+		printf("%dä¸æ˜¯2çš„æ•´æ•°æ¬¡å¹‚\n", value);
 }
 
-int is_2intpower(int number)
+result is_2intpower(int number)//è¿”å›ä¸€ä¸ªç»“æ„ä½“ï¼Œä¸¤ä¸ªå‚æ•°
 {
-	int i=0;
-	while (number)
+	result status = {0,true};
+	int temp;
+	while (number>1)
 	{
-		i += number & 1;//ÓÒÒÆÒ»Î»ÒÔºóÈÎÈ»ÄÜ±»2Õû³ı
-		number >>= 1;
+		temp = number & 1;
+		if(temp==0)
+		{
+			status.count++;
+			number >>= 1;
+		}
+		else
+		{
+			status.flag = false;
+			break;
+		}
 	}
-	return i;
+	return status;
 }
