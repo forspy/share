@@ -1,4 +1,4 @@
-// Win32Project4.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌÐòµÄÈë¿Úµã¡£
+// Win32Project4.cpp : å®šä¹‰æŽ§åˆ¶å°åº”ç”¨ç¨‹åºçš„å…¥å£ç‚¹ã€‚
 //
 
 #include "stdafx.h"
@@ -10,7 +10,7 @@ int main()
 	float n=3.2,k;
 	int i, j;
 	k = m + n;
-	for (i = j = 0; i <= 10; i++)//i=j=0Ïàµ±ÓÚi=0,j=0;ÇÒ²»»áÖØ¸´¶Ôi£¬j¸³Öµ
+	for (i = j = 0; i <= 10; i++)//i=j=0ç›¸å½“äºŽi=0,j=0;ä¸”ä¸ä¼šé‡å¤å¯¹iï¼Œjèµ‹å€¼
 	{
        printf("%d, %d\n", i, j);
 	}
@@ -19,21 +19,21 @@ int main()
     return 0;
 }
 
-//ÀàÐÍ£¬ÔËËã·ûÓë±í´ïÊ½
-//int 32Î» 4×Ö½Ú
-//float µ¥¾«¶È¸¡µãÐÍ 4×Ö½Ú
-//double Ë«¾«¶È¸¡µãÐÍ 8×Ö½Ú
-//short int ¶ÌÕûÐÍ 16
-//long int ³¤ÕûÐÎ Èç12345L
-//½éÉÜÒ»Ð©Ð¡º¯Êý
-//±ê×¼¿âº¯Êýstrlen(s) ·µ»Ø×Ö·û´®²ÎÊýsµÄ³¤¶È£¨Í·ÎÄ¼þ<string.h>£©
-//enum ±äÁ¿Àà{Ð¡±äÁ¿1£¬Ð¡±äÁ¿2...}Ã»ÓÐÖ¸¶¨ÔòµÝÔöÉú³É£¨Ð¡±äÁ¿1µÄÖµÒªÖ¸¶¨£©
-//const ÀàÐÍ ±äÁ¿;constÐÞÊÎµÄ±äÁ¿Öµ²»ÄÜ¸Ä±ä
-//£¡½«·Ç0±äÎª0£¬½«0±äÎª1 Èç£ºif(!valid)
-//charÀàÆäÊµÊÇ½ÏÐ¡µÄÕûÐÎÒò´ËASCII×Ö·û¿ÉÒÔÏà¼Ó¼õ Èçc+'a'-'A'¿ÉÒÔÊµÏÖ´óÐ´×ª»»³ÉÐ¡Ð´ Èçtolower()º¯Êý<cytpe.h>
-//unsignedÎÞ·ûºÅ±äÁ¿signed·ûºÅ±äÁ¿
+//ç±»åž‹ï¼Œè¿ç®—ç¬¦ä¸Žè¡¨è¾¾å¼
+//int 32ä½ 4å­—èŠ‚
+//float å•ç²¾åº¦æµ®ç‚¹åž‹ 4å­—èŠ‚
+//double åŒç²¾åº¦æµ®ç‚¹åž‹ 8å­—èŠ‚
+//short int çŸ­æ•´åž‹ 2å­—èŠ‚
+//long int é•¿æ•´å½¢ å¦‚12345L  4å­—èŠ‚
+//ä»‹ç»ä¸€äº›å°å‡½æ•°
+//æ ‡å‡†åº“å‡½æ•°strlen(s) è¿”å›žå­—ç¬¦ä¸²å‚æ•°sçš„é•¿åº¦ï¼ˆå¤´æ–‡ä»¶<string.h>ï¼‰
+//enum å˜é‡ç±»{å°å˜é‡1ï¼Œå°å˜é‡2...}æ²¡æœ‰æŒ‡å®šåˆ™é€’å¢žç”Ÿæˆï¼ˆå°å˜é‡1çš„å€¼è¦æŒ‡å®šï¼‰
+//const ç±»åž‹ å˜é‡;constä¿®é¥°çš„å˜é‡å€¼ä¸èƒ½æ”¹å˜
+//ï¼å°†éž0å˜ä¸º0ï¼Œå°†0å˜ä¸º1 å¦‚ï¼šif(!valid)
+//charç±»å…¶å®žæ˜¯è¾ƒå°çš„æ•´å½¢å› æ­¤ASCIIå­—ç¬¦å¯ä»¥ç›¸åŠ å‡ å¦‚c+'a'-'A'å¯ä»¥å®žçŽ°å¤§å†™è½¬æ¢æˆå°å†™ å¦‚tolower()å‡½æ•°<cytpe.h>
+//unsignedæ— ç¬¦å·å˜é‡signedç¬¦å·å˜é‡
 //long+double=double int+float=float
-//Ò»Ð©º¯Êý»á×Ô¶¯½«²ÎÊý×ª»»ÀàÐÍ£¬Èçsqrt(double),Î±Ëæ»úº¯Êýrand
-//×ÔÔö/×Ô¼õÔËËã·û£¬s[j++]=1;-->s[j]=1;j++;
-//¸³ÖµÔËËãi=i+2;-->i+=2;x*=y+1;-->x=x*(y+1);
-//Ìõ¼þ±í´ïÊ½ z=(a>b)?a:b;
+//ä¸€äº›å‡½æ•°ä¼šè‡ªåŠ¨å°†å‚æ•°è½¬æ¢ç±»åž‹ï¼Œå¦‚sqrt(double),ä¼ªéšæœºå‡½æ•°rand
+//è‡ªå¢ž/è‡ªå‡è¿ç®—ç¬¦ï¼Œs[j++]=1;-->s[j]=1;j++;
+//èµ‹å€¼è¿ç®—i=i+2;-->i+=2;x*=y+1;-->x=x*(y+1);
+//æ¡ä»¶è¡¨è¾¾å¼ z=(a>b)?a:b;
