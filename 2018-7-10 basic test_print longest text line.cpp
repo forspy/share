@@ -54,7 +54,7 @@ int getline(char* s, int* lim)//s为数组，指针传入地址，对该地址�
 	return i;
 }
 
-void copy(char to[], char from[])
+void copy(char* to, char* from)
 {
 	int i;
 	i = 0;
