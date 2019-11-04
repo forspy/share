@@ -119,6 +119,7 @@ void ungetch(int c)
 	else
 		buf[bufp++] = c;
 }
+
 //有些时候重新编译链接的时候出错需要把原debug里的exe删除重新生成
 
 
