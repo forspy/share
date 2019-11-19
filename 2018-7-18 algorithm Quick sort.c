@@ -1,5 +1,5 @@
 #include<stdio.h>
-
+ 
 void qsort(int v[], int left, int right);//从指定位置开始快速排序
 int main()
 {
