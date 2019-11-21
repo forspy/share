@@ -3,18 +3,18 @@
 
 #define MAXLINES 5000
 
-char *lineptr[MAXLINES]; //Ö¸ÏòÎÄ±¾ĞĞµÄÖ¸ÕëÊı×é,Ã¿¸öÔªËØ¶¼ÊÇÖ¸Õë
+char *lineptr[MAXLINES]; //æŒ‡å‘æ–‡æœ¬è¡Œçš„æŒ‡é’ˆæ•°ç»„,æ¯ä¸ªå…ƒç´ éƒ½æ˜¯æŒ‡é’ˆ
 
 int readlines(char *lineptr[], int nlines);
 
 void writelines(char *lineptr[], int nlines);
 
 void qsort(char *lineptr[], int left, int right);
-//Ä£¿é¹¦ÄÜ£ºÊµÏÖ¶Ô¶àĞĞÎÄ±¾Ã¿ĞĞ°´×ÖÄ¸Ë³Ğò¿ìËÙÅÅĞò
-main()
+//æ¨¡å—åŠŸèƒ½ï¼šå®ç°å¯¹å¤šè¡Œæ–‡æœ¬æ¯è¡ŒæŒ‰å­—æ¯é¡ºåºå¿«é€Ÿæ’åº
+int main()
 {
 	int nlines;
-	if ((nlines = readlines(lineptr, MAXLINES)) >= 0)
+	if ((nlines = readlines(lineptr, MAXLINES)) >=0)
 	{
 		qsort(lineptr, 0, nlines - 1);
 		writelines(lineptr, nlines);
@@ -28,10 +28,10 @@ main()
 }
 
 #define MAXLEN 1000
-int getline(char s[], int lim);//ÔİÊ±ÓÃÊı×éÀàĞÍ
+int getline(char s[], int lim);//æš‚æ—¶ç”¨æ•°ç»„ç±»å‹
 char *alloc(int);
 
-int getline(char s[], int lim)//sÎªÊı×é
+int getline(char s[], int lim)//sä¸ºæ•°ç»„
 {
 	int c, i;
 	for (i = 0; i < lim - 1 && (c = getchar()) != EOF&&c != '\n'; ++i)
@@ -68,14 +68,14 @@ int readlines(char *lineptr[], int maxlines)
 	int len, nlines;
 	char *p, line[MAXLEN];
 	nlines = 0;
-	while ((len = getline(line, MAXLEN)) > 0)
+	while ((len = getline(line, MAXLEN))> 0 && *line!='\n')//å¾—åˆ°ä¸€è¡Œçš„å­—ç¬¦ä¸ªæ•°ï¼Œä¼ å…¥çš„æ˜¯æ•°ç»„lineçš„é¦–åœ°å€,å›è½¦è·³å‡º
 		if (nlines >= maxlines || (p = alloc(len)) == NULL)
 			return -1;
 		else
 		{
-			line[len - 1] = '\0';
+			line[len - 1] = '\0';//ç”¨'\0'ç»“æŸç¬¦ä»£æ›¿'\n'å›è½¦ç¬¦
 			strcpy(p, line);
-			lineptr[nlines++] = p;//Ã¿ĞĞ×Ö·û´®µÄµØÖ·
+			lineptr[nlines++] = p;//å­˜å…¥æ¯è¡Œå­—ç¬¦ä¸²çš„åœ°å€
 		}
 	return nlines;
 }
@@ -83,7 +83,7 @@ int readlines(char *lineptr[], int maxlines)
 void writelines(char *lineptr[], int nlines)
 {
 	int i;
-	for (i = 0; i < nlines; i++)//ÖğĞĞÊä³ö
+	for (i = 0; i < nlines; i++)//é€è¡Œè¾“å‡º
 		printf("%s\n", lineptr[i]);
 }
 
@@ -91,7 +91,7 @@ void qsort(char *v[], int left, int right)
 {
 	int i, last;
 	void swap(char *v[], int i, int j);
-	if (left >= right)//Á½¸öÒªÅÅ£¬Ò»¸ö¾Í²»ÓÃÅÅÁË
+	if (left >= right)//ä¸¤ä¸ªè¦æ’ï¼Œä¸€ä¸ªå°±ä¸ç”¨æ’äº†
 		return;
 	swap(v, left, (left + right) / 2);
 	last = left;
@@ -112,5 +112,3 @@ void swap(char *v[], int i, int j)
 	v[i] = v[j];
 	v[j] = temp;
 }
-
-

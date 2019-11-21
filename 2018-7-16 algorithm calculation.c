@@ -5,9 +5,9 @@
 #define NUMBER '0'
 int getop(char[]);
 void push(double);
-double pop(voud);
-
-main()
+double pop(void);
+//è¿™ä¸€æ®µç¨‹åºçš„åŠŸèƒ½æ˜¯ï¼Œæ ¹æ®é¦–å­—æ¯çš„ç±»å‹ï¼Œä¿ç•™æ•°å­—å‹å…¥æ ˆä¸­ï¼Œé™¤å»å…¶ä»–ç±»å‹çš„å­—ç¬¦
+int main()
 {
 	int type;
 	double op2;
@@ -57,20 +57,20 @@ main()
 int sp = 0;
 double val[MAXVAL];
 
-//pushº¯Êı£¬°ÑfÑ¹ÈëÖµÕ»
+//pushå‡½æ•°ï¼ŒæŠŠfå‹å…¥å€¼æ ˆ
 void push(double f)
 {
 	if (sp < MAXVAL)
-		val[sp++] = f;//ºó++
+		val[sp++] = f;//å++
 	else
 		printf("error:stack full");
 }
 
-//popº¯Êı£ºµ¯³ö²¢·µ»ØÕ»¶¥µÄÖµ
+//popå‡½æ•°ï¼šå¼¹å‡ºå¹¶è¿”å›æ ˆé¡¶çš„å€¼
 double pop(void)
 {
 	if (sp > 0)
-		return val[--sp];//ÏÈ--
+		return val[--sp];//å…ˆ--
 	else
 	{
 		printf("error:stack empty\n");
@@ -81,7 +81,7 @@ double pop(void)
 
 int getch(void);
 void ungetch(int);
-//getop:»ñÈ¡ÏÂÒ»¸öÔËËã·û»òÊıÖµ²Ù×÷Êı
+//getop:è·å–ä¸‹ä¸€ä¸ªè¿ç®—ç¬¦æˆ–æ•°å€¼æ“ä½œæ•°
 int getop(char s[])
 {
 	int i, c;
@@ -119,7 +119,8 @@ void ungetch(int c)
 	else
 		buf[bufp++] = c;
 }
-//ÓĞĞ©Ê±ºòÖØĞÂ±àÒëÁ´½ÓµÄÊ±ºò³ö´íĞèÒª°ÑÔ­debugÀïµÄexeÉ¾³ıÖØĞÂÉú³É
+
+//æœ‰äº›æ—¶å€™é‡æ–°ç¼–è¯‘é“¾æ¥çš„æ—¶å€™å‡ºé”™éœ€è¦æŠŠåŸdebugé‡Œçš„exeåˆ é™¤é‡æ–°ç”Ÿæˆ
 
 
 

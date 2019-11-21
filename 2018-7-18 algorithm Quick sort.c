@@ -1,7 +1,7 @@
 #include<stdio.h>
-
-void qsort(int v[], int left, int right);//´ÓÖ¸¶¨Î»ÖÃ¿ªÊ¼¿ìËÙÅÅĞò
-main()
+ 
+void qsort(int v[], int left, int right);//ä»æŒ‡å®šä½ç½®å¼€å§‹å¿«é€Ÿæ’åº
+int main()
 {
 	int a[9] = { 4,5,8,7,6,9,2,1,3 };
 	int left = 0;
@@ -17,14 +17,14 @@ void qsort(int v[], int left, int right)
 {
 	int i, last;
 	void swap(int v[], int i, int j);
-	if (left >= right)//Á½¸öÒªÅÅ£¬Ò»¸ö¾Í²»ÓÃÅÅÁË
+	if (left >= right)//ä¸¤ä¸ªè¦æ’ï¼Œä¸€ä¸ªå°±ä¸ç”¨æ’äº†
 		return;
 	swap(v, left, (left + right) / 2);
 	last = left;
 	for (i = left + 1; i <= right; i++)
 	{
 		if (v[i]< v[left])
-			swap(v, ++last, i);
+			swap(v, ++last, i);//å°†ä¸­é—´æ•°ä¸å°äºæ­¤æ•°çš„å€¼äº’æ¢
 	}
 	swap(v, left, last);
 	qsort(v, left, last - 1);

@@ -1,16 +1,16 @@
-// basic test_print longest text line.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌĞòµÄÈë¿Úµã¡£
+// basic test_print longest text line.cpp : å®šä¹‰æ§åˆ¶å°åº”ç”¨ç¨‹åºçš„å…¥å£ç‚¹ã€‚
 //
 
 #include "stdafx.h"
 #include<stdio.h>
 #define MAXLINE 1000
 
-int getline(char line[], int maxline);//½«Ò»ĞĞ¶ÁÈë£¬²¢·µ»Ø³¤¶È£»[]±íÊ¾¶¯Ì¬·ÖÅä×Ö·û´®³¤¶È
-void copy(char to[], char from[]);//ÓÃÓÚ¸´ÖÆ×î´óÊäÈëĞĞ
+int getline(char* line, int maxline);//å°†ä¸€è¡Œè¯»å…¥ï¼Œå¹¶è¿”å›é•¿åº¦ï¼›[]è¡¨ç¤ºåŠ¨æ€åˆ†é…å­—ç¬¦ä¸²é•¿åº¦
+void copy(char* to, char* from);//ç”¨äºå¤åˆ¶æœ€å¤§è¾“å…¥è¡Œ
 
 int main()
 {
-	int num = 0;//ÓÃÓÚÌø³ö
+	int num = 0;//ç”¨äºè·³å‡º
 	int len;
 	int max;
 	char line[MAXLINE];
@@ -37,7 +37,7 @@ int main()
     return 0;
 }
 
-int getline(char s[], int lim)//sÎªÊı×é
+int getline(char* s, int* lim)//sä¸ºæ•°ç»„ï¼ŒæŒ‡é’ˆä¼ å…¥åœ°å€ï¼Œå¯¹è¯¥åœ°å€çš„å†…å­˜è¿›è¡Œæ“ä½œ
 {
 	int c, i;
 	for (i = 0; i < lim - 1 && (c = getchar()) != EOF&&c != '\n'; ++i)
@@ -54,7 +54,7 @@ int getline(char s[], int lim)//sÎªÊı×é
 	return i;
 }
 
-void copy(char to[], char from[])
+void copy(char* to, char* from)
 {
 	int i;
 	i = 0;

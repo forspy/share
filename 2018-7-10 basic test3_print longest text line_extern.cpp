@@ -19,16 +19,16 @@ int main()
 	extern int max;//调用外部（全局）变量需要用extern命令
 	extern char longest[];
 	max = 0;
-	while ((len = getline()) > 0)
+	while ((len = getline()) > 0)//这个返回的长度包括'\n'
 	{
 		num++;
 
 		if (len > max)
 		{
-			max = len;
+			max = len;//把最大的给max
 			copy();
 		}
-		if (num > 10)
+		if (num > 10)//10次过后就跳出
 		{
 			break;
 		}
@@ -62,6 +62,6 @@ void copy(void)
 	extern char line[], longest[];
 	int i;
 	i = 0;
-	while ((longest[i]=line[i])!='\0')
+	while ((longest[i]=line[i])!='\0')//载入longest全局数组
 		i++;
 }
