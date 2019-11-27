@@ -2,10 +2,10 @@
 #include <ctype.h>
 #include <string.h>
 
-#define NKEYS (sizeof(keytab)/sizeof(keytab[0]))//Êı×éµÄ×Ü´óĞ¡/µ¥¸öÊı×éÔªËØµÄ´óĞ¡=ÏîÊı
+#define NKEYS (sizeof(keytab)/sizeof(keytab[0]))//æ•°ç»„çš„æ€»å¤§å°/å•ä¸ªæ•°ç»„å…ƒç´ çš„å¤§å°=é¡¹æ•°
 #define MAXWORD 100
-//¹¦ÄÜ£ºÓÃÓÚÊµÏÖ¶ÔÓÚÒ»¶Î»°ÖĞ¼¸¸ö¹Ø¼ü×ÖµÄÍ³¼Æ£¬¹Ø¼ü×ÖÓÃ½á¹¹ÌåÉùÃ÷
-//·½·¨£º1.ÏÈÉèºÃÒª²éµÄ¹Ø¼ü×Ö 2.ÀûÓÃgetch/ungetchÊäÈëÎÄ±¾ 3.ÀûÓÃ¶ş·Ö·¨ËÑË÷Æ¥ÅäµÄ¹Ø¼ü´Ê²¢¼ÆÊı 4.Êä³ö³öÏÖµÄ¹Ø¼ü´ÊÒÔ¼°´ÎÊı
+//åŠŸèƒ½ï¼šç”¨äºå®ç°å¯¹äºä¸€æ®µè¯ä¸­å‡ ä¸ªå…³é”®å­—çš„ç»Ÿè®¡ï¼Œå…³é”®å­—ç”¨ç»“æ„ä½“å£°æ˜
+//æ–¹æ³•ï¼š1.å…ˆè®¾å¥½è¦æŸ¥çš„å…³é”®å­— 2.åˆ©ç”¨getch/ungetchè¾“å…¥æ–‡æœ¬ 3.åˆ©ç”¨äºŒåˆ†æ³•æœç´¢åŒ¹é…çš„å…³é”®è¯å¹¶è®¡æ•° 4.è¾“å‡ºå‡ºç°çš„å…³é”®è¯ä»¥åŠæ¬¡æ•°
 struct key {
 	char *word;
 	int count;
@@ -27,25 +27,30 @@ int getword(char *word, int lim);
 int binsearch(char *word, struct key tab[], int n);
 
 
-main()
+int main()
 {
 	int n;
 	char word[MAXWORD];
-	
-	while (getword(word, MAXWORD) != EOF)
+	int count = 0;
+	while (getword(word, MAXWORD) != EOF&&count < 10)
+	{
+		count++;
 		if (isalpha(word[0]))
+		{
 			if ((n = binsearch(word, keytab, NKEYS)) >= 0)
 				keytab[n].count++;
+		}
+	}
 	for (n = 0; n < NKEYS; n++)
 		if (keytab[n].count > 0)
-			printf("%4d %s", keytab[n].count, keytab[n].word);//4d%±íÊ¾ÒÔ4Î»ÕûÊıÊä³ö
+			printf("%4d %s", keytab[n].count, keytab[n].word);//4d%è¡¨ç¤ºä»¥4ä½æ•´æ•°è¾“å‡º
 	return 0;
 }
 
 int binsearch(char *word, struct key tab[], int n)
 {
 	int cond;
-	int low,high,mid;
+	int low, high, mid;
 
 	low = 0;
 	high = n - 1;
@@ -53,7 +58,7 @@ int binsearch(char *word, struct key tab[], int n)
 	while (low <= high)
 	{
 		mid = (low + high) / 2;
-		if ((cond = strcmp(word, tab[mid].word)) < 0)//strcmp²ÎÊıÎªÖ¸ÕëÖ¸Ïò×Ö·û´®Êı×é,¿ÉÒÔÍ¨¹ı½âÒıÓÃµÄ·½Ê½±È½Ï*word==*tab[mid].word
+		if ((cond = strcmp(word, tab[mid].word)) < 0)//strcmpå‚æ•°ä¸ºæŒ‡é’ˆæŒ‡å‘å­—ç¬¦ä¸²æ•°ç»„,å¯ä»¥é€šè¿‡è§£å¼•ç”¨çš„æ–¹å¼æ¯”è¾ƒ*word==*tab[mid].word
 			high = mid - 1;
 		else if ((cond > 0))
 			low = mid + 1;
@@ -62,7 +67,7 @@ int binsearch(char *word, struct key tab[], int n)
 	}
 	return -1;
 }
-//ÎÄ±¾ÊäÈë¿é
+//æ–‡æœ¬è¾“å…¥å—
 #define BUFSIZE 100
 
 char buf[BUFSIZE];
@@ -81,22 +86,22 @@ void ungetch(int c)
 		buf[bufp++] = c;
 }
 
-int getword(char *word, int lim)//±íÊ¾²ÎÊıÖ¸ÕëwordÖ¸ÏòÖ÷º¯ÊıÀïµÄword×Ö·û´®Êı×é
+int getword(char *word, int lim)//è¡¨ç¤ºå‚æ•°æŒ‡é’ˆwordæŒ‡å‘ä¸»å‡½æ•°é‡Œçš„wordå­—ç¬¦ä¸²æ•°ç»„
 {
 	int c, getch(void);
-	void ungetch(int);//¹¦ÄÜ£ºÓÃÓÚÈ¥µôµ¥´ÊÎ²²¿¿Õ¸ñ
-	//char *w;
-	//w = word;
+	void ungetch(int);//åŠŸèƒ½ï¼šç”¨äºå»æ‰å•è¯å°¾éƒ¨ç©ºæ ¼
+					  //char *w;
+					  //w = word;
 
 	while (isspace(c = getch()))
 		;
 	if (c != EOF)
 		*word++ = c;
 	if (!isalpha(c)) {
-        *word = '\0';
-	    return c;
+		*word = '\0';
+		return c;
 	}
-	for (;--lim>0;word++)
+	for (; --lim>0; word++)
 		if (!isalnum(*word = getch()))
 		{
 			ungetch(*word);
@@ -105,4 +110,3 @@ int getword(char *word, int lim)//±íÊ¾²ÎÊıÖ¸ÕëwordÖ¸ÏòÖ÷º¯ÊıÀïµÄword×Ö·û´®Êı×é
 	*word = '\0';
 	return word[0];
 }
-
