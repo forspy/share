@@ -6,18 +6,15 @@ struct point
 	int x;
 	int y;
 	
-	point()//??????
-	{
-		x=0;
-		y=0;
-	}
-};
+}point1 = { 0,0 };
+	
+
 struct point makepoint(int x, int y);
 struct point pt = { 3,4 };//???
 struct rect {
-		struct point pt1;
-		struct point pt2;
-	};
+	struct point pt1;
+	struct point pt2;
+};
 struct rect screen = { 1,4, 5,6 };//³õÊ¼»¯¸³Öµ
 int main() {
 	printf("%d,%d\n", pt.x, pt.y);
