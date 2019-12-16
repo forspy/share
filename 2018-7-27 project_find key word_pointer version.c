@@ -6,6 +6,8 @@
 #define MAXWORD 100
 //功能：用于实现对于一段话中几个关键字的统计，关键字用结构体声明
 //方法：1.先设好要查的关键字 2.利用getch/ungetch输入文本 3.利用二分法搜索匹配的关键词并计数 4.输出出现的关键词以及次数
+
+//在vs下EOF的输入方式为ctrl+c
 struct key {
 	char *word;
 	int count;
@@ -52,7 +54,7 @@ struct key * binsearch(char * word, struct key tab[], int n)
 	{
 		mid = low + (high - low) / 2;
 		if ((cond = strcmp(word, mid->word)) < 0)
-			high = mid-1;
+			high = mid - 1;
 		else if (cond > 0)
 			low = mid + 1;
 		else
