@@ -8,6 +8,7 @@
 //方法：1.先设好要查的关键字 2.利用getch/ungetch输入文本 3.利用二分法搜索匹配的关键词并计数 4.输出出现的关键词以及次数
 
 //在vs下EOF的输入方式为ctrl+c
+//搜索关键函数为strcmp(指针,指针)
 struct key {
 	char *word;
 	int count;
