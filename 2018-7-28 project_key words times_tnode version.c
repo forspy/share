@@ -36,26 +36,26 @@ char *strdup(char *s);
 struct tnode *addtree(struct tnode *p, char *w)
 {
 	int cond;
-	
+
 	if (p == NULL)//如果该单词是一个新节点
 	{
-        
+
 		p = talloc();//创建一个新节点,分配内存，和定义int p变量。
-		p->word = strdup(w);//功 能: 将字符串拷贝到新建的位置处,需要头文件<string.h>,返回一个指针
-		//strdup()在内部调用了malloc()为变量分配内存，不需要使用返回的字符串时，需要用free()释放相应的内存空间，否则会造成内存泄漏。
+		p->word = strdup(w);//功 能: 将字符串拷贝到新建的位置处,需要头文件<string.h>,返回一个指针,其核心函数为strcpy(p, s);
+							//strdup()在内部调用了malloc()为变量分配内存，不需要使用返回的字符串时，需要用free()释放相应的内存空间，否则会造成内存泄漏。
 		p->count = 1;
 		p->left = NULL;
 		p->right = NULL;
 	}
-	else if((cond=strcmp(w,p->word))==0)
+	else if ((cond = strcmp(w, p->word)) == 0)
 	{
 		p->count++;//->的优先级高
 	}
-	else if (cond < 0)
+	else if (cond < 0)//根据strcmp的结果放入左子树
 	{
 		p->left = addtree(p->left, w);
 	}
-	else
+	else//根据strcmp的结果放入右子树
 	{
 		p->right = addtree(p->right, w);
 	}
@@ -76,16 +76,16 @@ void treeprint(struct tnode *p)
 struct tnode *talloc(void)
 {
 	return (struct tnode*)malloc(sizeof(struct tnode));//分配动态内存并初始化
-	//在动态分配内存的时候不知道数组的情况下用sizeof(struct tnode)分配一个节点
-	//1.maloc函数一般返回指向void类型的指针，利用强制转换的方式(struct tnode*)给该节点分配内存，void类型可以转换成其他类型
-	//2.malloc动态申请的内存是堆式的，而静态内存的空间是栈式的，一般我们的vs编译过程中变量是以栈的形式存入的
-	//3.动态内存的申请必须在函数内，以便于释放
+													   //在动态分配内存的时候不知道数组的情况下用sizeof(struct tnode)分配一个节点
+													   //1.maloc函数一般返回指向void类型的指针，利用强制转换的方式(struct tnode*)给该节点分配内存，void类型可以转换成其他类型
+													   //2.malloc动态申请的内存是堆式的，而静态内存的空间是栈式的，一般我们的vs编译过程中变量是以栈的形式存入的
+													   //3.动态内存的申请必须在函数内，以便于释放
 }
 //strdup函数的构造方式
 char *strdup(char *s)
 {
 	char *p;
-	
+
 	p = (char *)malloc(strlen(s) + 1);//+1是为了在结尾上加字符'\0',为p分配内存并初始化
 	if (p != NULL)
 		strcpy(p, s);
