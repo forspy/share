@@ -6,12 +6,12 @@ int main()
 {
 	using namespace std;
 	//int myvector[8];
-    //vector<int> vec;
-	vector <int> aa(5, 10);
+	//vector<int> vec;
+	vector <int> aa(5, 10);//表示创建数组长度为5值为10的一个vector数组
 	for (int i = 0; i < 5; i++)
 		//printf("%d", aa[i]);
-	cout << aa[i] << endl;;
-	
+		cout << aa[i] << endl;;
+
 	//c++输出写法
 	//cout << "v2 =";
 	//for (auto& v : v2) {
@@ -25,6 +25,6 @@ int main()
 	cout << "请输入字符串！" << endl;
 	cin >> name1;
 	name2[3] = '\0';//对第四个字符重新复制
-	cout<<name1<<"一共有"<<strlen(name1)<<"个字符"<< endl;
-	cout <<name2 << endl;
+	cout << name1 << "一共有" << strlen(name1) << "个字符" << endl;
+	cout << name2 << endl;
 }
